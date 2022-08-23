@@ -1,0 +1,10 @@
+extends ../base 
+include ../mixins/recipe
+
+block content 
+    div 
+        each recipe in recipes
+            +recipe(recipe)
+    button
+        i(class="fas fa-plus")
+        
