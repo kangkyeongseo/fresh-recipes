@@ -1,0 +1,22 @@
+extends ../base
+include ../mixins/ingredient
+
+block content 
+        div
+            div(style={width:"100%", height:"300px", background:"red"}) 
+                span=recipe.title
+                span=recipe.description
+                span #{recipe.time}분
+        div  
+            h3 빨리 사용해야해요!
+            ul 
+                each ingredient in ingredients 
+                    +ingredient(ingredient)
+            spn 모두보기 &rarr;
+        div     
+            h3 새로 구입해야해요!
+            ul 
+                each ingredient in ingredients 
+                    +ingredient(ingredient)
+            spn 모두보기 &rarr;
+        

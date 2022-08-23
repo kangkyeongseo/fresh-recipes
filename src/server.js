@@ -7,6 +7,9 @@ import userRouter from "./router/userRouter";
 const app = express();
 const PORT = 3000;
 
+app.set("view engine", "pug");
+app.set("views", process.cwd() + "/src/views");
+
 app.use("/", rootRouter);
 app.use("/user", userRouter);
 app.use("/ingredients", ingredientsRouter);
