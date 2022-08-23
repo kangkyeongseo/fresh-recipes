@@ -36,4 +36,6 @@ export const getUserDetail = (req, res) => {
   return res.render("user/user-detail", { user });
 };
 
-export const getUserEdit = (req, res) => res.send("user-edit");
+export const getUserEdit = (req, res) => {
+  return res.render("user/user-edit");
+};
