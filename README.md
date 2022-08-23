@@ -40,10 +40,11 @@
 
     * 유저 상세정보(/:id)
     * 유저 상세정보 수정(/:id/edit)
+    * 현재 보관중인 재료(/:id/ingredients)
+    * 조리법 목록(/:id/recipes)
 
 > Ingredients(/ingredients)
 
-    * 현재 보관중인 재료(/)
     * 재료 추가(/add)
     * 재료 검색(/search)
     * 재료 상세 정보(/:id)
@@ -51,7 +52,6 @@
 
 > Recipe(/recipes)
 
-    * 조리법 목록(/)
     * 조리법 추가(/add)
     * 조리법 검색(/seach)
     * 조리법 상세정보(/:id)

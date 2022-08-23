@@ -1,5 +1,3 @@
-export const getIngredients = (req, res) => res.send("ingredients");
-
 export const getIngAdd = (req, res) => res.send("ingredients add");
 
 export const getIngSearch = (req, res) => res.send("ingredients search");

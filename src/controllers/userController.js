@@ -39,3 +39,23 @@ export const getUserDetail = (req, res) => {
 export const getUserEdit = (req, res) => {
   return res.render("user/user-edit");
 };
+
+export const getUserIng = (req, res) => {
+  const ingredients = [
+    {
+      name: "감자",
+      amount: "3개",
+      freshPeriod: 1,
+    },
+    {
+      name: "당근",
+      amount: "1개",
+      freshPeriod: 2,
+    },
+  ];
+  return res.render("user/user-ing", { ingredients });
+};
+
+export const getUserRecipe = (req, res) => {
+  return res.render("user/user-edit");
+};
