@@ -26,4 +26,6 @@ export const getLogin = (req, res) => {
 
 export const getLogout = (req, res) => res.send("logout");
 
-export const getJoin = (req, res) => res.send("join");
+export const getJoin = (req, res) => {
+  return res.render("root/join");
+};
