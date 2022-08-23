@@ -20,7 +20,9 @@ export const getHome = (req, res) => {
   return res.render("root/home", { recipe, ingredients });
 };
 
-export const getLogin = (req, res) => res.send("login");
+export const getLogin = (req, res) => {
+  return res.render("root/login");
+};
 
 export const getLogout = (req, res) => res.send("logout");
 
