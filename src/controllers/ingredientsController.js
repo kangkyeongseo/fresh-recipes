@@ -1,4 +1,6 @@
-export const getIngAdd = (req, res) => res.send("ingredients add");
+export const getIngAdd = (req, res) => {
+  return res.render("ingredient/ingredient-add");
+};
 
 export const getIngSearch = (req, res) => res.send("ingredients search");
 

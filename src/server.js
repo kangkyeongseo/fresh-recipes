@@ -13,8 +13,8 @@ app.set("views", process.cwd() + "/src/views");
 
 app.use("/", rootRouter);
 app.use("/user", userRouter);
-app.use("/ingredients", ingredientsRouter);
-app.use("/recipes", recipesRouter);
+app.use("/ingredient", ingredientsRouter);
+app.use("/recipe", recipesRouter);
 app.use("/square", squareRouter);
 
 const handleListen = () => console.log(`Listening on http://localhost${PORT}`);

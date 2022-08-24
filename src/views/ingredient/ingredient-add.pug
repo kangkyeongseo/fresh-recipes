@@ -1,0 +1,40 @@
+extends ../base 
+
+block content 
+    div 
+        form 
+            input(type="text" placeholder="재료")
+            div 
+                h5 품목   
+                input(type="radio" id="mainType" name="type" value="mainType")
+                label(for="mainType") 주재료 
+                input(type="radio" id="subType" name="type" value="subType")
+                label(for="subType") 부재료 
+                input(type="radio" id="condimentType" name="type" value="condimentType")
+                label(for="condimentType") 조미료 
+            div 
+                h5 보관
+                input(type="radio" id="coldStore" name="store" value="coldStore")
+                label(for="coldStore") 냉장 
+                input(type="radio" id="frozemStore" name="store" value="frozemStore")
+                label(for="frozemStore") 냉동 
+                input(type="radio" id="roomStore" name="store" value="roomStore")
+                label(for="roomStore") 상온
+            div
+                h5 용량
+                input(type="text" placeholder="용량")
+                input(type="radio" id="gramAmount" name="amount" value="gramAmount")
+                label(for="gramAmount") 그램(g) 
+                input(type="radio" id="mlAmount" name="amount" value="mlAmount")
+                label(for="mlAmount") 밀리(ml) 
+                input(type="radio" id="countAmount" name="amount" value="countAmount")
+                label(for="countAmount") 개수
+            div 
+                label(for="purchase") 구입 날짜 
+                input(type="date" id="purchase")
+                label(for="periodLife") 유통기한
+                input(type="date" id="periodLife")
+                label(for="periodDay") 유통기한
+                input(type="number" id="periodDay")
+                span 일
+            input(type="submit" value="보관하기")
