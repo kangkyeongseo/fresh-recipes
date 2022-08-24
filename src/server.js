@@ -10,6 +10,7 @@ const PORT = 3000;
 
 app.set("view engine", "pug");
 app.set("views", process.cwd() + "/src/views");
+app.use(express.urlencoded({ extened: true }));
 
 app.use("/", rootRouter);
 app.use("/user", userRouter);

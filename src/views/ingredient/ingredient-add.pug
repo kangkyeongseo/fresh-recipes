@@ -2,8 +2,8 @@ extends ../base
 
 block content 
     div 
-        form 
-            input(type="text" placeholder="재료")
+        form(method="post")
+            input(type="text" placeholder="재료" name="name")
             div 
                 h5 품목   
                 input(type="radio" id="mainType" name="type" value="mainType")
@@ -22,19 +22,16 @@ block content
                 label(for="roomStore") 상온
             div
                 h5 용량
-                input(type="text" placeholder="용량")
-                input(type="radio" id="gramAmount" name="amount" value="gramAmount")
+                input(type="text" placeholder="용량" name="amount")
+                input(type="radio" id="gramAmount" name="amountType" value="gramAmount")
                 label(for="gramAmount") 그램(g) 
-                input(type="radio" id="mlAmount" name="amount" value="mlAmount")
+                input(type="radio" id="mlAmount" name="amountType" value="mlAmount")
                 label(for="mlAmount") 밀리(ml) 
-                input(type="radio" id="countAmount" name="amount" value="countAmount")
+                input(type="radio" id="countAmount" name="amountType" value="countAmount")
                 label(for="countAmount") 개수
             div 
                 label(for="purchase") 구입 날짜 
-                input(type="date" id="purchase")
+                input(type="date" id="purchase" name="purchase")
                 label(for="periodLife") 유통기한
-                input(type="date" id="periodLife")
-                label(for="periodDay") 유통기한
-                input(type="number" id="periodDay")
-                span 일
+                input(type="date" id="periodLife" name="periodLife")
             input(type="submit" value="보관하기")

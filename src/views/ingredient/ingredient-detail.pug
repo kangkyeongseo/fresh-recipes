@@ -1,0 +1,32 @@
+extends ../base 
+
+block content 
+    div  
+        h3=ingredient.name
+        div
+            if ingredient.store === "coldStore" 
+                span 냉장 보관 중
+            else if ingredient.store === "frozenStore" 
+                span 냉동 보관 중
+            else if ingredient.store === "roomStore" 
+                span 상온 보관 중
+        div 
+            span=ingredient.amount
+            if ingredient.amountType === "gramAmount" 
+                span g
+            else if ingredient.amountType === "mlAmount" 
+                span ml
+            else if ingredient.amountType === "countAmount" 
+                span 개
+            form(action="")
+                input(type="number" name="spend")
+                input(type="submit" value=" 소비")      
+        div 
+            h5 구입 날짜
+            span #{ingredient.purchase.slice(0,4)}년 #{ingredient.purchase.slice(5,7)}월 #{ingredient.purchase.slice(8,10)}일
+            h5 유통 기한
+            span #{ingredient.periodLife.slice(0,4)}년 #{ingredient.periodLife.slice(5,7)}월 #{ingredient.periodLife.slice(8,10)}일
+            h5 남은 기간
+            span #{period}일
+        a 수정하기
+
