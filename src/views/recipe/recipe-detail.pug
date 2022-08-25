@@ -1,0 +1,24 @@
+extends ../base 
+
+block content 
+    div 
+        h3=recipe.name
+        div
+            span=recipe.serving
+            span 인분
+        div
+            span=recipe.time
+            span 분
+        ul
+            each ingredient in recipe.ingredients 
+                div
+                    span=ingredient.name
+                    span=ingredient.amount 
+                    span=ingredient.amountType
+        ul
+            each order in recipe.orders 
+                div
+                    span=order.order
+                    span=order.text
+        a 수정하기
+                    
