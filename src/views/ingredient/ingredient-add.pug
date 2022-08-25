@@ -3,35 +3,35 @@ extends ../base
 block content 
     div 
         form(method="post")
-            input(type="text" placeholder="재료" name="name")
+            input(type="text" placeholder="재료" name="name" required)
             div 
                 h5 품목   
-                input(type="radio" id="mainType" name="type" value="mainType")
+                input(type="radio" id="mainType" name="type" value="주재료" required)
                 label(for="mainType") 주재료 
-                input(type="radio" id="subType" name="type" value="subType")
+                input(type="radio" id="subType" name="type" value="부재료" required)
                 label(for="subType") 부재료 
-                input(type="radio" id="condimentType" name="type" value="condimentType")
+                input(type="radio" id="condimentType" name="type" value="조미료" required)
                 label(for="condimentType") 조미료 
             div 
                 h5 보관
-                input(type="radio" id="coldStore" name="store" value="coldStore")
+                input(type="radio" id="coldStore" name="store" value="냉장" required)
                 label(for="coldStore") 냉장 
-                input(type="radio" id="frozemStore" name="store" value="frozemStore")
+                input(type="radio" id="frozemStore" name="store" value="냉동" required)
                 label(for="frozemStore") 냉동 
-                input(type="radio" id="roomStore" name="store" value="roomStore")
+                input(type="radio" id="roomStore" name="store" value="상온" required)
                 label(for="roomStore") 상온
             div
                 h5 용량
-                input(type="text" placeholder="용량" name="amount")
-                input(type="radio" id="gramAmount" name="amountType" value="gramAmount")
+                input(type="text" placeholder="용량" name="amount" required)
+                input(type="radio" id="gramAmount" name="amountType" value="g" required)
                 label(for="gramAmount") 그램(g) 
-                input(type="radio" id="mlAmount" name="amountType" value="mlAmount")
+                input(type="radio" id="mlAmount" name="amountType" value="ml" required)
                 label(for="mlAmount") 밀리(ml) 
-                input(type="radio" id="countAmount" name="amountType" value="countAmount")
+                input(type="radio" id="countAmount" name="amountType" value="개" required)
                 label(for="countAmount") 개수
             div 
                 label(for="purchase") 구입 날짜 
-                input(type="date" id="purchase" name="purchase")
+                input(type="date" id="purchas" name="purchaseDate" )
                 label(for="periodLife") 유통기한
                 input(type="date" id="periodLife" name="periodLife")
             input(type="submit" value="보관하기")
