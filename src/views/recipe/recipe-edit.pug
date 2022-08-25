@@ -1,0 +1,38 @@
+extends ../base 
+
+block content 
+    div 
+        form(method="post")
+            div
+                input(type="text" placeholder="요리명" name="name" value=recipe.name)
+            div
+                input(type="number" placeholder="인원" name="serving" value=recipe.serving)             
+                span 인분
+
+            div
+                input(type="number" placeholder="소요시간" name="time" value=recipe.time)             
+                span 분
+            div
+                h5 필요재료
+                each ingredient in recipe.ingredients
+                    div
+                        input(type="text" placeholder="재료명" name="ingredient" value=ingredient.name)
+                        input(type="text" placeholder="필요량" name="ingredientAmount" value=ingredient.amount)
+                        input(type="radio" id="gramAmount" name=`amountType${ingredient.id}` value="g" checked=(ingredient.amountType === "g" ? true : false))
+                        label(for="gramAmount") 그램(g) 
+                        input(type="radio" id="mlAmount" name=`amountType${ingredient.id}` value="ml" checked=(ingredient.amountType === "ml" ? true : false))
+                        label(for="mlAmount") 밀리(ml) 
+                        input(type="radio" id="countAmount" name=`amountType${ingredient.id}` value="개" checked=(ingredient.amountType === "개" ? true : false))
+                        label(for="countAmount") 개수
+                        input(type="radio" id="countAmount" name=`amountType${ingredient.id}` value="Ts" checked=(ingredient.amountType === "Ts" ? true : false))
+                        label(for="countAmount") Ts
+                        input(type="radio" id="countAmount" name=`amountType${ingredient.id}` value="ts" checked=(ingredient.amountType === "ts" ? true : false))
+                        label(for="countAmount") ts
+                button 재료추가하기                 
+            div
+                h5 조리순서
+                each order in recipe.orders
+                    span=order.order
+                    textarea(name="order", cols="30", rows="2")=order.text 
+                button 순서추가하기 
+            input(type="submit" value="수정하기")
