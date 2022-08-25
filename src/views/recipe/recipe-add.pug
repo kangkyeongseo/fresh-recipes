@@ -1,0 +1,26 @@
+extends ../base 
+
+block content 
+    div 
+        form(method="post")
+            div
+                input(type="text" placeholder="요리명" name="name")
+            div
+                input(type="number" placeholder="소요시간" name="time")             
+                span 분
+            div
+                h5 필요재료
+                input(type="text" placeholder="재료명" name="ingredient")
+                input(type="text" placeholder="필요량" name="ingredientAmount")
+                input(type="radio" id="gramAmount" name="amountType" value="gramAmount")
+                label(for="gramAmount") 그램(g) 
+                input(type="radio" id="mlAmount" name="amountType" value="mlAmount")
+                label(for="mlAmount") 밀리(ml) 
+                input(type="radio" id="countAmount" name="amountType" value="countAmount")
+                label(for="countAmount") 개수
+                button 재료추가하기                 
+            div
+                h5 조리순서
+                textarea(name="order", cols="30", rows="2") 
+                button 순서추가하기 
+            input(type="submit" value="요리완성")

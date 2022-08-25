@@ -1,4 +1,6 @@
-export const getRecipesAdd = (req, res) => res.send("recipes add");
+export const getRecipesAdd = (req, res) => {
+  return res.render("recipe/recipe-add");
+};
 
 export const getRecipesSearch = (req, res) => res.send("recipes search");
 
