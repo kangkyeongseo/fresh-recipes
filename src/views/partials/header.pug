@@ -3,3 +3,8 @@ haeder
         li 
             i(class="fas fa-leaf")
             span Fresh Recipes
+        Li 
+            if !loggedIn
+                a(href="/join") 로그인
+            if loggedIn
+                a(href="/logout") 로그아웃

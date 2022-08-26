@@ -8,16 +8,17 @@ block content
                 span=recipe.title
                 span=recipe.description
                 span #{recipe.time}분
-        div  
-            h3 빨리 사용해야해요!
-            ul 
-                each ingredient in ingredients 
-                    +ingredient(ingredient)
-            spn 모두보기 &rarr;
-        div     
-            h3 새로 구입해야해요!
-            ul 
-                each ingredient in ingredients 
-                    +ingredient(ingredient)
-            spn 모두보기 &rarr;
+        if  loggedIn
+            div  
+                h3 빨리 사용해야해요!
+                ul 
+                    each ingredient in ingredients 
+                        +ingredient(ingredient)
+                spn 모두보기 &rarr;
+            div     
+                h3 새로 구입해야해요!
+                ul 
+                    each ingredient in ingredients 
+                        +ingredient(ingredient)
+                spn 모두보기 &rarr;
     include ../partials/nav

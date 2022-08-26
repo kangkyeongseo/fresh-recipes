@@ -5,11 +5,16 @@ block content
         h3 로그인
         if messages.success
             span=messages.success
-        form
-            input(type="text" placeholder="이메일 입력") 
-            input(type="password" placeholder="비밀번호 입력")
+        if messages.error 
+            span=messages.error
+        form(method="post")
+            input(type="text" placeholder="이메일 입력" name="email") 
+            input(type="password" placeholder="비밀번호 입력" name="password")
             input(type="submit" value="로그인")
-    div
-        a Github으로 로그인
-        a 회원가입 하러가기
-        a 비밀번호 찾기
+        ul
+            li 
+                a Github으로 로그인
+            li
+                a 회원가입 하러가기
+            li
+                a 비밀번호 찾기

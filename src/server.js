@@ -8,6 +8,7 @@ import userRouter from "./router/userRouter";
 import session from "express-session";
 import morgan from "morgan";
 import flash from "express-flash";
+import { sessionMiddleware } from "../middleware";
 
 const app = express();
 const PORT = 3000;
@@ -27,6 +28,8 @@ app.use(
 app.use(express.urlencoded({ extened: true }));
 app.use(logger);
 app.use(flash());
+
+app.use(sessionMiddleware);
 
 app.use("/", rootRouter);
 app.use("/user", userRouter);

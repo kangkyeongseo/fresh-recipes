@@ -1,4 +1,5 @@
 import User from "../model/User";
+import bcrypt from "bcrypt";
 
 export const getHome = (req, res) => {
   const recipe = {
@@ -18,12 +19,33 @@ export const getHome = (req, res) => {
       freshPeriod: 2,
     },
   ];
-  console.log(ingredients);
   return res.render("root/home", { recipe, ingredients });
 };
 
 export const getLogin = (req, res) => {
   return res.render("root/login");
+};
+
+export const postLogin = async (req, res) => {
+  const {
+    body: { email, password },
+  } = req;
+  // 이메일 존재 확인
+  const user = await User.findOne({ email });
+  if (!user) {
+    req.flash("error", "존재하는 않는 이메일입니다.");
+    return res.redirect("/login");
+  }
+  // 비밀번호 일치 확인
+  const passwordConfirm = await bcrypt.compare(password, user.password);
+  if (!passwordConfirm) {
+    req.flash("error", "비밀번호가 일치하지 않습니다.");
+    return res.redirect("/login");
+  }
+  // 로그인 및 세션저장
+  req.session.loggedIn = true;
+  req.session.user = user;
+  return res.redirect("/");
 };
 
 export const getLogout = (req, res) => res.send("logout");
@@ -37,14 +59,17 @@ export const postJoin = async (req, res) => {
     body: { email, password, confirmPassword, name },
   } = req;
   const emailExists = await User.exists({ email });
+  // 이메일 중복 확인
   if (emailExists) {
     req.flash("error", "이미 존재하는 이메일입니다.");
     return res.redirect("/join");
   }
+  // 비밀번호 확인
   if (password !== confirmPassword) {
     req.flash("error", "비밀번호 확인이 일치하지 않습니다.");
     return res.redirect("/join");
   }
+  // 유저 데이터 저장
   User.create({
     email,
     password,
