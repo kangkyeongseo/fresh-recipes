@@ -5,7 +5,9 @@ import recipesRouter from "./router/recipesRouter";
 import rootRouter from "./router/rootRouter";
 import squareRouter from "./router/squareRouter";
 import userRouter from "./router/userRouter";
+import session from "express-session";
 import morgan from "morgan";
+import flash from "express-flash";
 
 const app = express();
 const PORT = 3000;
@@ -14,9 +16,17 @@ const logger = morgan("dev");
 
 app.set("view engine", "pug");
 app.set("views", process.cwd() + "/src/views");
-app.use(express.urlencoded({ extened: true }));
 
+app.use(
+  session({
+    secret: "secret",
+    resave: false,
+    saveUninitialized: false,
+  })
+);
+app.use(express.urlencoded({ extened: true }));
 app.use(logger);
+app.use(flash());
 
 app.use("/", rootRouter);
 app.use("/user", userRouter);

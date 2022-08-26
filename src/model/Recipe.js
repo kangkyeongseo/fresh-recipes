@@ -13,7 +13,7 @@ const recipeSchema = new mongoose.Schema({
   ],
   orders: [
     {
-      order: { type: Numvber, require: true },
+      order: { type: Number, require: true },
       content: { type: String, require: true },
     },
   ],
