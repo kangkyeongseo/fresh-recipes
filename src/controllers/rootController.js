@@ -48,7 +48,10 @@ export const postLogin = async (req, res) => {
   return res.redirect("/");
 };
 
-export const getLogout = (req, res) => res.send("logout");
+export const getLogout = (req, res) => {
+  req.session.destroy();
+  return res.redirect("/");
+};
 
 export const getJoin = (req, res) => {
   return res.render("root/join");
