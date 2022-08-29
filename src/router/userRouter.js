@@ -4,12 +4,13 @@ import {
   getUserEdit,
   getUserIng,
   getUserRecipe,
+  postUserEdit,
 } from "../controllers/userController";
 
 const userRouter = express.Router();
 
 userRouter.get("/:id", getUserDetail);
-userRouter.get("/:id/edit", getUserEdit);
+userRouter.route("/:id/edit").get(getUserEdit).post(postUserEdit);
 userRouter.get("/:id/ingredients", getUserIng);
 userRouter.get("/:id/recipes", getUserRecipe);
 

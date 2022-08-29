@@ -4,12 +4,33 @@ export const getUserDetail = async (req, res) => {
   const {
     params: { id },
   } = req;
+  // params id로 user 찾기
   const user = await User.findById(id);
   return res.render("user/user-detail", { user });
 };
 
-export const getUserEdit = (req, res) => {
-  return res.render("user/user-edit");
+export const getUserEdit = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+  // params id로 user 찾기
+  const user = await User.findById(id);
+  return res.render("user/user-edit", { user });
+};
+
+export const postUserEdit = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+  const {
+    body: { name },
+  } = req;
+  // params id로 user 수정하기
+  await User.findByIdAndUpdate(id, {
+    name,
+  });
+  // user detail redirect
+  return res.redirect(`/user/${id}`);
 };
 
 export const getUserIng = (req, res) => {
