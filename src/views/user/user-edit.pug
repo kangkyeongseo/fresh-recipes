@@ -9,7 +9,8 @@ block content
             input(type="file") 
             input(type="text" placeholder="이름" name="name" value=user.name) 
             input(type="submit" value="수정하기")
-    div 
-        a(href=`/user/${loggedInUser._id}/password`)  비밀번호 변경
+    if loggedInUser._id === user._id.toString()
+        div 
+            a(href=`/user/${loggedInUser._id}/password`)  비밀번호 변경
             
     

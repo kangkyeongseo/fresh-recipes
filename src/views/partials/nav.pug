@@ -1,28 +1,28 @@
 nav 
     ul 
-        a(href="/")
-            li 
+        li
+            a(href="/") 
                 i(class="fas fa-home")
                 span 홈
-        a(href=`/user/${loggedInUser._id}/ingredients`)
-            li 
+        li
+             a(href=`/user/${loggedInUser._id}/ingredients`) 
                 i(class="fas fa-apple-alt")
                 span 냉장고
-        a(href="/recipes")
-            li 
+        li 
+            a(href="/recipes")
                 i(class="fas fa-utensils")
                 span 레시피
-        a(href="/square")
-            li 
+        li 
+            a(href="/square")
                 i(class="fas fa-concierge-bell")
                 span 레시피 광장
         if !loggedIn
-            a(href="/login")
-                li 
+            li 
+                a(href="/login")
                     i(class="fas fa-user")
                     span 로그인
         if loggedIn
-            a(href=`/user/${loggedInUser._id}`)
-                li 
+            li 
+                a(href=`/user/${loggedInUser._id}`)
                     i(class="fas fa-user")
                     span 내 정보
