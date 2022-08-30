@@ -8,6 +8,7 @@ const ingSchema = new mongoose.Schema({
   amountType: { type: String, require: true },
   purchaseDate: { type: String },
   periodLife: { type: String },
+  owner: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
 });
 
 const Ingredient = mongoose.model("Ingredient", ingSchema);

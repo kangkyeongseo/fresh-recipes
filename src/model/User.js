@@ -5,6 +5,8 @@ const userSchema = new mongoose.Schema({
   email: { type: String, require: true, unique: true },
   password: { type: String },
   name: { type: String, require: true },
+  ingredients: [{ type: mongoose.Schema.Types.ObjectId, ref: "Ingredient" }],
+  recipes: [{ type: mongoose.Schema.Types.ObjectId, ref: "Recipe" }],
 });
 
 userSchema.pre("save", async function (next) {

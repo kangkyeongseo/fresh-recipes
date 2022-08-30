@@ -4,6 +4,8 @@ block content
     div
         div 
         h5 #{user.name}의 냉장고
+        if loggedInUser._id === user._id.toString()
+            a(href="/logout") 로그아웃
     div 
         ul 
             a
@@ -21,5 +23,6 @@ block content
                     i(class="fas fa-heart")
                     span 찜한 레시피
                     span 
-    div 
-        a(href=`/user/${loggedInUser._id}/edit`) 프로필 수정
+    if loggedInUser._id === user._id.toString()
+        div 
+            a(href=`/user/${loggedInUser._id}/edit`) 프로필 수정

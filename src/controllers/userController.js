@@ -5,9 +5,14 @@ export const getUserDetail = async (req, res) => {
   const {
     params: { id },
   } = req;
-  // params id로 user 찾기
-  const user = await User.findById(id);
-  return res.render("user/user-detail", { user });
+  // Get User Detail Page
+  try {
+    const user = await User.findById(id);
+    return res.render("user/user-detail", { user });
+  } catch (error) {
+    req.flash("error", "허용되지 않는 경로입니다.");
+    return res.redirect("/");
+  }
 };
 
 export const getUserEdit = async (req, res) => {
@@ -45,8 +50,9 @@ export const postUserPasswordEdit = async (req, res) => {
   const {
     body: { oldPassword, newPassword, newPasswordConfirm },
   } = req;
+  // params id로 user 찾기
   const user = await User.findById(id);
-
+  // 비밀번호 일치 확인
   const passwordConfirm = await bcrypt.compare(oldPassword, user.password);
   if (!passwordConfirm) {
     req.flash("error", "현재 비밀번호가 일치하지 않습니다.");
@@ -60,20 +66,12 @@ export const postUserPasswordEdit = async (req, res) => {
   return res.redirect(`/user/${id}/edit`);
 };
 
-export const getUserIng = (req, res) => {
-  const ingredients = [
-    {
-      name: "감자",
-      amount: "3개",
-      freshPeriod: 1,
-    },
-    {
-      name: "당근",
-      amount: "1개",
-      freshPeriod: 2,
-    },
-  ];
-  return res.render("user/user-ing", { ingredients });
+export const getUserIng = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+  const user = await User.findById(id);
+  return res.render("user/user-ing", { ingredients: user.ingredients });
 };
 
 export const getUserRecipe = (req, res) => {
