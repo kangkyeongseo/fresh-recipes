@@ -1,4 +1,5 @@
 import express from "express";
+import { UserOnlyMiddleware } from "../../middleware";
 import {
   getIngAdd,
   getIngdetail,
@@ -9,7 +10,11 @@ import {
 
 const ingredientsRouter = express.Router();
 
-ingredientsRouter.get("/add", getIngAdd);
+ingredientsRouter
+  .route("/add")
+  .all(UserOnlyMiddleware)
+  .get(getIngAdd)
+  .post(postIngAdd);
 ingredientsRouter.post("/add", postIngAdd);
 ingredientsRouter.get("/search", getIngSearch);
 ingredientsRouter.get("/:id", getIngdetail);

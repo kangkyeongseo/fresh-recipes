@@ -1,11 +1,32 @@
+import Ingredient from "../model/Ingredient";
+
 export const getIngAdd = (req, res) => {
   return res.render("ingredient/ingredient-add");
 };
 
 export const postIngAdd = (req, res) => {
-  const data = req.body;
-  console.log(data);
-  return;
+  const {
+    session: { user },
+  } = req;
+  const {
+    body: { name, type, store, amount, amountType, purchaseDate, periodLife },
+  } = req;
+  try {
+    Ingredient.create({
+      name,
+      type,
+      store,
+      amount,
+      amountType,
+      purchaseDate,
+      periodLife,
+      owner: user._id,
+    });
+    return res.redirect(`/user/${user._id}/ingredients`);
+  } catch (error) {
+    req.flash("error", "허용되지 않는 경로입니다.");
+    return res.status(404).redirect("/");
+  }
 };
 
 export const getIngSearch = (req, res) => res.send("ingredients search");

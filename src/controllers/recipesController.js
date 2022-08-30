@@ -2,6 +2,10 @@ export const getRecipesAdd = (req, res) => {
   return res.render("recipe/recipe-add");
 };
 
+export const postRecipesAdd = (req, res) => {
+  return res.render("recipe/recipe-add");
+};
+
 export const getRecipesSearch = (req, res) => res.send("recipes search");
 
 export const getRecipesDetail = (req, res) => {

@@ -23,7 +23,7 @@ userRouter
   .all(UserOnlyMiddleware)
   .get(getUserPasswordEdit)
   .post(postUserPasswordEdit);
-userRouter.get("/:id/ingredients", UserOnlyMiddleware, getUserIng);
+userRouter.get("/:id/ingredients", getUserIng);
 userRouter.get("/:id/recipes", getUserRecipe);
 
 export default userRouter;

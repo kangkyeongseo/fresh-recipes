@@ -74,11 +74,16 @@ export const postJoin = async (req, res) => {
     return res.status(400).redirect("/join");
   }
   // User Create
-  User.create({
-    email,
-    password,
-    name,
-  });
-  req.flash("success", "FRESH RECIPES에 오신 걸 환영합니다");
-  return res.status(200).redirect("/login");
+  try {
+    User.create({
+      email,
+      password,
+      name,
+    });
+    req.flash("success", "FRESH RECIPES에 오신 걸 환영합니다");
+    return res.status(200).redirect("/login");
+  } catch (error) {
+    req.flash("error", "허용되지 않는 경로입니다.");
+    return res.status(404).redirect("/");
+  }
 };
