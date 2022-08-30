@@ -1,11 +1,12 @@
 import express from "express";
-import db from "./db";
+import "./db";
 import ingredientsRouter from "./router/IngredientsRouter";
 import recipesRouter from "./router/recipesRouter";
 import rootRouter from "./router/rootRouter";
 import squareRouter from "./router/squareRouter";
 import userRouter from "./router/userRouter";
 import session from "express-session";
+import MongoStore from "connect-mongo";
 import morgan from "morgan";
 import flash from "express-flash";
 import { sessionMiddleware } from "../middleware";
@@ -23,6 +24,9 @@ app.use(
     secret: "secret",
     resave: false,
     saveUninitialized: false,
+    store: MongoStore.create({
+      mongoUrl: "mongodb://127.0.0.1:27017/fresh-recipes",
+    }),
   })
 );
 app.use(express.urlencoded({ extened: true }));
