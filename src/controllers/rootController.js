@@ -19,42 +19,43 @@ export const getHome = (req, res) => {
       freshPeriod: 2,
     },
   ];
-  return res.render("root/home", { recipe, ingredients });
+  return res.status(200).render("root/home", { recipe, ingredients });
 };
 
 export const getLogin = (req, res) => {
-  return res.render("root/login");
+  return res.status(200).render("root/login");
 };
 
 export const postLogin = async (req, res) => {
   const {
     body: { email, password },
   } = req;
-  // 이메일 존재 확인
+  // Email Exists Confrim
   const user = await User.findOne({ email });
   if (!user) {
     req.flash("error", "존재하는 않는 이메일입니다.");
-    return res.redirect("/login");
+    return res.status(400).redirect("/login");
   }
-  // 비밀번호 일치 확인
+  // password Confrim
   const passwordConfirm = await bcrypt.compare(password, user.password);
   if (!passwordConfirm) {
     req.flash("error", "비밀번호가 일치하지 않습니다.");
-    return res.redirect("/login");
+    return res.status(400).redirect("/login");
   }
-  // 로그인 및 세션저장
+  // Log In and Sessiom Save
   req.session.loggedIn = true;
   req.session.user = user;
-  return res.redirect("/");
+  return res.status(200).redirect("/");
 };
 
 export const getLogout = (req, res) => {
+  // Log Out and Sessiom Destory
   req.session.destroy();
-  return res.redirect("/");
+  return res.status(200).redirect("/");
 };
 
 export const getJoin = (req, res) => {
-  return res.render("root/join");
+  return res.status(200).render("root/join");
 };
 
 export const postJoin = async (req, res) => {
@@ -62,22 +63,22 @@ export const postJoin = async (req, res) => {
     body: { email, password, confirmPassword, name },
   } = req;
   const emailExists = await User.exists({ email });
-  // 이메일 중복 확인
+  // Email Exists Confrim
   if (emailExists) {
     req.flash("error", "이미 존재하는 이메일입니다.");
-    return res.redirect("/join");
+    return res.status(400).redirect("/join");
   }
-  // 비밀번호 확인
+  // Password Confrim
   if (password !== confirmPassword) {
     req.flash("error", "비밀번호 확인이 일치하지 않습니다.");
-    return res.redirect("/join");
+    return res.status(400).redirect("/join");
   }
-  // 유저 데이터 저장
+  // User Create
   User.create({
     email,
     password,
     name,
   });
   req.flash("success", "FRESH RECIPES에 오신 걸 환영합니다");
-  return res.redirect("/login");
+  return res.status(200).redirect("/login");
 };
