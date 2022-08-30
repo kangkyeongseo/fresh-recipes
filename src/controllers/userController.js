@@ -1,4 +1,5 @@
 import User from "../model/User";
+import bcrypt from "bcrypt";
 
 export const getUserDetail = async (req, res) => {
   const {
@@ -31,6 +32,32 @@ export const postUserEdit = async (req, res) => {
   });
   // user detail redirect
   return res.redirect(`/user/${id}`);
+};
+
+export const getUserPasswordEdit = (req, res) => {
+  return res.render("user/user-password-change");
+};
+
+export const postUserPasswordEdit = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+  const {
+    body: { oldPassword, newPassword, newPasswordConfirm },
+  } = req;
+  const user = await User.findById(id);
+
+  const passwordConfirm = await bcrypt.compare(oldPassword, user.password);
+  if (!passwordConfirm) {
+    req.flash("error", "현재 비밀번호가 일치하지 않습니다.");
+    return res.redirect(`/user/${id}/password`);
+  }
+  if (newPassword !== newPasswordConfirm) {
+    req.flash("error", "비밀번호 확인이 일치하지 않습니다.");
+    return res.redirect(`/user/${id}/password`);
+  }
+  req.flash("success", "비밀번호 변경되었습니다.");
+  return res.redirect(`/user/${id}/edit`);
 };
 
 export const getUserIng = (req, res) => {

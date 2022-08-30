@@ -3,8 +3,6 @@ extends ../base
 block content
     div 
         h3 로그인
-        if messages.success
-            span=messages.success
         if messages.error 
             span=messages.error
         form(method="post")
