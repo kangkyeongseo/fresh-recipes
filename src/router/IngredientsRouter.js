@@ -2,10 +2,11 @@ import express from "express";
 import { UserOnlyMiddleware } from "../../middleware";
 import {
   getIngAdd,
-  getIngdetail,
+  getIngDetail,
   getIngEdit,
   getIngSearch,
   postIngAdd,
+  postIngDetail,
 } from "../controllers/ingredientsController";
 
 const ingredientsRouter = express.Router();
@@ -15,9 +16,8 @@ ingredientsRouter
   .all(UserOnlyMiddleware)
   .get(getIngAdd)
   .post(postIngAdd);
-ingredientsRouter.post("/add", postIngAdd);
 ingredientsRouter.get("/search", getIngSearch);
-ingredientsRouter.get("/:id", getIngdetail);
+ingredientsRouter.route("/:id").get(getIngDetail).post(postIngDetail);
 ingredientsRouter.get("/:id/edit", getIngEdit);
 
 export default ingredientsRouter;

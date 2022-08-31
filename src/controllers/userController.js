@@ -104,23 +104,30 @@ export const getUserIng = async (req, res) => {
   const {
     params: { id },
   } = req;
-  const user = await User.findById(id).populate({ path: "ingredients" });
-  const coldStore = user.ingredients.filter(
-    (ingredient) => ingredient.store === "냉장"
-  );
-  const frozenStore = user.ingredients.filter(
-    (ingredient) => ingredient.store === "냉동"
-  );
-  const roomStore = user.ingredients.filter(
-    (ingredient) => ingredient.store === "상온"
-  );
-  console.log(coldStore);
-  return res.render("user/user-ing", {
-    user,
-    coldStore,
-    frozenStore,
-    roomStore,
-  });
+  // Get User Ingredients Page
+  try {
+    // Get Ingredients Using Populate
+    const user = await User.findById(id).populate({ path: "ingredients" });
+    // Seperate Ingredients
+    const coldStore = user.ingredients.filter(
+      (ingredient) => ingredient.store === "냉장"
+    );
+    const frozenStore = user.ingredients.filter(
+      (ingredient) => ingredient.store === "냉동"
+    );
+    const roomStore = user.ingredients.filter(
+      (ingredient) => ingredient.store === "상온"
+    );
+    return res.status(200).render("user/user-ing", {
+      user,
+      coldStore,
+      frozenStore,
+      roomStore,
+    });
+  } catch (error) {
+    req.flash("error", "허용되지 않는 경로입니다.");
+    return res.status(404).redirect("/");
+  }
 };
 
 export const getUserRecipe = (req, res) => {

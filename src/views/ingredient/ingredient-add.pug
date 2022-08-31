@@ -22,7 +22,7 @@ block content
                 label(for="roomStore") 상온
             div
                 h5 용량
-                input(type="text" placeholder="용량" name="amount" required)
+                input(type="number" placeholder="용량" name="amount" required)
                 input(type="radio" id="gramAmount" name="amountType" value="g" required)
                 label(for="gramAmount") 그램(g) 
                 input(type="radio" id="mlAmount" name="amountType" value="ml" required)
@@ -31,7 +31,7 @@ block content
                 label(for="countAmount") 개수
             div 
                 label(for="purchase") 구입 날짜 
-                input(type="date" id="purchas" name="purchaseDate" required)
+                input(type="date" id="purchase" name="purchaseDate" required)
                 label(for="periodLife") 유통기한
                 input(type="date" id="periodLife" name="periodLife" required)
             input(type="submit" value="보관하기")

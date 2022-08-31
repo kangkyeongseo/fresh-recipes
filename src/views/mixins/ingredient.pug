@@ -1,5 +1,5 @@
 mixin ingredient(ingredient)
-    div
+    a(href=`/ingredient/${ingredient._id}`)
         div
             span=ingredient.name 
         div

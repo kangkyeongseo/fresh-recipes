@@ -4,26 +4,27 @@ block content
     div  
         h3=ingredient.name
         div
-            if ingredient.store === "coldStore" 
+            if ingredient.store === "냉장" 
                 span 냉장 보관 중
-            else if ingredient.store === "frozenStore" 
+            else if ingredient.store === "냉동" 
                 span 냉동 보관 중
-            else if ingredient.store === "roomStore" 
+            else if ingredient.store === "상온" 
                 span 상온 보관 중
         div 
             span=ingredient.amount
-            if ingredient.amountType === "gramAmount" 
+            if ingredient.amountType === "g" 
                 span g
-            else if ingredient.amountType === "mlAmount" 
+            else if ingredient.amountType === "ml" 
                 span ml
-            else if ingredient.amountType === "countAmount" 
+            else if ingredient.amountType === "개" 
                 span 개
-            form(action="")
-                input(type="number" name="spend")
-                input(type="submit" value=" 소비")      
+            if ingredient.owner._id.toString() === loggedInUser._id
+                form(method="post")
+                    input(type="number" name="spend" required)
+                    input(type="submit" value=" 소비")      
         div 
             h5 구입 날짜
-            span #{ingredient.purchase.slice(0,4)}년 #{ingredient.purchase.slice(5,7)}월 #{ingredient.purchase.slice(8,10)}일
+            span #{ingredient.purchaseDate.slice(0,4)}년 #{ingredient.purchaseDate.slice(5,7)}월 #{ingredient.purchaseDate.slice(8,10)}일
             h5 유통 기한
             span #{ingredient.periodLife.slice(0,4)}년 #{ingredient.periodLife.slice(5,7)}월 #{ingredient.periodLife.slice(8,10)}일
             h5 남은 기간
