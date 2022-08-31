@@ -1,10 +1,20 @@
 extends ../base 
 include ../mixins/ingredient
 
-block content 
+block content
     div 
-        each ingredient in ingredients
-            +ingredient(ingredient)
+        div 
+            h3 냉장
+            each ingredient in coldStore
+                +ingredient(ingredient)
+        div 
+            h3 냉동
+            each ingredient in frozenStore
+                +ingredient(ingredient)
+        div 
+            h3 상온
+            each ingredient in roomStore
+                +ingredient(ingredient)
     a(href="/ingredient/add")
         i(class="fas fa-plus")
         

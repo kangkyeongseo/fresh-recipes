@@ -1,18 +1,21 @@
 import Ingredient from "../model/Ingredient";
+import User from "../model/User";
 
 export const getIngAdd = (req, res) => {
   return res.render("ingredient/ingredient-add");
 };
 
-export const postIngAdd = (req, res) => {
+export const postIngAdd = async (req, res) => {
   const {
-    session: { user },
+    session: {
+      user: { _id },
+    },
   } = req;
   const {
     body: { name, type, store, amount, amountType, purchaseDate, periodLife },
   } = req;
   try {
-    Ingredient.create({
+    const ingredient = await Ingredient.create({
       name,
       type,
       store,
@@ -20,9 +23,12 @@ export const postIngAdd = (req, res) => {
       amountType,
       purchaseDate,
       periodLife,
-      owner: user._id,
+      owner: _id,
     });
-    return res.redirect(`/user/${user._id}/ingredients`);
+    const user = await User.findById(_id);
+    user.ingredients.push(ingredient._id);
+    user.save();
+    return res.redirect(`/user/${_id}/ingredients`);
   } catch (error) {
     req.flash("error", "허용되지 않는 경로입니다.");
     return res.status(404).redirect("/");

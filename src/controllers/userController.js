@@ -104,8 +104,23 @@ export const getUserIng = async (req, res) => {
   const {
     params: { id },
   } = req;
-  const user = await User.findById(id);
-  return res.render("user/user-ing", { ingredients: user.ingredients });
+  const user = await User.findById(id).populate({ path: "ingredients" });
+  const coldStore = user.ingredients.filter(
+    (ingredient) => ingredient.store === "냉장"
+  );
+  const frozenStore = user.ingredients.filter(
+    (ingredient) => ingredient.store === "냉동"
+  );
+  const roomStore = user.ingredients.filter(
+    (ingredient) => ingredient.store === "상온"
+  );
+  console.log(coldStore);
+  return res.render("user/user-ing", {
+    user,
+    coldStore,
+    frozenStore,
+    roomStore,
+  });
 };
 
 export const getUserRecipe = (req, res) => {

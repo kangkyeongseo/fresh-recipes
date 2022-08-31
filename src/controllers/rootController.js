@@ -75,7 +75,7 @@ export const postJoin = async (req, res) => {
   }
   // User Create
   try {
-    User.create({
+    await User.create({
       email,
       password,
       name,

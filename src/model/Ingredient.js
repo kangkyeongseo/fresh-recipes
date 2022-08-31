@@ -6,8 +6,8 @@ const ingSchema = new mongoose.Schema({
   store: { type: String, require: true },
   amount: { type: Number, require: true },
   amountType: { type: String, require: true },
-  purchaseDate: { type: String },
-  periodLife: { type: String },
+  purchaseDate: { type: String, require: true },
+  periodLife: { type: String, require: true },
   owner: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
 });
 

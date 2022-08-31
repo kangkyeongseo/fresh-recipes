@@ -1,6 +1,11 @@
 mixin ingredient(ingredient)
     div
-        span=ingredient.name 
-        span=ingredient.amount
-        span #{ingredient.freshPeriod}일
+        div
+            span=ingredient.name 
+        div
+            span=ingredient.amount
+            span=ingredient.amountType
+        div
+            span 남은기간
+            span #{Math.round((new Date(ingredient.periodLife) - new Date())/1000/3600/24)}일
         
