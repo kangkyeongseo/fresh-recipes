@@ -29,5 +29,6 @@ block content
             span #{ingredient.periodLife.slice(0,4)}년 #{ingredient.periodLife.slice(5,7)}월 #{ingredient.periodLife.slice(8,10)}일
             h5 남은 기간
             span #{period}일
-        a 수정하기
+        if ingredient.owner._id.toString() === loggedInUser._id
+            a(href=`/ingredient/${ingredient._id}/edit`) 수정하기
 

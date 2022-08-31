@@ -67,21 +67,55 @@ export const postIngDetail = async (req, res) => {
   const {
     body: { spend },
   } = req;
-  const ingredient = await Ingredient.findById(id);
-  ingredient.amount = ingredient.amount - parseInt(spend);
-  ingredient.save();
-  return res.status(200).redirect(`/ingredient/${id}`);
+  // Spend Ingredient
+  try {
+    const ingredient = await Ingredient.findById(id);
+    ingredient.amount = ingredient.amount - parseInt(spend);
+    ingredient.save();
+    return res.status(200).redirect(`/ingredient/${id}`);
+  } catch (error) {
+    req.flash("error", "허용되지 않는 경로입니다.");
+    return res.status(404).redirect("/");
+  }
 };
 
-export const getIngEdit = (req, res) => {
-  const ingredient = {
-    name: "감자",
-    type: "subType",
-    store: "roomStore",
-    amount: "600",
-    amountType: "gramAmount",
-    purchase: "2022-08-24",
-    periodLife: "2022-08-30",
-  };
-  return res.render("ingredient/ingredient-edit", { ingredient });
+export const getIngEdit = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+  // Get Ingredient Edit Page
+  try {
+    // Get Ingredient
+    const ingredient = await Ingredient.findById(id);
+    return res.status(200).render("ingredient/ingredient-edit", { ingredient });
+  } catch (error) {
+    req.flash("error", "허용되지 않는 경로입니다.");
+    return res.status(404).redirect("/");
+  }
+};
+
+export const postIngEdit = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+  const {
+    body: { name, type, store, amount, amountType, purchaseDate, periodLife },
+  } = req;
+  // Post Ingredient Edit Page
+  try {
+    // Ingredient Edit
+    await Ingredient.findByIdAndUpdate(id, {
+      name,
+      type,
+      store,
+      amount,
+      amountType,
+      purchaseDate,
+      periodLife,
+    });
+    return res.status(200).redirect(`/ingredient/${id}`);
+  } catch (error) {
+    req.flash("error", "허용되지 않는 경로입니다.");
+    return res.status(404).redirect("/");
+  }
 };

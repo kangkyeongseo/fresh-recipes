@@ -7,6 +7,7 @@ import {
   getIngSearch,
   postIngAdd,
   postIngDetail,
+  postIngEdit,
 } from "../controllers/ingredientsController";
 
 const ingredientsRouter = express.Router();
@@ -18,6 +19,10 @@ ingredientsRouter
   .post(postIngAdd);
 ingredientsRouter.get("/search", getIngSearch);
 ingredientsRouter.route("/:id").get(getIngDetail).post(postIngDetail);
-ingredientsRouter.get("/:id/edit", getIngEdit);
+ingredientsRouter
+  .route("/:id/edit")
+  .all(UserOnlyMiddleware)
+  .get(getIngEdit)
+  .post(postIngEdit);
 
 export default ingredientsRouter;

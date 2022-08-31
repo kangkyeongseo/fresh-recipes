@@ -6,32 +6,32 @@ block content
             input(type="text" placeholder="재료" name="name" value=ingredient.name)
             div 
                 h5 품목   
-                input(type="radio" id="mainType" name="type" value="mainType" checked=(ingredient.type === "mainType" ? true : false))
+                input(type="radio" id="mainType" name="type" value="주재료" checked=(ingredient.type === "주재료" ? true : false))
                 label(for="mainType") 주재료 
-                input(type="radio" id="subType" name="type" value="subType" checked=(ingredient.type === "subType" ? true : false))
+                input(type="radio" id="subType" name="type" value="부재료" checked=(ingredient.type === "부재료" ? true : false))
                 label(for="subType") 부재료 
-                input(type="radio" id="condimentType" name="type" value="condimentType" checked=(ingredient.type === "condimentType" ? true : false))
+                input(type="radio" id="condimentType" name="type" value="조미료" checked=(ingredient.type === "조미료" ? true : false))
                 label(for="condimentType") 조미료 
             div 
                 h5 보관
-                input(type="radio" id="coldStore" name="store" value="coldStore" checked=(ingredient.store === "coldStore" ? true : false))
+                input(type="radio" id="coldStore" name="store" value="냉장" checked=(ingredient.store === "냉장" ? true : false))
                 label(for="coldStore") 냉장 
-                input(type="radio" id="frozemStore" name="store" value="frozemStore" checked=(ingredient.store === "frozenStore" ? true : false))
+                input(type="radio" id="frozemStore" name="store" value="냉동" checked=(ingredient.store === "냉동" ? true : false))
                 label(for="frozemStore") 냉동 
-                input(type="radio" id="roomStore" name="store" value="roomStore" checked=(ingredient.store === "roomStore" ? true : false))
+                input(type="radio" id="roomStore" name="store" value="상온" checked=(ingredient.store === "상온" ? true : false))
                 label(for="roomStore") 상온
             div
                 h5 용량
                 input(type="text" placeholder="용량" name="amount" value=ingredient.amount)
-                input(type="radio" id="gramAmount" name="amountType" value="gramAmount" checked=(ingredient.amountType === "gramAmount" ? true : false))
+                input(type="radio" id="gramAmount" name="amountType" value="g" checked=(ingredient.amountType === "g" ? true : false))
                 label(for="gramAmount") 그램(g) 
-                input(type="radio" id="mlAmount" name="amountType" value="mlAmount" checked=(ingredient.amountType === "mlAmount" ? true : false))
+                input(type="radio" id="mlAmount" name="amountType" value="ml" checked=(ingredient.amountType === "ml" ? true : false))
                 label(for="mlAmount") 밀리(ml) 
-                input(type="radio" id="countAmount" name="amountType" value="countAmount" checked=(ingredient.amountType === "countAmount" ? true : false))
+                input(type="radio" id="countAmount" name="amountType" value="개" checked=(ingredient.amountType === "개" ? true : false))
                 label(for="countAmount") 개수
             div 
                 label(for="purchase") 구입 날짜 
-                input(type="date" id="purchase" name="purchase" value=ingredient.purchase)
+                input(type="date" id="purchase" name="purchaseDate" value=ingredient.purchaseDate)
                 label(for="periodLife") 유통기한
                 input(type="date" id="periodLife" name="periodLife" value=ingredient.periodLife)
             input(type="submit" value="수정하기")
