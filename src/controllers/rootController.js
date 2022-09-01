@@ -1,25 +1,37 @@
 import User from "../model/User";
 import bcrypt from "bcrypt";
 
-export const getHome = (req, res) => {
+export const getHome = async (req, res) => {
   const recipe = {
     title: "오징어 볶음",
     description: "쫄깃쫄깃 오징어와 매콤 달달 양념의 조화! 밥 두공기 뚝딱!",
     time: 20,
   };
-  const ingredients = [
-    {
-      name: "감자",
-      amount: "3개",
-      freshPeriod: 1,
-    },
-    {
-      name: "당근",
-      amount: "1개",
-      freshPeriod: 2,
-    },
-  ];
-  return res.status(200).render("root/home", { recipe, ingredients });
+  if (req.session.loggedIn) {
+    const {
+      session: {
+        user: { _id },
+      },
+    } = req;
+    const user = await User.findById(_id).populate({ path: "ingredients" });
+    const periodLifeIngredients = user.ingredients.filter((ingredient) => {
+      const periodLife = new Date(ingredient.periodLife);
+      const today = new Date();
+      const period = Math.round((periodLife - today) / 1000 / 3600 / 24);
+      return period < 3;
+    });
+    const purchaseIngredients = user.ingredients.filter(
+      (ingredient) => ingredient.purchase === true
+    );
+    return res.status(200).render("root/home", {
+      recipe,
+      user,
+      periodLifeIngredients,
+      purchaseIngredients,
+    });
+  } else {
+    return res.status(200).render("root/home", { recipe });
+  }
 };
 
 export const getLogin = (req, res) => {

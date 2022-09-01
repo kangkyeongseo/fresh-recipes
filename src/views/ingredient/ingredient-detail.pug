@@ -21,7 +21,9 @@ block content
             if ingredient.owner._id.toString() === loggedInUser._id
                 form(method="post")
                     input(type="number" name="spend" required)
-                    input(type="submit" value=" 소비")      
+                    input(type="submit" value=" 소비") 
+                    input(type="checkbox" id="purchase" name="purchase" value="true" checked=(ingredient.purchase === true ? true : false))
+                    label(for="purchase") 구매 목록 추가
         div 
             h5 구입 날짜
             span #{ingredient.purchaseDate.slice(0,4)}년 #{ingredient.purchaseDate.slice(5,7)}월 #{ingredient.purchaseDate.slice(8,10)}일

@@ -11,16 +11,26 @@ block content
                 span=recipe.description
                 span #{recipe.time}분
         if  loggedIn
-            div  
-                h3 빨리 사용해야해요!
-                ul 
-                    each ingredient in ingredients 
-                        +ingredient(ingredient)
-                span 모두보기 &rarr;
-            div     
-                h3 새로 구입해야해요!
-                ul 
-                    each ingredient in ingredients 
-                        +ingredient(ingredient)
-                span 모두보기 &rarr;
+            if user.ingredients.length === 0
+                div
+                    span 냉장고에 재료를 추가해주세요.
+            else
+                div
+                    if periodLifeIngredients.length === 0 
+                        li 재료들이 모두 신선합니다.
+                    else  
+                        h3 빨리 사용해야해요!
+                        ul 
+                            each ingredient in periodLifeIngredients
+                                +ingredient(ingredient)
+                        span 모두보기 &rarr;
+                div 
+                    if purchaseIngredients.length === 0
+                        li 아직 구입 목록에 추가된 재료들이 없습니다.
+                    else    
+                        h3 새로 구입해야해요!
+                        ul
+                        each ingredient in purchaseIngredients
+                                +ingredient(ingredient)
+                        span 모두보기 &rarr;
     include ../partials/nav

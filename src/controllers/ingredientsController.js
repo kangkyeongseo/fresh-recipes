@@ -28,7 +28,7 @@ export const postIngAdd = async (req, res) => {
     });
     const user = await User.findById(_id);
     user.ingredients.push(ingredient._id);
-    user.save();
+    await user.save();
     return res.redirect(`/user/${_id}/ingredients`);
   } catch (error) {
     req.flash("error", "허용되지 않는 경로입니다.");
@@ -67,6 +67,7 @@ export const postIngDetail = async (req, res) => {
   const {
     body: { spend },
   } = req;
+  console.log(req.body);
   // Spend Ingredient
   try {
     const ingredient = await Ingredient.findById(id);
