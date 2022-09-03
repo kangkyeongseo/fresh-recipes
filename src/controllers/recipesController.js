@@ -1,9 +1,30 @@
+import { status } from "express/lib/response";
+import Recipe from "../model/Recipe";
+import User from "../model/User";
+
 export const getRecipesAdd = (req, res) => {
-  return res.render("recipe/recipe-add");
+  return res.status(200).render("recipe/recipe-add");
 };
 
-export const postRecipesAdd = (req, res) => {
-  return res.render("recipe/recipe-add");
+export const postRecipesAdd = async (req, res) => {
+  const {
+    session: {
+      user: { _id },
+    },
+  } = req;
+  const { body } = req;
+  console.log(body);
+  const user = await User.findById(_id);
+  const recipe = await Recipe.create({
+    name: body.name,
+    description: body.description,
+    serving: body.serving,
+    time: body.time,
+    owner: user._id,
+  });
+  user.recipes.push(recipe._id);
+  await user.save();
+  return res.status(200).redirect(`/user/${user._id}/recipes`);
 };
 
 export const getRecipesSearch = (req, res) => res.send("recipes search");

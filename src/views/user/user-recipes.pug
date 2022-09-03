@@ -3,8 +3,11 @@ include ../mixins/recipe
 
 block content 
     div 
-        each recipe in recipes
-            +recipe(recipe)
-    button
+        if user.recipes.length === 0
+            span 레시피를 추가해주세요.
+        else
+            each recipe in user.recipes
+                +recipe(recipe)
+    a(href="/recipe/add")
         i(class="fas fa-plus")
         
