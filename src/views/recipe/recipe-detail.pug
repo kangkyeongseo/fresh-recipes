@@ -3,22 +3,27 @@ extends ../base
 block content 
     div 
         h3=recipe.name
+        p=recipe.description
         div
-            span=recipe.serving
-            span 인분
-        div
-            span=recipe.time
-            span 분
-        ul
-            each ingredient in recipe.ingredients 
-                div
-                    span=ingredient.name
-                    span=ingredient.amount 
-                    span=ingredient.amountType
-        ul
-            each order in recipe.orders 
-                div
-                    span=order.order
-                    span=order.text
-        a 수정하기
+            span 인원
+            span #{recipe.serving}인분
+        div 
+            span 조리시간
+            span #{recipe.time}분
+        div 
+            h5 필요 재료
+            ul 
+                each ingredient in recipe.ingredients 
+                    li 
+                        span=ingredient.ingredientName 
+                        span=ingredient.ingredientAmount
+                        span=ingredient.amountType
+        div 
+            h5 조리 방법
+            ul 
+                each order in  recipe.orders
+                    li 
+                        span=order.order 
+                        span=order.content
+        a(href=`/recipe/${recipe._id}/edit`) 수정하기
                     

@@ -1,5 +1,5 @@
 mixin recipe(recipe)
-    div 
+    a(href=`/recipe/${recipe._id}`) 
         h3=recipe.name 
         p=recipe.description
         div
