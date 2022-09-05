@@ -55,36 +55,35 @@ export const getRecipesDetail = async (req, res) => {
   }
 };
 
-export const getRecipesEdit = (req, res) => {
-  const recipe = {
-    name: "오징어볶음",
-    serving: "1",
-    time: "20",
-    ingredients: [
-      { id: 1, name: "오징어", amount: "300", amountType: "g" },
-      {
-        id: 2,
-        name: "양파",
-        amount: "1",
-        amountType: "개",
-      },
-      {
-        id: 3,
-        name: "고추장",
-        amount: "1",
-        amountType: "Ts",
-      },
-    ],
-    orders: [
-      {
-        order: 1,
-        text: "손질을 합니다",
-      },
-      {
-        order: 2,
-        text: "휘리릭 찹찹",
-      },
-    ],
-  };
-  return res.render("recipe/recipe-edit", { recipe });
+export const getRecipesEdit = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+  // Get Recipe
+  try {
+    const recipe = await Recipe.findById(id);
+    return res.render("recipe/recipe-edit", { recipe });
+  } catch (error) {
+    req.flash("error", "허용되지 않는 경로입니다.");
+    return res.status(400).redirect("/");
+  }
+};
+
+export const postRecipeEdit = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+  const { body } = req;
+  try {
+    await Recipe.findByIdAndUpdate(id, {
+      name: body.name,
+      description: body.description,
+      serving: body.serving,
+      time: body.time,
+    });
+    return res.status(200).redirect(`/recipe/${id}`);
+  } catch (error) {
+    req.flash("error", "허용되지 않는 경로입니다.");
+    return res.status(400).redirect("/");
+  }
 };

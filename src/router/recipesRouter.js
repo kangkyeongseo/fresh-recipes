@@ -5,6 +5,7 @@ import {
   getRecipesDetail,
   getRecipesEdit,
   getRecipesSearch,
+  postRecipeEdit,
   postRecipesAdd,
 } from "../controllers/recipesController";
 
@@ -17,6 +18,6 @@ recipesRouter
   .post(postRecipesAdd);
 recipesRouter.get("/search", getRecipesSearch);
 recipesRouter.get("/:id", getRecipesDetail);
-recipesRouter.get("/:id/edit", getRecipesEdit);
+recipesRouter.route("/:id/edit").get(getRecipesEdit).post(postRecipeEdit);
 
 export default recipesRouter;

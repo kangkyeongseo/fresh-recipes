@@ -5,10 +5,11 @@ block content
         form(method="post")
             div
                 input(type="text" placeholder="요리명" name="name" value=recipe.name)
+            div     
+                textarea(name="description", cols="30", rows="2")=recipe.description 
             div
                 input(type="number" placeholder="인원" name="serving" value=recipe.serving)             
                 span 인분
-
             div
                 input(type="number" placeholder="소요시간" name="time" value=recipe.time)             
                 span 분
