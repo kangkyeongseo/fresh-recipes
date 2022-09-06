@@ -2,6 +2,7 @@ import express from "express";
 import { UserOnlyMiddleware } from "../../middleware";
 import {
   getIngAdd,
+  getIngDelete,
   getIngDetail,
   getIngEdit,
   getIngSearch,
@@ -24,5 +25,9 @@ ingredientsRouter
   .all(UserOnlyMiddleware)
   .get(getIngEdit)
   .post(postIngEdit);
+ingredientsRouter
+  .route("/:id/delete")
+  .all(UserOnlyMiddleware)
+  .get(getIngDelete);
 
 export default ingredientsRouter;

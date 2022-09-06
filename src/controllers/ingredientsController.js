@@ -120,3 +120,26 @@ export const postIngEdit = async (req, res) => {
     return res.status(404).redirect("/");
   }
 };
+
+export const getIngDelete = async (req, res) => {
+  const {
+    session: { user },
+  } = req;
+  const {
+    params: { id },
+  } = req;
+  // Owner Confirm
+  const ingredient = await Ingredient.findById(id).populate({ path: "owner" });
+  if (ingredient.owner._id !== user._id) {
+    req.flash("error", "허용되지 않는 경로입니다.");
+    return res.status(404).redirect("/");
+  }
+  // Delete Ingredient
+  try {
+    await Ingredient.findByIdAndDelete(id);
+    return res.status(200).redirect(`/user/${user._id}/ingredients`);
+  } catch (error) {
+    req.flash("error", "허용되지 않는 경로입니다.");
+    return res.status(404).redirect("/");
+  }
+};
