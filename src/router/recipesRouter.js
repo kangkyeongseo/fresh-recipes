@@ -1,12 +1,13 @@
 import express from "express";
 import { UserOnlyMiddleware } from "../../middleware";
 import {
-  getRecipesAdd,
-  getRecipesDetail,
-  getRecipesEdit,
-  getRecipesSearch,
+  getRecipeAdd,
+  getRecipeDetail,
+  getRecipeEdit,
+  getRecipeSearch,
   postRecipeEdit,
-  postRecipesAdd,
+  postRecipeAdd,
+  getRecipeDelete,
 } from "../controllers/recipesController";
 
 const recipesRouter = express.Router();
@@ -14,10 +15,15 @@ const recipesRouter = express.Router();
 recipesRouter
   .route("/add")
   .all(UserOnlyMiddleware)
-  .get(getRecipesAdd)
-  .post(postRecipesAdd);
-recipesRouter.get("/search", getRecipesSearch);
-recipesRouter.get("/:id", getRecipesDetail);
-recipesRouter.route("/:id/edit").get(getRecipesEdit).post(postRecipeEdit);
+  .get(getRecipeAdd)
+  .post(postRecipeAdd);
+recipesRouter.get("/search", getRecipeSearch);
+recipesRouter.get("/:id", getRecipeDetail);
+recipesRouter
+  .route("/:id/edit")
+  .all(UserOnlyMiddleware)
+  .get(getRecipeEdit)
+  .post(postRecipeEdit);
+recipesRouter.route("/:id/delete").all(UserOnlyMiddleware).get(getRecipeDelete);
 
 export default recipesRouter;

@@ -25,5 +25,7 @@ block content
                     li 
                         span=order.order 
                         span=order.content
-        a(href=`/recipe/${recipe._id}/edit`) 수정하기
+        if recipe.owner._id.toString() === loggedInUser._id
+            a(href=`/recipe/${recipe._id}/edit`) 수정하기
+        
                     

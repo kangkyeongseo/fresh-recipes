@@ -2,6 +2,7 @@ import Ingredient from "../model/Ingredient";
 import User from "../model/User";
 
 export const getIngAdd = (req, res) => {
+  // Get Add Ingredient Page
   return res.render("ingredient/ingredient-add");
 };
 
@@ -32,7 +33,7 @@ export const postIngAdd = async (req, res) => {
     return res.redirect(`/user/${_id}/ingredients`);
   } catch (error) {
     req.flash("error", "허용되지 않는 경로입니다.");
-    return res.status(404).redirect("/");
+    return res.status(400).redirect("/");
   }
 };
 
@@ -56,7 +57,7 @@ export const getIngDetail = async (req, res) => {
       .render("ingredient/ingredient-detail", { ingredient, period });
   } catch (error) {
     req.flash("error", "허용되지 않는 경로입니다.");
-    return res.status(404).redirect("/");
+    return res.status(400).redirect("/");
   }
 };
 
@@ -76,7 +77,7 @@ export const postIngDetail = async (req, res) => {
     return res.status(200).redirect(`/ingredient/${id}`);
   } catch (error) {
     req.flash("error", "허용되지 않는 경로입니다.");
-    return res.status(404).redirect("/");
+    return res.status(400).redirect("/");
   }
 };
 
@@ -91,7 +92,7 @@ export const getIngEdit = async (req, res) => {
     return res.status(200).render("ingredient/ingredient-edit", { ingredient });
   } catch (error) {
     req.flash("error", "허용되지 않는 경로입니다.");
-    return res.status(404).redirect("/");
+    return res.status(400).redirect("/");
   }
 };
 
@@ -117,29 +118,31 @@ export const postIngEdit = async (req, res) => {
     return res.status(200).redirect(`/ingredient/${id}`);
   } catch (error) {
     req.flash("error", "허용되지 않는 경로입니다.");
-    return res.status(404).redirect("/");
+    return res.status(400).redirect("/");
   }
 };
 
 export const getIngDelete = async (req, res) => {
   const {
-    session: { user },
+    session: {
+      user: { _id },
+    },
   } = req;
   const {
     params: { id },
   } = req;
-  // Owner Confirm
+  // Confirm Owner
   const ingredient = await Ingredient.findById(id).populate({ path: "owner" });
-  if (ingredient.owner._id !== user._id) {
+  if (ingredient.owner._id.toString() !== _id) {
     req.flash("error", "허용되지 않는 경로입니다.");
-    return res.status(404).redirect("/");
+    return res.status(403).redirect("/");
   }
   // Delete Ingredient
   try {
     await Ingredient.findByIdAndDelete(id);
-    return res.status(200).redirect(`/user/${user._id}/ingredients`);
+    return res.status(200).redirect(`/user/${_id}/ingredients`);
   } catch (error) {
     req.flash("error", "허용되지 않는 경로입니다.");
-    return res.status(404).redirect("/");
+    return res.status(400).redirect("/");
   }
 };

@@ -1,11 +1,11 @@
 import Recipe from "../model/Recipe";
 import User from "../model/User";
 
-export const getRecipesAdd = (req, res) => {
+export const getRecipeAdd = (req, res) => {
   return res.status(200).render("recipe/recipe-add");
 };
 
-export const postRecipesAdd = async (req, res) => {
+export const postRecipeAdd = async (req, res) => {
   const {
     session: {
       user: { _id },
@@ -39,9 +39,9 @@ export const postRecipesAdd = async (req, res) => {
   }
 };
 
-export const getRecipesSearch = (req, res) => res.send("recipes search");
+export const getRecipeSearch = (req, res) => res.send("recipes search");
 
-export const getRecipesDetail = async (req, res) => {
+export const getRecipeDetail = async (req, res) => {
   const {
     params: { id },
   } = req;
@@ -55,10 +55,22 @@ export const getRecipesDetail = async (req, res) => {
   }
 };
 
-export const getRecipesEdit = async (req, res) => {
+export const getRecipeEdit = async (req, res) => {
+  const {
+    session: {
+      user: { _id },
+    },
+  } = req;
   const {
     params: { id },
   } = req;
+
+  // Confirm Owner
+  const recipe = await Recipe.findById(id).populate({ path: "owner" });
+  if (recipe.owner._id.toString() !== _id) {
+    req.flash("error", "허용되지 않는 경로입니다.");
+    return res.status(403).redirect("/");
+  }
   // Get Recipe
   try {
     const recipe = await Recipe.findById(id);
@@ -74,6 +86,7 @@ export const postRecipeEdit = async (req, res) => {
     params: { id },
   } = req;
   const { body } = req;
+
   try {
     await Recipe.findByIdAndUpdate(id, {
       name: body.name,
@@ -82,6 +95,34 @@ export const postRecipeEdit = async (req, res) => {
       time: body.time,
     });
     return res.status(200).redirect(`/recipe/${id}`);
+  } catch (error) {
+    req.flash("error", "허용되지 않는 경로입니다.");
+    return res.status(400).redirect("/");
+  }
+};
+
+export const getRecipeDelete = async (req, res) => {
+  const {
+    session: {
+      user: { _id },
+    },
+  } = req;
+  const {
+    params: { id },
+  } = req;
+  // Confirm Owner
+  const recipe = await Recipe.findById(id).populate({ path: "owner" });
+  if (recipe.owner._id.toString() !== _id) {
+    req.flash("error", "허용되지 않는 경로입니다.");
+    return res.status(403).redirect("/");
+  }
+  // Delete Recipe
+  try {
+    const user = await User.findById(_id);
+    user.recipes.splice(user.recipes.indexOf(id), 1);
+    await user.save();
+    await Recipe.findByIdAndDelete(id);
+    return res.status(200).redirect(`/user/${_id}/recipes`);
   } catch (error) {
     req.flash("error", "허용되지 않는 경로입니다.");
     return res.status(400).redirect("/");
