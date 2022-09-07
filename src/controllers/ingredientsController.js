@@ -139,6 +139,9 @@ export const getIngDelete = async (req, res) => {
   }
   // Delete Ingredient
   try {
+    const user = await User.findById(_id);
+    user.ingredients.splice(user.ingredients.indexOf(id), 1);
+    await user.save();
     await Ingredient.findByIdAndDelete(id);
     return res.status(200).redirect(`/user/${_id}/ingredients`);
   } catch (error) {
