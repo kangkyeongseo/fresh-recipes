@@ -2,7 +2,7 @@ extends ../base
 
 block content 
     div
-        div 
+        img(src="/"+user.avatar) 
         h5 #{user.name}의 냉장고
         if loggedInUser._id === user._id.toString()
             a(href="/logout") 로그아웃

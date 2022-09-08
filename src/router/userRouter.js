@@ -1,5 +1,5 @@
 import express from "express";
-import { UserOnlyMiddleware } from "../../middleware";
+import { avatarUpload, UserOnlyMiddleware } from "../../middleware";
 import {
   getUserDetail,
   getUserEdit,
@@ -17,7 +17,7 @@ userRouter
   .route("/:id/edit")
   .all(UserOnlyMiddleware)
   .get(getUserEdit)
-  .post(postUserEdit);
+  .post(avatarUpload.single("avatar"), postUserEdit);
 userRouter
   .route("/:id/password")
   .all(UserOnlyMiddleware)

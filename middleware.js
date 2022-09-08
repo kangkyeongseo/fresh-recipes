@@ -1,3 +1,5 @@
+import multer from "multer";
+
 export const sessionMiddleware = (req, res, next) => {
   res.locals.loggedIn = Boolean(req.session.loggedIn);
   res.locals.loggedInUser = req.session.user || {};
@@ -20,3 +22,10 @@ export const PublicOnlyMiddleware = (req, res, next) => {
   }
   next();
 };
+
+export const avatarUpload = multer({
+  dest: "uploads/avatars",
+  limits: {
+    fieldSize: 3000000,
+  },
+});

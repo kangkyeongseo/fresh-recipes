@@ -1,5 +1,6 @@
 import User from "../model/User";
 import bcrypt from "bcrypt";
+import userRouter from "../router/userRouter";
 
 export const getUserDetail = async (req, res) => {
   const {
@@ -45,11 +46,14 @@ export const postUserEdit = async (req, res) => {
   } = req;
   const {
     body: { name },
+    file,
   } = req;
   // User Update
+  const user = await User.findById(id);
   try {
     await User.findByIdAndUpdate(id, {
       name,
+      avatar: file ? file.path : user.avatar,
     });
   } catch (error) {
     req.flash("error", "허용되지 않는 경로입니다.");
