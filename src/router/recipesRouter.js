@@ -1,5 +1,5 @@
 import express from "express";
-import { UserOnlyMiddleware } from "../../middleware";
+import { thumbUpload, UserOnlyMiddleware } from "../../middleware";
 import {
   getRecipeAdd,
   getRecipeDetail,
@@ -16,14 +16,14 @@ recipesRouter
   .route("/add")
   .all(UserOnlyMiddleware)
   .get(getRecipeAdd)
-  .post(postRecipeAdd);
+  .post(thumbUpload.single("thumb"), postRecipeAdd);
 recipesRouter.get("/search", getRecipeSearch);
 recipesRouter.get("/:id", getRecipeDetail);
 recipesRouter
   .route("/:id/edit")
   .all(UserOnlyMiddleware)
   .get(getRecipeEdit)
-  .post(postRecipeEdit);
+  .post(thumbUpload.single("thumb"), postRecipeEdit);
 recipesRouter.route("/:id/delete").all(UserOnlyMiddleware).get(getRecipeDelete);
 
 export default recipesRouter;

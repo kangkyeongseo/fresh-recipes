@@ -2,11 +2,14 @@ extends ../base
 
 block content 
     div 
-        form(method="post")
+        form(method="post" enctype="multipart/form-data")
             div
                 input(type="text" placeholder="요리명" name="name" value=recipe.name)
             div     
                 textarea(name="description", cols="30", rows="2")=recipe.description 
+            div 
+                label(for="thumb") 음식 썸네일
+                input(type="file" name="thumb" accept="image/*" id="thumb")
             div
                 input(type="number" placeholder="인원" name="serving" value=recipe.serving)             
                 span 인분

@@ -12,6 +12,7 @@ export const postRecipeAdd = async (req, res) => {
     },
   } = req;
   const { body } = req;
+  const { file } = req;
   // Get User
   try {
     const user = await User.findById(_id);
@@ -22,6 +23,7 @@ export const postRecipeAdd = async (req, res) => {
         description: body.description,
         serving: body.serving,
         time: body.time,
+        thumb: file ? file.path : "",
         owner: user._id,
       });
       // Push Recipe ID
@@ -85,14 +87,15 @@ export const postRecipeEdit = async (req, res) => {
   const {
     params: { id },
   } = req;
-  const { body } = req;
-
+  const { body, file } = req;
+  const recipe = await Recipe.findById(id);
   try {
     await Recipe.findByIdAndUpdate(id, {
       name: body.name,
       description: body.description,
       serving: body.serving,
       time: body.time,
+      thumb: file ? file.path : recipe.thumb,
     });
     return res.status(200).redirect(`/recipe/${id}`);
   } catch (error) {

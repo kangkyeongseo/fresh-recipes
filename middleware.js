@@ -29,3 +29,10 @@ export const avatarUpload = multer({
     fieldSize: 3000000,
   },
 });
+
+export const thumbUpload = multer({
+  dest: "uploads/thumbs",
+  limits: {
+    fileSize: 3000000,
+  },
+});
