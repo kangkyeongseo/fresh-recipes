@@ -9,8 +9,8 @@ const recipeSchema = new mongoose.Schema({
   ingredients: [
     {
       ingredientName: { type: String, require: true },
-      ingredientAmount: { type: String, require: true },
-      amountType: { type: Number, require: true },
+      ingredientAmount: { type: Number, require: true },
+      amountType: { type: String, require: true },
     },
   ],
   orders: [

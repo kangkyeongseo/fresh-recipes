@@ -13,6 +13,7 @@ export const postRecipeAdd = async (req, res) => {
   } = req;
   const { body } = req;
   const { file } = req;
+  console.log(body);
   // Get User
   try {
     const user = await User.findById(_id);
@@ -26,16 +27,27 @@ export const postRecipeAdd = async (req, res) => {
         thumb: file ? file.path : "",
         owner: user._id,
       });
+      for (let i = 0; i < body.ingredient.length; i++) {
+        const ingredient = {
+          ingredientName: body.ingredient[i],
+          ingredientAmount: body.ingredientAmount[i],
+          amountType: body[`amountType${i + 1}`],
+        };
+        recipe.ingredients.push(ingredient);
+      }
+      await recipe.save();
       // Push Recipe ID
       user.recipes.push(recipe._id);
       // Save User
       await user.save();
       return res.status(200).redirect(`/user/${user._id}/recipes`);
     } catch (error) {
+      console.log(error);
       req.flash("error", "허용되지 않는 경로입니다.");
       return res.status(400).redirect("/");
     }
   } catch (error) {
+    console.log(error);
     req.flash("error", "허용되지 않는 경로입니다.");
     return res.status(400).redirect("/");
   }
