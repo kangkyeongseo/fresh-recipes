@@ -31,6 +31,7 @@ app.use(
 );
 app.use(express.urlencoded({ extened: true }));
 app.use("/uploads", express.static("uploads"));
+app.use("/assets", express.static("assets"));
 app.use(logger);
 app.use(flash());
 
