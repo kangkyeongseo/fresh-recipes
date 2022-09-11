@@ -35,6 +35,13 @@ export const postRecipeAdd = async (req, res) => {
         };
         recipe.ingredients.push(ingredient);
       }
+      for (let i = 0; i < body.order.length; i++) {
+        const order = {
+          order: i + 1,
+          content: body.order[i],
+        };
+        recipe.orders.push(order);
+      }
       await recipe.save();
       // Push Recipe ID
       user.recipes.push(recipe._id);

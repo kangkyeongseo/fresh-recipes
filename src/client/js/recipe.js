@@ -1,5 +1,7 @@
 const ingContainer = document.querySelector(".ing__container");
 const ingBtn = document.querySelector(".ing__btn");
+const orderContainer = document.querySelector(".order__container");
+const orderBtn = document.querySelector(".order__btn");
 
 const radioInput = (
   name,
@@ -67,4 +69,27 @@ const handleIngBtn = () => {
   addIngBox();
 };
 
+const createTextarea = () => {
+  const textarea = document.createElement("textarea");
+  textarea.name = "order";
+  textarea.cols = "30";
+  textarea.rows = "2";
+  return textarea;
+};
+
+const addOrderBox = () => {
+  const orderBox = document.createElement("div");
+  const title = document.createElement("h5");
+  title.innerText = `${orderContainer.childElementCount}번`;
+  const textarea = createTextarea();
+  orderBox.appendChild(title);
+  orderBox.appendChild(textarea);
+  orderContainer.appendChild(orderBox);
+};
+
+const handleOrderBtn = () => {
+  addOrderBox();
+};
+
 ingBtn.addEventListener("click", handleIngBtn);
+orderBtn.addEventListener("click", handleOrderBtn);

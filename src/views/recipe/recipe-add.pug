@@ -33,9 +33,11 @@ block content
                     input(type="radio" id="teaAmount" name="amountType1" value="ts" required)
                     label(for="teaAmount") ts
             button(type="button").ing__btn 재료추가하기               
-            div
-                h5 조리순서
-                textarea(name="order", cols="30", rows="2") 
-                button 순서추가하기 
+            div.order__container
+                h3 조리순서
+                div
+                    h5 1번
+                    textarea(name="order", cols="30", rows="2") 
+            button(type="button").order__btn 순서추가하기 
             input(type="submit" value="요리완성")
     script(src="/assets/js/recipe.js")
