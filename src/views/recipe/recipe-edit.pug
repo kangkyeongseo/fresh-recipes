@@ -20,8 +20,8 @@ block content
                 h5 필요재료
                 each ingredient in recipe.ingredients
                     div
-                        input(type="text" placeholder="재료명" name="ingredient" value=ingredient.name)
-                        input(type="text" placeholder="필요량" name="ingredientAmount" value=ingredient.amount)
+                        input(type="text" placeholder="재료명" name="ingredient" value=ingredient.ingredientName)
+                        input(type="text" placeholder="필요량" name="ingredientAmount" value=ingredient.ingredientAmount)
                         input(type="radio" id="gramAmount" name=`amountType${ingredient.id}` value="g" checked=(ingredient.amountType === "g" ? true : false))
                         label(for="gramAmount") 그램(g) 
                         input(type="radio" id="mlAmount" name=`amountType${ingredient.id}` value="ml" checked=(ingredient.amountType === "ml" ? true : false))
@@ -37,7 +37,7 @@ block content
                 h5 조리순서
                 each order in recipe.orders
                     span=order.order
-                    textarea(name="order", cols="30", rows="2")=order.text 
+                    textarea(name="order", cols="30", rows="2")=order.content
                 button 순서추가하기 
             input(type="submit" value="수정하기")
             a(href=`/recipe/${recipe._id}/delete`) 삭제하기

@@ -8,19 +8,3 @@ mixin recipe(recipe)
         div 
             span 조리시간
             span #{recipe.time}분
-        div 
-            h5 필요 재료
-            ul 
-                each ingredient in recipe.ingredients 
-                    li 
-                        span=ingredient.ingredientName 
-                        span=ingredient.ingredientAmount
-                        span=ingredient.amountType
-        div 
-            h5 조리 방법
-            ul 
-                each order in  recipe.orders
-                    li 
-                        span=order.order 
-                        span=order.content
-                    

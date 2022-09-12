@@ -13,7 +13,6 @@ export const postRecipeAdd = async (req, res) => {
   } = req;
   const { body } = req;
   const { file } = req;
-  console.log(body);
   // Get User
   try {
     const user = await User.findById(_id);
@@ -107,8 +106,8 @@ export const postRecipeEdit = async (req, res) => {
     params: { id },
   } = req;
   const { body, file } = req;
-  const recipe = await Recipe.findById(id);
   try {
+    const recipe = await Recipe.findById(id);
     await Recipe.findByIdAndUpdate(id, {
       name: body.name,
       description: body.description,
@@ -116,8 +115,27 @@ export const postRecipeEdit = async (req, res) => {
       time: body.time,
       thumb: file ? file.path : recipe.thumb,
     });
+    recipe.ingredients.splice(0, recipe.ingredients.length);
+    recipe.orders.splice(0, recipe.orders.length);
+    for (let i = 0; i < body.ingredient.length; i++) {
+      const ingredient = {
+        ingredientName: body.ingredient[i],
+        ingredientAmount: body.ingredientAmount[i],
+        amountType: body[`amountType${i + 1}`],
+      };
+      recipe.ingredients.push(ingredient);
+    }
+    for (let i = 0; i < body.order.length; i++) {
+      const order = {
+        order: i + 1,
+        content: body.order[i],
+      };
+      recipe.orders.push(order);
+    }
+    await recipe.save();
     return res.status(200).redirect(`/recipe/${id}`);
   } catch (error) {
+    console.log(error);
     req.flash("error", "허용되지 않는 경로입니다.");
     return res.status(400).redirect("/");
   }
