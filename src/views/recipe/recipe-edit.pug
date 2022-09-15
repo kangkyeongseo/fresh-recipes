@@ -16,10 +16,10 @@ block content
             div
                 input(type="number" placeholder="소요시간" name="time" value=recipe.time)             
                 span 분
-            div
-                h5 필요재료
-                each ingredient in recipe.ingredients
+            div.ing__container
+                each ingredient, index in recipe.ingredients
                     div
+                        h5=index+1+"필요재료"
                         input(type="text" placeholder="재료명" name="ingredient" value=ingredient.ingredientName)
                         input(type="text" placeholder="필요량" name="ingredientAmount" value=ingredient.ingredientAmount)
                         input(type="radio" id="gramAmount" name=`amountType${ingredient.id}` value="g" checked=(ingredient.amountType === "g" ? true : false))
@@ -32,12 +32,14 @@ block content
                         label(for="countAmount") Ts
                         input(type="radio" id="countAmount" name=`amountType${ingredient.id}` value="ts" checked=(ingredient.amountType === "ts" ? true : false))
                         label(for="countAmount") ts
-                button 재료추가하기                 
-            div
-                h5 조리순서
+            button(type="button").ing__btn 재료추가하기                 
+            div.order__container
+                h3 조리순서
                 each order in recipe.orders
-                    span=order.order
-                    textarea(name="order", cols="30", rows="2")=order.content
-                button 순서추가하기 
+                    div
+                        h5=order.order+"번"
+                        textarea(name="order", cols="30", rows="2")=order.content
+            button(type="button").order__btn 순서추가하기
             input(type="submit" value="수정하기")
             a(href=`/recipe/${recipe._id}/delete`) 삭제하기
+    script(src="/assets/js/recipe.js")

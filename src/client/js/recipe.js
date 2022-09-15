@@ -3,6 +3,19 @@ const ingBtn = document.querySelector(".ing__btn");
 const orderContainer = document.querySelector(".order__container");
 const orderBtn = document.querySelector(".order__btn");
 
+const handleDeleteBtn = (event) => {
+  const parentElement = event.target.parentElement;
+  parentElement.remove();
+};
+
+const createDeleteBtn = () => {
+  const btn = document.createElement("button");
+  btn.innerText = "X";
+  btn.type = "button";
+  btn.addEventListener("click", handleDeleteBtn);
+  return btn;
+};
+
 const radioInput = (
   name,
   value,
@@ -49,6 +62,7 @@ const addIngBox = () => {
   const tableLabel = radioLabel("table", "Ts");
   const teaRadio = radioInput("tea", "ts");
   const teaLabel = radioLabel("tea", "ts");
+  const deleteBtn = createDeleteBtn();
   ingBox.appendChild(title);
   ingBox.appendChild(nameInput);
   ingBox.appendChild(amountInput);
@@ -62,6 +76,7 @@ const addIngBox = () => {
   ingBox.appendChild(tableLabel);
   ingBox.appendChild(teaRadio);
   ingBox.appendChild(teaLabel);
+  ingBox.appendChild(deleteBtn);
   ingContainer.appendChild(ingBox);
 };
 
@@ -82,8 +97,10 @@ const addOrderBox = () => {
   const title = document.createElement("h5");
   title.innerText = `${orderContainer.childElementCount}번`;
   const textarea = createTextarea();
+  const deleteBtn = createDeleteBtn();
   orderBox.appendChild(title);
   orderBox.appendChild(textarea);
+  orderBox.appendChild(deleteBtn);
   orderContainer.appendChild(orderBox);
 };
 
