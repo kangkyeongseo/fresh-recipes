@@ -4,7 +4,6 @@ import Recipe from "../model/Recipe";
 
 export const getHome = async (req, res) => {
   const recipe = await Recipe.aggregate([{ $sample: { size: 1 } }]);
-  console.log(recipe);
   if (req.session.loggedIn) {
     const {
       session: {

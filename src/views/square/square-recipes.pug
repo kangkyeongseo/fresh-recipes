@@ -3,7 +3,15 @@ include ../mixins/recipe
 
 block content 
     div 
-        each recipe in recipes
-            +recipe(recipe)
+        div
+            form(method="post")
+                input(type="text" placeholder="검색" name="keyword")
+                input(type="submit" value="Search")  
+        div  
+            if recipes 
+                each recipe in recipes
+                    +recipe(recipe)
+            else
+                span No Recipe
     
         
