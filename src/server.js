@@ -10,6 +10,7 @@ import MongoStore from "connect-mongo";
 import morgan from "morgan";
 import flash from "express-flash";
 import { sessionMiddleware } from "../middleware";
+import apiRouter from "./router/apiRouter";
 
 const app = express();
 const PORT = 3000;
@@ -30,6 +31,7 @@ app.use(
   })
 );
 app.use(express.urlencoded({ extened: true }));
+app.use(express.json());
 app.use("/uploads", express.static("uploads"));
 app.use("/assets", express.static("assets"));
 app.use(logger);
@@ -42,6 +44,7 @@ app.use("/user", userRouter);
 app.use("/ingredient", ingredientsRouter);
 app.use("/recipe", recipesRouter);
 app.use("/square", squareRouter);
+app.use("/api", apiRouter);
 
 const handleListen = () => console.log(`Listening on http://localhost${PORT}`);
 

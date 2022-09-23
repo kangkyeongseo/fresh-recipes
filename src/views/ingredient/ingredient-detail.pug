@@ -1,7 +1,7 @@
 extends ../base 
 
 block content 
-    div  
+    div(data-id=ingredient._id).ingredient
         h3=ingredient.name
         div
             if ingredient.store === "냉장" 
@@ -10,8 +10,8 @@ block content
                 span 냉동 보관 중
             else if ingredient.store === "상온" 
                 span 상온 보관 중
-        div 
-            span=ingredient.amount
+        div
+            span.ingredient__amount=ingredient.amount
             if ingredient.amountType === "g" 
                 span g
             else if ingredient.amountType === "ml" 
@@ -19,10 +19,10 @@ block content
             else if ingredient.amountType === "개" 
                 span 개
             if ingredient.owner._id.toString() === loggedInUser._id
-                form(method="post")
-                    input(type="number" name="spend" required)
-                    input(type="submit" value=" 소비") 
-                    input(type="checkbox" id="purchase" name="purchase" value="true" checked=(ingredient.purchase === true ? true : false))
+                form.ingredient__amount__form
+                    input(type="number" name="spend" required value=0).spend__input
+                    input(type="submit" value="소비")
+                    input(type="checkbox" id="purchase" name="purchase" value="true" checked=(ingredient.purchase === true ? true : false)).purchase__check
                     label(for="purchase") 구매 목록 추가
         div 
             h5 구입 날짜
@@ -33,4 +33,5 @@ block content
             span #{period}일
         if ingredient.owner._id.toString() === loggedInUser._id
             a(href=`/ingredient/${ingredient._id}/edit`) 수정하기
+    script(src="/assets/js/ingredient.js")
 

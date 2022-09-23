@@ -8,7 +8,7 @@ const ingSchema = new mongoose.Schema({
   amountType: { type: String, require: true },
   purchaseDate: { type: String, require: true },
   periodLife: { type: String, require: true },
-  purshase: { type: Boolean, default: false },
+  purchase: { type: Boolean, default: false },
   owner: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
 });
 

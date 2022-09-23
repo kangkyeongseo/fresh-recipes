@@ -7,7 +7,6 @@ import {
   getIngEdit,
   getIngSearch,
   postIngAdd,
-  postIngDetail,
   postIngEdit,
 } from "../controllers/ingredientsController";
 
@@ -19,7 +18,7 @@ ingredientsRouter
   .get(getIngAdd)
   .post(postIngAdd);
 ingredientsRouter.get("/search", getIngSearch);
-ingredientsRouter.route("/:id").get(getIngDetail).post(postIngDetail);
+ingredientsRouter.route("/:id").get(getIngDetail);
 ingredientsRouter
   .route("/:id/edit")
   .all(UserOnlyMiddleware)

@@ -61,26 +61,6 @@ export const getIngDetail = async (req, res) => {
   }
 };
 
-export const postIngDetail = async (req, res) => {
-  const {
-    params: { id },
-  } = req;
-  const {
-    body: { spend },
-  } = req;
-  console.log(req.body);
-  // Spend Ingredient
-  try {
-    const ingredient = await Ingredient.findById(id);
-    ingredient.amount = ingredient.amount - parseInt(spend);
-    ingredient.save();
-    return res.status(200).redirect(`/ingredient/${id}`);
-  } catch (error) {
-    req.flash("error", "허용되지 않는 경로입니다.");
-    return res.status(400).redirect("/");
-  }
-};
-
 export const getIngEdit = async (req, res) => {
   const {
     params: { id },
