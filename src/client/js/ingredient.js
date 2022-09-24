@@ -9,7 +9,6 @@ const purchaseCheck = document.querySelector(".purchase__check");
 const handleCheck = async (evnet) => {
   const checked = evnet.target.checked;
   const { id } = ingredient.dataset;
-
   if (checked) {
     await fetch(`/api/purchase/${id}/add`, {
       method: "POST",
@@ -70,7 +69,7 @@ const handleSpendBtn = async (evnet) => {
         "Content-Type": "application/json",
       },
     });
-  } else if (caculateAmount === 0) {
+  } else if (caculateAmount <= 0) {
     const popupBox = document.createElement("div");
     const popupText = document.createElement("span");
     popupText.innerText = "재료를 모든 소진하였습니다. 구매 목록에 추가할까요?";
@@ -84,7 +83,6 @@ const handleSpendBtn = async (evnet) => {
     popupBox.appendChild(popupYes);
     popupBox.appendChild(popupNo);
     ingredient.prepend(popupBox);
-  } else {
   }
 };
 

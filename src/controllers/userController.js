@@ -122,11 +122,22 @@ export const getUserIng = async (req, res) => {
     const roomStore = user.ingredients.filter(
       (ingredient) => ingredient.store === "상온"
     );
+    const periodIng = user.ingredients.filter((ingredient) => {
+      const periodLife = new Date(ingredient.periodLife);
+      const today = new Date();
+      const period = Math.round((periodLife - today) / 1000 / 3600 / 24);
+      return period < 3;
+    });
+    const purchaseIng = user.ingredients.filter(
+      (ingredient) => ingredient.purchase
+    );
     return res.status(200).render("user/user-ing", {
       user,
       coldStore,
       frozenStore,
       roomStore,
+      periodIng,
+      purchaseIng,
     });
   } catch (error) {
     req.flash("error", "허용되지 않는 경로입니다.");

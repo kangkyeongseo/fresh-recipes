@@ -10,18 +10,29 @@ block content
                 span 유통기한 임박 재료
             div 
                 span 구입 목록 재료                                
-    div 
+    div
+        h3 보관중인 재료  
         div 
-            h3 냉장
+            h5 냉장
             each ingredient in coldStore
                 +ingredient(ingredient)
         div 
-            h3 냉동
+            h5 냉동
             each ingredient in frozenStore
                 +ingredient(ingredient)
         div 
-            h3 상온
+            h5 상온
             each ingredient in roomStore
+                +ingredient(ingredient)
+    div
+        h3 유통기한 임박 재료
+        div 
+            each ingredient in periodIng 
+                +ingredient(ingredient)
+    div
+        h3 구입 목록 재료
+        div 
+            each ingredient in purchaseIng 
                 +ingredient(ingredient)
     a(href="/ingredient/add")
         i(class="fas fa-plus")
