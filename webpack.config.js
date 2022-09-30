@@ -7,6 +7,7 @@ module.exports = {
     main: BASE_URL + "main.js",
     recipe: BASE_URL + "recipe.js",
     ingredient: BASE_URL + "ingredient.js",
+    comment: BASE_URL + "comment.js",
   },
   mode: "development",
   watch: true,

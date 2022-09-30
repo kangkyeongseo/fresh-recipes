@@ -1,7 +1,8 @@
 extends ../base 
+include ../mixins/comment
 
 block content 
-    div 
+    div(data-id=recipe.id).recipe 
         img(src="/"+recipe.thumb)
         h3=recipe.name
         p=recipe.description
@@ -34,6 +35,22 @@ block content
             i.fas.fa-heart
         div 
             h5 댓글
-        
+            if loggedIn 
+                div     
+                    img(src="/"+loggedInUser.avatar)
+                    div 
+                        form.recipe__comment__form
+                            input(type="text", name="comment",placeholder="댓글 추가..." ).recipe__comment__form__input
+                            input(type="submit" value="댓글")
+            else 
+                span 댓글을 달기 위해서는 먼저 로그인을 해주세요.
+            ul.recipe__comment__list
+                if recipe.comments.length === 0
+                    li.recipe__comment__unexist 아직 댓글이 존재하지 않습니다.
+                each comment in recipe.comments 
+                    +comment(comment)
+    script(src="/assets/js/comment.js")
+                
+            
         
                     

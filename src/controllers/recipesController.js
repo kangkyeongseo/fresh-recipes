@@ -65,9 +65,12 @@ export const getRecipeDetail = async (req, res) => {
   const {
     params: { id },
   } = req;
+  console.log(req.session.user);
   // Get Recipe
   try {
-    const recipe = await Recipe.findById(id);
+    const recipe = await Recipe.findById(id)
+      .populate("owner")
+      .populate({ path: "comments", populate: { path: "owner" } });
     return res.render("recipe/recipe-detail", { recipe });
   } catch (error) {
     req.flash("error", "허용되지 않는 경로입니다.");

@@ -55,6 +55,7 @@ export const postUserEdit = async (req, res) => {
       name,
       avatar: file ? file.path : user.avatar,
     });
+    req.session.user.avatar = file ? file.path : user.avatar;
   } catch (error) {
     req.flash("error", "허용되지 않는 경로입니다.");
     return res.status(404).redirect("/");

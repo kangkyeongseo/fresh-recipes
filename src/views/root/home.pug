@@ -7,10 +7,11 @@ block content
             span=messages.error
         div
             div
-                span=recipe[0].name
-                span=recipe[0].description
-                span #{recipe[0].serving}인분
-                span #{recipe[0].time}분
+                if recipe.length !== 0
+                    span=recipe[0].name
+                    span=recipe[0].description
+                    span #{recipe[0].serving}인분
+                    span #{recipe[0].time}분
         if  loggedIn
             if user.ingredients.length === 0
                 div

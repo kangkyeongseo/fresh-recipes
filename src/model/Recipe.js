@@ -19,6 +19,7 @@ const recipeSchema = new mongoose.Schema({
       content: { type: String, require: true },
     },
   ],
+  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
   owner: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
 });
 
