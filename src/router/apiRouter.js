@@ -5,6 +5,7 @@ import {
   purchaseAdd,
   purchaseRemove,
   recipeCommentAdd,
+  recipeCommentDelete,
 } from "../controllers/apiController";
 
 const apiRouter = new express.Router();
@@ -17,5 +18,8 @@ apiRouter
 apiRouter
   .all(UserOnlyMiddleware)
   .post("/recipe/:id/comment/add", recipeCommentAdd);
+apiRouter
+  .all(UserOnlyMiddleware)
+  .delete("/comment/:id/delete", recipeCommentDelete);
 
 export default apiRouter;

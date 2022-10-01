@@ -55,5 +55,23 @@ export const recipeCommentAdd = async (req, res) => {
   await user.save();
   recipe.comments.push(comment._id);
   await recipe.save();
-  return res.sendStatus(200);
+  return res.status(200).json({
+    commentId: comment._id,
+  });
+};
+
+export const recipeCommentDelete = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+  const comment = await Comment.findById(id)
+    .populate("recipe")
+    .populate("owner");
+
+  comment.recipe.comments.splice(comment.recipe.comments.indexOf(id), 1);
+  await comment.recipe.save();
+  comment.owner.comments.splice(comment.owner.comments.indexOf(id), 1);
+  await comment.owner.save();
+
+  res.sendStatus(200);
 };

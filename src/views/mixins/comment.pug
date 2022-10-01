@@ -1,3 +1,5 @@
 mixin comment(comment)
-    li 
-        span=comment.content
+    li(data-id=comment._id).comment
+        span.comment__content=comment.content
+        if loggedInUser._id === comment.owner._id.toString()
+            button.comment__delete Delete
