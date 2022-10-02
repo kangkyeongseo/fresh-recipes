@@ -1,5 +1,8 @@
 mixin comment(comment)
     li(data-id=comment._id).comment
+        img(src="/" +comment.owner.avatar)
+        span=comment.owner.name
         span.comment__content=comment.content
         if loggedInUser._id === comment.owner._id.toString()
             button.comment__delete Delete
+            button.comment__edit Edit

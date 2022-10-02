@@ -57,6 +57,8 @@ export const recipeCommentAdd = async (req, res) => {
   await recipe.save();
   return res.status(200).json({
     commentId: comment._id,
+    avatar: user.avatar,
+    name: user.name,
   });
 };
 
@@ -64,6 +66,7 @@ export const recipeCommentDelete = async (req, res) => {
   const {
     params: { id },
   } = req;
+
   const comment = await Comment.findById(id)
     .populate("recipe")
     .populate("owner");
@@ -74,4 +77,20 @@ export const recipeCommentDelete = async (req, res) => {
   await comment.owner.save();
 
   res.sendStatus(200);
+};
+
+export const recipeCommentEdit = async (req, res) => {
+  const {
+    params: { id },
+    body: { content },
+  } = req;
+
+  try {
+    const comment = await Comment.findById(id);
+    comment.content = content;
+    await comment.save();
+    res.sendStatus(200);
+  } catch {
+    res.sendStatus(400);
+  }
 };
