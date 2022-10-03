@@ -4,6 +4,7 @@ import {
   getUserDetail,
   getUserEdit,
   getUserIng,
+  getUserLike,
   getUserPasswordEdit,
   getUserRecipe,
   postUserEdit,
@@ -25,5 +26,6 @@ userRouter
   .post(postUserPasswordEdit);
 userRouter.get("/:id/ingredients", getUserIng);
 userRouter.get("/:id/recipes", getUserRecipe);
+userRouter.get("/:id/likes", getUserLike);
 
 export default userRouter;

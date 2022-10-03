@@ -1,6 +1,7 @@
 import User from "../model/User";
 import bcrypt from "bcrypt";
 import userRouter from "../router/userRouter";
+import Recipe from "../model/Recipe";
 
 export const getUserDetail = async (req, res) => {
   const {
@@ -159,4 +160,21 @@ export const getUserRecipe = async (req, res) => {
     req.flash("error", "허용되지 않는 경로입니다.");
     return res.status(404).redirect("/");
   }
+};
+
+export const getUserLike = async (req, res) => {
+  const {
+    params: { id },
+  } = req;
+
+  const user = await User.findById(id);
+
+  let recipes = [];
+
+  for (let i = 0; i < user.likes.length; i++) {
+    const recipe = await Recipe.findById(user.likes[i]);
+    recipes.push(recipe);
+  }
+
+  return res.render("user/user-likes", { recipes });
 };

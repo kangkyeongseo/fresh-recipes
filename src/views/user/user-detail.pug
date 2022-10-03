@@ -9,20 +9,20 @@ block content
     div 
         ul 
             li
-                a 
+                a(href=`/user/${user._id}/ingredients`) 
                     i(class="fas fa-apple-alt")
                     span 냉장고 재료
-                    span 
+                    span=user.ingredients.length
             li
-                a 
+                a(href=`/user/${user._id}/recipes`)  
                     i(class="fas fa-utensils")
                     span 레시피
-                    span 
+                    span=user.recipes.length 
             li
-                a
+                a(href=`/user/${user._id}/likes`)  
                     i(class="fas fa-heart")
                     span 찜한 레시피
-                    span 
+                    span=user.likes.length 
     if loggedInUser._id === user._id.toString()
         div 
             a(href=`/user/${loggedInUser._id}/edit`) 프로필 수정

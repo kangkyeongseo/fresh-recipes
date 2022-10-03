@@ -1,0 +1,7 @@
+extends ../base
+include ../mixins/recipe
+
+block content
+    div 
+        each recipe in recipes 
+            +recipe(recipe)
