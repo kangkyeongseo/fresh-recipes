@@ -21,6 +21,7 @@ const recipeSchema = new mongoose.Schema({
   ],
   comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
   owner: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+  likes: [{ type: String }],
 });
 
 const Recipe = mongoose.model("Recipe", recipeSchema);

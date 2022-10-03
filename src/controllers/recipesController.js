@@ -65,7 +65,7 @@ export const getRecipeDetail = async (req, res) => {
   const {
     params: { id },
   } = req;
-  console.log(req.session.user);
+
   // Get Recipe
   try {
     const recipe = await Recipe.findById(id)

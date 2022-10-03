@@ -94,3 +94,45 @@ export const recipeCommentEdit = async (req, res) => {
     res.sendStatus(400);
   }
 };
+
+export const likeAdd = async (req, res) => {
+  const {
+    params: { id },
+    session: {
+      user: { _id },
+    },
+  } = req;
+
+  try {
+    const recipe = await Recipe.findById(id);
+    const user = await User.findById(_id);
+    recipe.likes.push(user._id);
+    await recipe.save();
+    user.likes.push(recipe._id);
+    await user.save();
+    res.sendStatus(200);
+  } catch {
+    res.sendStatus(400);
+  }
+};
+
+export const likeDelete = async (req, res) => {
+  const {
+    params: { id },
+    session: {
+      user: { _id },
+    },
+  } = req;
+
+  try {
+    const recipe = await Recipe.findById(id);
+    const user = await User.findById(_id);
+    recipe.likes.splice(recipe.likes.indexOf(user._id), 1);
+    await recipe.save();
+    user.likes.splice(user.likes.indexOf(recipe._id), 1);
+    await user.save();
+    res.sendStatus(200);
+  } catch {
+    res.sendStatus(400);
+  }
+};

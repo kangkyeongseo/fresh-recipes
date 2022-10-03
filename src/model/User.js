@@ -9,6 +9,7 @@ const userSchema = new mongoose.Schema({
   ingredients: [{ type: mongoose.Schema.Types.ObjectId, ref: "Ingredient" }],
   recipes: [{ type: mongoose.Schema.Types.ObjectId, ref: "Recipe" }],
   comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
+  likes: [{ type: String }],
 });
 
 userSchema.pre("save", async function (next) {

@@ -31,8 +31,10 @@ block content
             a(href=`/recipe/${recipe._id}/edit`) 수정하기
         div 
             span 레시피가 마음에 드시나요?
-            i.far.fa-heart
-            i.fas.fa-heart
+            if recipe.likes.filter(id => id === loggedInUser._id).length === 0
+                i.far.fa-heart
+            else
+                i.fas.fa-heart
         div 
             h5 댓글
             if loggedIn 
@@ -50,6 +52,7 @@ block content
                 each comment in recipe.comments 
                     +comment(comment)
     script(src="/assets/js/comment.js")
+    script(src="/assets/js/like.js")
                 
             
         

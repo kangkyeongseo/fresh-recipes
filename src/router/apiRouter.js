@@ -2,6 +2,8 @@ import express from "express";
 import { UserOnlyMiddleware } from "../../middleware";
 import {
   ingredientSpend,
+  likeAdd,
+  likeDelete,
   purchaseAdd,
   purchaseRemove,
   recipeCommentAdd,
@@ -23,5 +25,7 @@ apiRouter
   .all(UserOnlyMiddleware)
   .delete("/comment/:id/delete", recipeCommentDelete);
 apiRouter.all(UserOnlyMiddleware).post("/comment/:id/edit", recipeCommentEdit);
+apiRouter.all(UserOnlyMiddleware).post("/recipe/:id/like/add", likeAdd);
+apiRouter.all(UserOnlyMiddleware).post("/recipe/:id/like/delete", likeDelete);
 
 export default apiRouter;

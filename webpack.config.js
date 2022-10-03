@@ -8,6 +8,7 @@ module.exports = {
     recipe: BASE_URL + "recipe.js",
     ingredient: BASE_URL + "ingredient.js",
     comment: BASE_URL + "comment.js",
+    like: BASE_URL + "like.js",
   },
   mode: "development",
   watch: true,
