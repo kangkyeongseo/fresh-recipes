@@ -33,7 +33,9 @@ block content
             span 레시피가 마음에 드시나요?
             if recipe.likes.filter(id => id === loggedInUser._id).length === 0
                 i.far.fa-heart
+                i.fas.fa-heart.hidden
             else
+                i.far.fa-heart.hidden
                 i.fas.fa-heart
         div 
             h5 댓글

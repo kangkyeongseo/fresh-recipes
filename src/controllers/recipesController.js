@@ -10,9 +10,10 @@ export const postRecipeAdd = async (req, res) => {
     session: {
       user: { _id },
     },
+    body,
+    file,
   } = req;
-  const { body } = req;
-  const { file } = req;
+  console.log(body);
   // Get User
   try {
     const user = await User.findById(_id);
@@ -26,21 +27,40 @@ export const postRecipeAdd = async (req, res) => {
         thumb: file ? file.path : "",
         owner: user._id,
       });
-      for (let i = 0; i < body.ingredient.length; i++) {
+      //
+      if (Array.isArray(body.ingredient)) {
+        for (let i = 0; i < body.ingredient.length; i++) {
+          const ingredient = {
+            ingredientName: body.ingredient[i],
+            ingredientAmount: body.ingredientAmount[i],
+            amountType: body[`amountType${i + 1}`],
+          };
+          recipe.ingredients.push(ingredient);
+        }
+      } else {
         const ingredient = {
-          ingredientName: body.ingredient[i],
-          ingredientAmount: body.ingredientAmount[i],
-          amountType: body[`amountType${i + 1}`],
+          ingredientName: body.ingredient,
+          ingredientAmount: body.ingredientAmount,
+          amountType: body.amountType1,
         };
         recipe.ingredients.push(ingredient);
       }
-      for (let i = 0; i < body.order.length; i++) {
+      if (Array.isArray(body.order)) {
+        for (let i = 0; i < body.order.length; i++) {
+          const order = {
+            order: i + 1,
+            content: body.order[i],
+          };
+          recipe.orders.push(order);
+        }
+      } else {
         const order = {
-          order: i + 1,
-          content: body.order[i],
+          order: 1,
+          content: body.order,
         };
         recipe.orders.push(order);
       }
+
       await recipe.save();
       // Push Recipe ID
       user.recipes.push(recipe._id);

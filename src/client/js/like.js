@@ -5,23 +5,20 @@ const fillHeart = document.querySelector(".fas.fa-heart");
 const { id } = recipe.dataset;
 
 const handleEmptyHeart = async () => {
-  emptyHeart.className = "fas fa-heart";
+  emptyHeart.classList.add("hidden");
+  fillHeart.classList.remove("hidden");
   await fetch(`/api/recipe/${id}/like/add`, {
     method: "POST",
   });
 };
 
 const handleFillHeart = async () => {
-  fillHeart.className = "far fa-heart";
+  fillHeart.classList.add("hidden");
+  emptyHeart.classList.remove("hidden");
   await fetch(`/api/recipe/${id}/like/delete`, {
     method: "POST",
   });
 };
 
-if (emptyHeart) {
-  emptyHeart.addEventListener("click", handleEmptyHeart);
-}
-
-if (fillHeart) {
-  fillHeart.addEventListener("click", handleFillHeart);
-}
+emptyHeart.addEventListener("click", handleEmptyHeart);
+fillHeart.addEventListener("click", handleFillHeart);
