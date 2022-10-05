@@ -2,7 +2,6 @@ import Recipe from "../model/Recipe";
 
 export const getSquare = async (req, res) => {
   const recipes = await Recipe.find({});
-  console.log(recipes);
   return res.render("square/square-recipes", { recipes });
 };
 

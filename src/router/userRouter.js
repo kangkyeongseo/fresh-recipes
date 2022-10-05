@@ -7,6 +7,7 @@ import {
   getUserLike,
   getUserPasswordEdit,
   getUserRecipe,
+  getUserRecipeSearch,
   postUserEdit,
   postUserPasswordEdit,
 } from "../controllers/userController";
@@ -25,7 +26,8 @@ userRouter
   .get(getUserPasswordEdit)
   .post(postUserPasswordEdit);
 userRouter.get("/:id/ingredients", getUserIng);
-userRouter.get("/:id/recipes", getUserRecipe);
+userRouter.route("/:id/recipes").get(getUserRecipe);
+userRouter.route("/:id/recipes/search").get(getUserRecipeSearch);
 userRouter.get("/:id/likes", getUserLike);
 
 export default userRouter;

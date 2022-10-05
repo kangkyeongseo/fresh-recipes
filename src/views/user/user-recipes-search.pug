@@ -3,14 +3,14 @@ include ../mixins/recipe
 
 block content 
     div 
-        form(method="GET" action=`/user/${user._id}/recipes/search`)
+        form(method="GET" action=`/user/${id}/recipes/search`)
             input(type="text" placeholder="검색" name="keyword")
             input(type="submit" value="Search")   
     div 
-        if user.recipes.length === 0
-            span 레시피를 추가해주세요.
+        if recipes.length === 0
+            span 레시피를 존재하지 않습니다.
         else
-            each recipe in user.recipes
+            each recipe in recipes
                 +recipe(recipe)
     a(href="/recipe/add")
         i(class="fas fa-plus")
