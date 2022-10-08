@@ -5,11 +5,14 @@ export const getSquare = async (req, res) => {
   return res.render("square/square-recipes", { recipes });
 };
 
-export const postSquare = async (req, res) => {
+export const searchSquare = async (req, res) => {
   const {
-    body: { keyword },
+    query: { keyword },
   } = req;
-  const recipes = await Recipe.find({ name: keyword });
-  console.log(recipes);
-  return res.render("square/square-recipes", { recipes });
+  try {
+    const recipes = await Recipe.find({ name: keyword });
+    return res.render("square/square-recipes", { recipes });
+  } catch {
+    return;
+  }
 };

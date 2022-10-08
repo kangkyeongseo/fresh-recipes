@@ -4,11 +4,11 @@ include ../mixins/recipe
 block content 
     div 
         div
-            form(method="post")
+            form(method="get" action="/square/search")
                 input(type="text" placeholder="검색" name="keyword")
                 input(type="submit" value="Search")  
         div  
-            if recipes 
+            if recipes.length !== 0 
                 each recipe in recipes
                     +recipe(recipe)
             else
