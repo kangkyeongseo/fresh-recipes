@@ -2,7 +2,11 @@ extends ../base
 
 block content 
     div
-        img(src="/"+user.avatar) 
+        if user.avatar !== undefined
+            img(src="/"+user.avatar)
+        else 
+            div 
+                i.fas.fa-user
         h5 #{user.name}의 냉장고
         if loggedInUser._id === user._id.toString()
             a(href="/logout") 로그아웃

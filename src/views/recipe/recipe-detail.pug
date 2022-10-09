@@ -41,7 +41,11 @@ block content
             h5 댓글
             if loggedIn 
                 div     
-                    img(src="/"+loggedInUser.avatar)
+                    if loggedInUser.avater !== undefined
+                        img(src="/"+loggedInUser.avatar)
+                    else 
+                        div 
+                            i.fas.fa-user
                     div 
                         form.recipe__comment__form
                             input(type="text", name="comment",placeholder="댓글 추가..." ).recipe__comment__form__input

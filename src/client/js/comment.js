@@ -26,8 +26,16 @@ const addComment = (content, id, avatar, name) => {
   const li = document.createElement("li");
   li.dataset.id = id;
 
-  const img = document.createElement("img");
-  img.src = "/" + avatar;
+  let avatarContainer;
+  if (avatar !== undefined) {
+    avatarContainer = document.createElement("img");
+    avatarContainer.src = "/" + avatar;
+  } else {
+    avatarContainer = document.createElement("div");
+    const avatarIcon = document.createElement("i");
+    avatarIcon.className = "fas fa-user";
+    avatarContainer.appendChild(avatarIcon);
+  }
 
   const nickname = document.createElement("span");
   nickname.innerText = name;
@@ -44,7 +52,7 @@ const addComment = (content, id, avatar, name) => {
   addEdit.innerText = "Edit";
   addEdit.className = "comment__edit";
 
-  li.appendChild(img);
+  li.appendChild(avatarContainer);
   li.appendChild(nickname);
   li.appendChild(span);
   li.appendChild(addDelete);
