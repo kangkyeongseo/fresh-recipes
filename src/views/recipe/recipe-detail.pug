@@ -3,7 +3,11 @@ include ../mixins/comment
 
 block content 
     div(data-id=recipe.id).recipe 
-        img(src="/"+recipe.thumb)
+        if recipe.thumb !== ""
+            img(src="/"+recipe.thumb)
+        else 
+            div 
+                i.fas.fa-hamburger
         h3=recipe.name
         p=recipe.description
         div
