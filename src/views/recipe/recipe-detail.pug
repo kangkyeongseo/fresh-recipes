@@ -38,9 +38,11 @@ block content
             if recipe.likes.filter(id => id === loggedInUser._id).length === 0
                 i.far.fa-heart
                 i.fas.fa-heart.hidden
+                span.likes__count=recipe.likes.length
             else
                 i.far.fa-heart.hidden
                 i.fas.fa-heart
+                span.likes__count=recipe.likes.length
         div 
             h5 댓글
             if loggedIn 
