@@ -6,7 +6,8 @@ block content
             span=messages.success
         h3 회원정보 변경
         form(method="post" enctype="multipart/form-data")
-            label(for="avatar") 프로필
+            img(src="/"+user.avatar)
+            label(for="avatar") 프로필 변경하기
             input(type="file" name="avatar" id="avatar" accept="image/*") 
             input(type="text" placeholder="이름" name="name" value=user.name) 
             input(type="submit" value="수정하기")

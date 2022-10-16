@@ -1,5 +1,7 @@
 extends base
 
 block content
-    div     
+    div 
+        if messages.error 
+            span=messages.error
         h1 404

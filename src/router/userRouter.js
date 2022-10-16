@@ -14,20 +14,25 @@ import {
 
 const userRouter = express.Router();
 
+// User Detail Router
 userRouter.get("/:id", getUserDetail);
+// User Edit Router
 userRouter
   .route("/:id/edit")
   .all(UserOnlyMiddleware)
   .get(getUserEdit)
   .post(avatarUpload.single("avatar"), postUserEdit);
+// Password Edit Router
 userRouter
   .route("/:id/password")
   .all(UserOnlyMiddleware)
   .get(getUserPasswordEdit)
   .post(postUserPasswordEdit);
+// User Ingredients Router
 userRouter.get("/:id/ingredients", getUserIng);
+// User Recipes Router
 userRouter.route("/:id/recipes").get(getUserRecipe);
-userRouter.route("/:id/recipes/search").get(getUserRecipeSearch);
+// User Likes Recipes
 userRouter.get("/:id/likes", getUserLike);
 
 export default userRouter;
