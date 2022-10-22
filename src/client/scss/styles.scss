@@ -1,3 +1,25 @@
+@import "./reset.scss";
+@import "./variables.scss";
+// Pages
+@import "./pages/home.scss";
+// Components
+@import "./components/header.scss";
+
 .hidden {
   display: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+body {
+  background-color: rgba($color: #000000, $alpha: 0.1);
+  height: 200vh;
+}
+
+main {
+  margin-top: 100px;
 }

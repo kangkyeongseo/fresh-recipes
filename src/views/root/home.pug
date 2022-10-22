@@ -2,7 +2,7 @@ extends ../base
 include ../mixins/ingredient
 
 block content 
-    div
+    div.main
         if messages.error 
             span=messages.error
         div
@@ -35,4 +35,4 @@ block content
                         each ingredient in purchaseIngredients
                                 +ingredient(ingredient)
                         span 모두보기 &rarr;
-    include ../partials/nav
+        include ../partials/nav
