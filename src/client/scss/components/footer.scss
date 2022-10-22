@@ -1,0 +1,18 @@
+footer {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  background-color: #fafafa;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px -1px -2px 0px;
+
+  ul {
+    display: flex;
+    flex-direction: row-reverse;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 50px 0;
+    li {
+      font-size: 14px;
+    }
+  }
+}

@@ -4,6 +4,11 @@
 @import "./pages/home.scss";
 // Components
 @import "./components/header.scss";
+@import "./components/footer.scss";
+
+* {
+  box-sizing: border-box;
+}
 
 .hidden {
   display: none;
@@ -16,8 +21,7 @@ a {
 }
 
 body {
-  background-color: rgba($color: #000000, $alpha: 0.1);
-  height: 200vh;
+  background-color: rgba(0, 0, 0, 0.05);
 }
 
 main {
