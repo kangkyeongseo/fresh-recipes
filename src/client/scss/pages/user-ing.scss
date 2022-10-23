@@ -1,0 +1,57 @@
+.user__ingredient {
+  position: relative;
+}
+
+.user__ingredient__nav {
+  display: flex;
+  margin-bottom: 20px;
+  li {
+    margin-right: 10px;
+    @include button;
+    font-size: 15px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+  }
+  .select {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+}
+
+.user__ingredient__container {
+  .user__ingredient__box {
+    margin-bottom: 20px;
+    min-height: 200px;
+    padding: 25px;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    h5 {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .user__ingredient__list {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+  }
+}
+
+.user__ingredient__add {
+  position: fixed;
+  bottom: 30px;
+  right: 16%;
+  background-color: $orange;
+  padding: 15px;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  i {
+    color: #ffffff;
+    font-size: 30px;
+  }
+}

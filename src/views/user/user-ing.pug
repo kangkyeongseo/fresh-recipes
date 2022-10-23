@@ -2,38 +2,40 @@ extends ../base
 include ../mixins/ingredient
 
 block content
-    div 
-        div 
-            div 
+    div.user__ingredient
+        ul.user__ingredient__nav
+            li.select
                 span 보관중인 재료 
-            div 
+            li 
                 span 유통기한 임박 재료
-            div 
+            li 
                 span 구입 목록 재료                                
-    div
-        h3 보관중인 재료  
-        div 
-            h5 냉장
-            each ingredient in coldStore
-                +ingredient(ingredient)
-        div 
-            h5 냉동
-            each ingredient in frozenStore
-                +ingredient(ingredient)
-        div 
-            h5 상온
-            each ingredient in roomStore
-                +ingredient(ingredient)
-    div
-        h3 유통기한 임박 재료
-        div 
-            each ingredient in periodIng 
-                +ingredient(ingredient)
-    div
-        h3 구입 목록 재료
-        div 
-            each ingredient in purchaseIng 
-                +ingredient(ingredient)
-    a(href="/ingredient/add")
-        i(class="fas fa-plus")
+        div.user__ingredient__container
+            div.user__ingredient__box
+                h5 냉장
+                ul.user__ingredient__list
+                    each ingredient in coldStore
+                        +ingredient(ingredient)
+            div.user__ingredient__box
+                h5 냉동
+                ul.user__ingredient__list
+                    each ingredient in frozenStore
+                        +ingredient(ingredient)
+            div.user__ingredient__box
+                h5 상온
+                ul.user__ingredient__list
+                    each ingredient in roomStore
+                        +ingredient(ingredient)
+        div.user__ingredient__container.hidden
+            div.user__ingredient__box
+                ul.user__ingredient__list
+                    each ingredient in periodIng 
+                        +ingredient(ingredient)
+        div.user__ingredient__container.hidden
+            div.user__ingredient__box
+                ul.user__ingredient__list
+                    each ingredient in purchaseIng 
+                        +ingredient(ingredient)
+        a(href="/ingredient/add").user__ingredient__add
+            i(class="fas fa-plus")
         
