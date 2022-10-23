@@ -1,0 +1,26 @@
+.ingredient {
+  display: block;
+  max-width: 120px;
+  aspect-ratio: 1/1;
+  padding: 15px;
+  background-color: $orange;
+  color: #ffffff;
+  font-size: 15px;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  &:hover {
+    background-color: $dark-orange;
+  }
+  .ingredient__name {
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .ingredient__info {
+    margin: 5px 0px 25px 0px;
+  }
+  .ingredient__period {
+    span {
+      margin-right: 5px;
+    }
+  }
+}

@@ -2,37 +2,44 @@ extends ../base
 include ../mixins/ingredient
 
 block content 
-    div.main
+    div
         if messages.error 
             span=messages.error
-        div
-            div
-                if recipe.length !== 0
-                    span=recipe[0].name
-                    span=recipe[0].description
-                    span #{recipe[0].serving}인분
-                    span #{recipe[0].time}분
+        if recipe.length !== 0
+            a(href=`/recipe/${recipe[0]._id}`).home__banner
+                div.home__banner__container
+                    div(style=`background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url("/${recipe[0].thumb}");`).home__banner__image
+                        div.home__banner__contents
+                            span.home__banner__recommend 오늘 요리, 이건 어떠세요?
+                            span.home__banner__name=recipe[0].name
+                            span.home__banner__description=recipe[0].description
+                            div.home__banner__info 
+                                span.home__banner__serving #{recipe[0].serving}인분
+                                span.home__banner__time #{recipe[0].time}분
         if  loggedIn
-            if user.ingredients.length === 0
-                div
+            div.home__ing
+                if user.ingredients.length === 0
                     span 냉장고에 재료를 추가해주세요.
-            else
-                div
+                else
                     if periodLifeIngredients.length === 0 
-                        li 재료들이 모두 신선합니다.
-                    else  
-                        h3 빨리 사용해야해요!
-                        ul 
-                            each ingredient in periodLifeIngredients
-                                +ingredient(ingredient)
-                        span 모두보기 &rarr;
-                div 
-                    if purchaseIngredients.length === 0
-                        li 아직 구입 목록에 추가된 재료들이 없습니다.
-                    else    
-                        h3 새로 구입해야해요!
-                        ul
-                        each ingredient in purchaseIngredients
-                                +ingredient(ingredient)
-                        span 모두보기 &rarr;
-        include ../partials/nav
+                        span 재료들이 모두 신선합니다.
+                    else
+                        div.home__ing__container      
+                            h3 유통기한 임박 재료
+                            h5 빨리 사용해야해요!
+                            ul.home__ing__list 
+                                each ingredient in periodLifeIngredients
+                                    +ingredient(ingredient)
+                            span.home__ing__all 모두보기 &rarr;
+            div.home__ing    
+                if purchaseIngredients.length === 0
+                    span 아직 구입 목록에 추가된 재료들이 없습니다.
+                else    
+                    div.home__ing__container     
+                        h3 구입 목록
+                        h5 새로 구입해야해요!
+                        ul.home__ing__list 
+                            each ingredient in purchaseIngredients
+                                    +ingredient(ingredient)
+                        span.home__ing__all  모두보기 &rarr;
+        

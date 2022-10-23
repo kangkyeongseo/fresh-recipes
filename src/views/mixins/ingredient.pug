@@ -1,11 +1,11 @@
 mixin ingredient(ingredient)
-    a(href=`/ingredient/${ingredient._id}`)
-        div
+    a(href=`/ingredient/${ingredient._id}`).ingredient
+        div.ingredient__name
             span=ingredient.name 
-        div
+        div.ingredient__info
             span=ingredient.amount
             span=ingredient.amountType
-        div
+        div.ingredient__period
             span 남은기간
             span #{Math.round((new Date(ingredient.periodLife) - new Date())/1000/3600/24)}일
         

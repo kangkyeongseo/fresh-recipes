@@ -2,27 +2,27 @@ nav
     ul 
         li
             a(href="/") 
-                i(class="fas fa-home")
+                <!-- i(class="fas fa-home") -->
                 span 홈
         li
              a(href=`/user/${loggedInUser._id}/ingredients`) 
-                i(class="fas fa-apple-alt")
+                <!-- i(class="fas fa-apple-alt") -->
                 span 냉장고
         li 
             a(href=`/user/${loggedInUser._id}/recipes`)
-                i(class="fas fa-utensils")
+                <!-- i(class="fas fa-utensils") -->
                 span 레시피
         li 
             a(href="/square")
-                i(class="fas fa-concierge-bell")
+                <!-- i(class="fas fa-concierge-bell") -->
                 span 레시피 광장
         if !loggedIn
             li 
                 a(href="/login")
-                    i(class="fas fa-user")
+                    <!-- i(class="fas fa-user") -->
                     span 로그인
         if loggedIn
             li 
                 a(href=`/user/${loggedInUser._id}`)
-                    i(class="fas fa-user")
+                    <!-- i(class="fas fa-user") -->
                     span 내 정보

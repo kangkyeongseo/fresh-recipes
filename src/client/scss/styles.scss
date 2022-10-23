@@ -1,10 +1,12 @@
 @import "./reset.scss";
 @import "./variables.scss";
-// Pages
-@import "./pages/home.scss";
 // Components
 @import "./components/header.scss";
+@import "./components/nav.scss";
 @import "./components/footer.scss";
+@import "./components/button.scss";
+@import "./components/ingredient.scss"; // Pages
+@import "./pages/home.scss";
 
 * {
   box-sizing: border-box;
@@ -25,5 +27,9 @@ body {
 }
 
 main {
-  margin-top: 100px;
+  max-width: 980px;
+  margin: 0 auto;
+  margin-top: 140px;
+  margin-bottom: 100px;
+  padding: 0 10px;
 }

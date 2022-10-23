@@ -3,7 +3,7 @@ include ../mixins/ingredient
 
 block content
     div 
-        nav 
+        div 
             div 
                 span 보관중인 재료 
             div 
@@ -34,7 +34,6 @@ block content
         div 
             each ingredient in purchaseIng 
                 +ingredient(ingredient)
-    include ../partials/nav
     a(href="/ingredient/add")
         i(class="fas fa-plus")
         
