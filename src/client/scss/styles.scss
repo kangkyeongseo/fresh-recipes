@@ -6,9 +6,11 @@
 @import "./components/footer.scss";
 @import "./components/button.scss";
 @import "./components/ingredient.scss";
+@import "./components/recipe.scss";
 // Pages
 @import "./pages/home.scss";
 @import "./pages/user-ing.scss";
+@import "./pages/user-recipe.scss";
 
 * {
   box-sizing: border-box;
@@ -30,8 +32,23 @@ body {
 
 main {
   max-width: 980px;
+  min-height: 100vh;
   margin: 0 auto;
   margin-top: 140px;
   margin-bottom: 100px;
   padding: 0 10px;
+}
+
+.add__btn {
+  position: fixed;
+  bottom: 30px;
+  right: 16%;
+  background-color: $orange;
+  padding: 15px;
+  border-radius: 50%;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  i {
+    color: #ffffff;
+    font-size: 30px;
+  }
 }

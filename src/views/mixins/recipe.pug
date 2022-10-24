@@ -1,11 +1,16 @@
 mixin recipe(recipe)
-    a(href=`/recipe/${recipe._id}`) 
-        h3=recipe.name 
-        p=recipe.description
-        i.fas.fa-heart=recipe.likes.length
-        div
-            span 인원
-            span #{recipe.serving}인분
-        div 
-            span 조리시간
-            span #{recipe.time}분
+    li.recipe
+        a(href=`/recipe/${recipe._id}`).recipe__container
+            img(src="/"+recipe.thumb).recipe__image
+            div.recipe__content
+                h3.recipe__name=recipe.name 
+                p.recipe__description=recipe.description
+                div.recipe__info
+                    div.recipe__heart
+                        i.fas.fa-heart
+                        span=recipe.likes.length
+                    div.recipe__serving
+                        span #{recipe.serving}인분
+                    div.recipe__time 
+                        span 조리시간
+                        span #{recipe.time}분

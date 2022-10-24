@@ -2,15 +2,17 @@ extends ../base
 include ../mixins/recipe
 
 block content 
-    div 
-        form(method="GET" action=`/user/${id}/recipes`)
+    div.user__recipe
+        form(method="GET" action=`/user/${id}/recipes`).user__recipe__form
             input(type="text" placeholder="검색" name="keyword")
-            input(type="submit" value="Search")   
-    div 
-        if recipes.length === 0
-            span 레시피가 존재하지 않습니다.
-        else
-            each recipe in recipes
-                +recipe(recipe)
-    a(href="/recipe/add")
+            button(type="submit").btn
+                i.fas.fa-search   
+        div.user__recipe__container 
+            if recipes.length === 0
+                span 레시피가 존재하지 않습니다.
+            else
+                ul.user__recipe__list
+                    each recipe in recipes
+                        +recipe(recipe)
+    a(href="/recipe/add").add__btn
         i(class="fas fa-plus")     
