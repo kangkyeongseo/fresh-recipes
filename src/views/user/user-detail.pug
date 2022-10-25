@@ -1,33 +1,43 @@
 extends ../base
 
 block content 
-    div
-        if user.avatar !== undefined
-            img(src="/"+user.avatar)
-        else 
-            div 
-                i.fas.fa-user
-        h5 #{user.name}의 냉장고
+    div.user__detail
         if loggedInUser._id === user._id.toString()
-            a(href="/logout") 로그아웃
-    div 
-        ul 
-            li
-                a(href=`/user/${user._id}/ingredients`) 
-                    i(class="fas fa-apple-alt")
-                    span 냉장고 재료
-                    span=user.ingredients.length
-            li
-                a(href=`/user/${user._id}/recipes`)  
-                    i(class="fas fa-utensils")
-                    span 레시피
-                    span=user.recipes.length 
-            li
-                a(href=`/user/${user._id}/likes`)  
-                    i(class="fas fa-heart")
-                    span 찜한 레시피
-                    span=user.likes.length 
-    if loggedInUser._id === user._id.toString()
-        div 
-            a(href=`/user/${loggedInUser._id}/edit`) 프로필 수정
+            h3.page__title 나의 정보
+        else 
+            h3.page__title #{user.name}의 정보 
+        div.user__detail__box
+            if user.avatar !== undefined
+                img(src="/"+user.avatar).user__detail__avatar--image
+            else 
+                div.user__detail__avatar
+                    i.fas.fa-user
+            div.user__detail__info
+                h5.user__detail__name #{user.name}
+                if loggedInUser._id === user._id.toString()
+                    a(href=`/user/${loggedInUser._id}/edit`).user__detail__edit 프로필 수정
+                    a(href="/logout").user__detail__logout 로그아웃
+        div.user__detail__list__container
+            if loggedInUser._id === user._id.toString()
+                h5.user__detail__list__title 나의 냉장고
+            else
+                h5.user__detail__list__title #{user.name}의 냉장고
+            ul.user__detail__list 
+                li.user__detail__ing
+                    a(href=`/user/${user._id}/ingredients`) 
+                        i(class="fas fa-apple-alt")
+                        span 냉장고 재료
+                        span.user__detail__count=user.ingredients.length
+                li.user__detail__recipe
+                    a(href=`/user/${user._id}/recipes`)  
+                        i(class="fas fa-utensils")
+                        span 레시피
+                        span.user__detail__count=user.recipes.length 
+                li.user__detail__like
+                    a(href=`/user/${user._id}/likes`)  
+                        i(class="fas fa-heart")
+                        span 찜한 레시피
+                        span.user__detail__count=user.likes.length 
+
+            
     

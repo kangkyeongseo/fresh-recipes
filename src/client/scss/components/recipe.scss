@@ -1,9 +1,7 @@
 .recipe {
-  background-color: #fff;
+  @include box;
   margin-bottom: 20px;
   font-size: 15px;
-  border-radius: 20px;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   transition: all 0.1s ease-in-out;
   &:hover {
     transform: scale(1.01);

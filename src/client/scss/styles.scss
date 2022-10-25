@@ -1,16 +1,18 @@
 @import "./reset.scss";
 @import "./variables.scss";
 // Components
+@import "./components/button.scss";
+@import "./components/box.scss";
 @import "./components/header.scss";
 @import "./components/nav.scss";
 @import "./components/footer.scss";
-@import "./components/button.scss";
 @import "./components/ingredient.scss";
 @import "./components/recipe.scss";
 // Pages
 @import "./pages/home.scss";
 @import "./pages/user-ing.scss";
 @import "./pages/user-recipe.scss";
+@import "./pages/user-detail.scss";
 @import "./pages/square-recipes.scss";
 
 * {
@@ -35,9 +37,16 @@ main {
   max-width: 980px;
   min-height: 100vh;
   margin: 0 auto;
-  margin-top: 140px;
+  margin-top: 150px;
   margin-bottom: 100px;
   padding: 0 10px;
+}
+
+.page__title {
+  font-size: 26px;
+  font-weight: bold;
+  margin-left: 10px;
+  letter-spacing: 2px;
 }
 
 .add__btn {
