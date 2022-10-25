@@ -1,39 +1,4 @@
 .user__recipe {
-  .user__recipe__form {
-    position: relative;
-    display: flex;
-    justify-content: center;
-    &:focus-within {
-      button {
-        opacity: 1;
-        right: 30px;
-      }
-    }
-    input {
-      width: 30%;
-      max-width: 980px;
-      padding: 15px 30px;
-      border: none;
-      border-radius: 30px;
-      box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-      transition: all 0.3s ease-in-out;
-      &:focus {
-        width: 100%;
-        outline: none;
-      }
-    }
-    button {
-      opacity: 0;
-      position: absolute;
-      border: none;
-      background-color: initial;
-      font-size: 22px;
-      top: 7px;
-      right: 37%;
-      color: rgba(0, 0, 0, 0.7);
-      transition: all 0.3s ease-in-out;
-    }
-  }
   .user__recipe__container {
     margin-top: 30px;
   }

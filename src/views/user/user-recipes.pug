@@ -3,7 +3,7 @@ include ../mixins/recipe
 
 block content 
     div.user__recipe
-        form(method="GET" action=`/user/${id}/recipes`).user__recipe__form
+        form(method="GET" action=`/user/${id}/recipes`).search__form
             input(type="text" placeholder="검색" name="keyword")
             button(type="submit").btn
                 i.fas.fa-search   
