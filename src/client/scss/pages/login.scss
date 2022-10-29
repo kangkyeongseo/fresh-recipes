@@ -1,0 +1,33 @@
+.login {
+  .page__title {
+    text-align: center;
+    margin-bottom: 50px;
+  }
+  .login__btn {
+    display: block;
+    text-align: center;
+    padding: 20px 20px;
+    color: #ffffff;
+    font-weight: bold;
+    background-color: $orange;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    margin-bottom: 5px;
+    font-size: 18px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 5px;
+    cursor: pointer;
+  }
+  .login__list {
+    max-width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    .github__login {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+    .join__btn {
+      color: #000;
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+  }
+}

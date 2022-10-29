@@ -14,6 +14,7 @@
 @import "./pages/user-recipe.scss";
 @import "./pages/user-detail.scss";
 @import "./pages/square-recipes.scss";
+@import "./pages/login.scss";
 
 * {
   box-sizing: border-box;
@@ -96,5 +97,20 @@ main {
     right: 37%;
     color: rgba(0, 0, 0, 0.7);
     transition: all 0.3s ease-in-out;
+  }
+}
+
+.form {
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  input {
+    padding: 20px 20px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    margin-bottom: 5px;
+    font-size: 18px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 5px;
   }
 }

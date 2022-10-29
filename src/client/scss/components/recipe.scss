@@ -1,6 +1,5 @@
 .recipe {
   @include box;
-  margin-bottom: 20px;
   font-size: 15px;
   transition: all 0.1s ease-in-out;
   &:hover {

@@ -4,7 +4,7 @@
 
 .user__ingredient__nav {
   display: flex;
-  margin-bottom: 20px;
+  margin-top: 30px;
   li {
     margin-right: 10px;
     @include button;
@@ -24,12 +24,8 @@
 
 .user__ingredient__container {
   .user__ingredient__box {
-    margin-bottom: 20px;
+    @include box;
     min-height: 200px;
-    padding: 25px;
-    border-radius: 10px;
-    background-color: #ffffff;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
     h5 {
       font-size: 20px;
       font-weight: bold;

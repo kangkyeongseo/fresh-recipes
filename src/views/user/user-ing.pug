@@ -3,6 +3,10 @@ include ../mixins/ingredient
 
 block content
     div.user__ingredient
+        if loggedInUser._id === user._id.toString()
+            h3.page__title 나의 냉장고
+        else 
+            h3.page__title #{user.name}의 냉장고
         ul.user__ingredient__nav
             li.select
                 span 보관중인 재료 

@@ -1,7 +1,7 @@
 extends ../base 
 
 block content 
-    div(data-id=ingredient._id).ingredient
+    div(data-id=ingredient._id).ingredient__detail
         h3=ingredient.name
         div
             if ingredient.store === "냉장" 

@@ -1,4 +1,4 @@
-const ingredient = document.querySelector(".ingredient");
+const ingredient = document.querySelector(".ingredient__detail");
 const ingredientAmount = document.querySelector(".ingredient__amount");
 const ingredientAmountForm = document.querySelector(
   ".ingredient__amount__form"

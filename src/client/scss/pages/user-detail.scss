@@ -32,13 +32,14 @@
     .user__detail__list__title {
       font-size: 20px;
       font-weight: bold;
+      margin-bottom: 15px;
     }
     .user__detail__list {
       display: flex;
       justify-content: space-around;
       gap: 20px;
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
       padding-top: 30px;
-      border-color: rgba(0, 0, 0, 0.3);
       li {
         background-color: $orange;
         color: #ffffff;
