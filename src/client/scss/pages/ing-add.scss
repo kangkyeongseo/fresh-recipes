@@ -1,0 +1,67 @@
+.ingredient__add {
+  .page__title {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .form {
+    .ingredient__add__radio__container {
+      margin-top: 10px;
+      display: flex;
+      align-items: center;
+      .ingredient__add__radio__title {
+        width: 20%;
+        height: 35px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        letter-spacing: 3px;
+        color: #ffffff;
+        border-radius: 15px;
+        background-color: $orange;
+      }
+      .ingredient__add__radio__list {
+        width: 80%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        margin-left: 10px;
+        label {
+          font-size: 18px;
+        }
+      }
+      .ingredient__add__radio__list--amount {
+        grid-template-columns: 1.5fr 1fr 1fr 1fr;
+        align-items: center;
+        .amount__input {
+          width: 100%;
+          padding: 5px 10px;
+          font-size: 14px;
+        }
+        label {
+          font-size: 14px;
+        }
+      }
+    }
+    .ingredient__add__radio__container--date {
+      align-items: flex-start;
+      .ingredient__add__radio__title {
+        font-size: 16px;
+        letter-spacing: 0px;
+      }
+      .ingredient__add__radio__list {
+        display: flex;
+        flex-direction: column;
+        input {
+          padding: 5px 10px;
+          font-size: 14px;
+        }
+      }
+    }
+    .ingredient__add__btn {
+      margin-top: 15px;
+      color: #ffffff;
+      font-size: 20px;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+  }
+}

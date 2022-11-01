@@ -16,6 +16,7 @@
 @import "./pages/square-recipes.scss";
 @import "./pages/login.scss";
 @import "./pages/join.scss";
+@import "./pages/ing-add.scss";
 
 * {
   box-sizing: border-box;
@@ -52,11 +53,15 @@ main {
 }
 
 .add__btn {
+  display: flex;
+  width: 60px;
+  height: 60px;
+  justify-content: center;
+  align-items: center;
   position: fixed;
   bottom: 30px;
   right: 16%;
   background-color: $orange;
-  padding: 15px;
   border-radius: 50%;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
   i {
