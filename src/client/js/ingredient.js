@@ -1,7 +1,9 @@
 const ingredient = document.querySelector(".ingredient__detail");
-const ingredientAmount = document.querySelector(".ingredient__amount");
+const ingredientAmount = document.querySelector(
+  ".ingredient__detail__amount__current"
+);
 const ingredientAmountForm = document.querySelector(
-  ".ingredient__amount__form"
+  ".ingredient__detail__amount__form"
 );
 const spendInput = document.querySelector(".spend__input");
 const purchaseCheck = document.querySelector(".purchase__check");

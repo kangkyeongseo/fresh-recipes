@@ -1,0 +1,107 @@
+.ingredient__detail {
+  margin-top: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .ingredient__detail__left {
+    margin-right: 30px;
+    padding-right: 30px;
+    border-right: 1px solid rgba(0, 0, 0, 0.3);
+    .ingredient__detail__title {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .ingredient__detail__title__store {
+        margin-bottom: 10px;
+        font-size: 12px;
+        background-color: $orange;
+        color: #ffffff;
+        padding: 5px 10px;
+        border-radius: 10px;
+        box-shadow: $shadow;
+      }
+      .ingredient__detail__title__name {
+        font-size: 30px;
+        font-weight: bold;
+        text-align: center;
+      }
+    }
+    .ingredient__detail__amount {
+      margin-top: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .ingredient__detail__amount__content {
+        font-size: 30px;
+        font-weight: lighter;
+      }
+      .ingredient__detail__amount__form {
+        margin-top: 5px;
+        .ingredient__detail__amount__form__spend {
+          border-radius: 10px;
+          box-shadow: $shadow;
+          .spend__input {
+            border-radius: 10px 0px 0px 10px;
+            padding: 5px 10px;
+            max-width: 100px;
+            border: none;
+            &:focus {
+              outline: none;
+            }
+          }
+          .spend__btn {
+            border-radius: 00px 10px 10px 0px;
+            padding: 5px 10px;
+            border: none;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #ffffff;
+          }
+        }
+        .ingredient__detail__amount__form__add {
+          margin-top: 5px;
+          text-align: center;
+          font-size: 15px;
+          color: rgba(0, 0, 0, 0.7);
+        }
+      }
+    }
+  }
+  .ingredient__detail__right {
+    display: flex;
+    flex-direction: column;
+    .ingredient__detail__date {
+      margin-top: 10px;
+      .ingredient__detail__date__content {
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        font-size: 15px;
+        background-color: #ffffff;
+        color: rgba(0, 0, 0, 0.7);
+        border-radius: 15px;
+        box-shadow: $shadow;
+        h5 {
+          padding: 5px 10px;
+          background-color: $orange;
+          color: #ffffff;
+          border-radius: 15px 0px 0px 15px;
+        }
+        span {
+          display: block;
+          padding: 0px 20px;
+        }
+        &:nth-child(2) {
+          h5 {
+            background-color: rgba(0, 0, 0, 0.8);
+          }
+        }
+      }
+    }
+    .ingredient__detail__edit {
+      margin: 10px;
+      align-self: flex-end;
+      font-size: 12px;
+      color: rgba(0, 0, 0, 0.7);
+    }
+  }
+}
