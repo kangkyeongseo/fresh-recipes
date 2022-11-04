@@ -1,13 +1,13 @@
 extends ../base 
 
 block content 
-    div.ingredient__add
+    div.ingredient__add-edit
         h3.page__title 재료 보관하기
         form(method="post").form
             input(type="text" placeholder="재료명" name="name" required)
-            div.ingredient__add__radio__container
-                h5.ingredient__add__radio__title 품목
-                div.ingredient__add__radio__list
+            div.ingredient__add-edit__radio__container
+                h5.ingredient__add-edit__radio__title 품목
+                div.ingredient__add-edit__radio__list
                     div   
                         input(type="radio" id="mainType" name="type" value="주재료" required)
                         label(for="mainType") 주재료 
@@ -17,9 +17,9 @@ block content
                     div
                         input(type="radio" id="condimentType" name="type" value="조미료" required)
                         label(for="condimentType") 조미료 
-            div.ingredient__add__radio__container
-                h5.ingredient__add__radio__title 보관
-                div.ingredient__add__radio__list
+            div.ingredient__add-edit__radio__container
+                h5.ingredient__add-edit__radio__title 보관
+                div.ingredient__add-edit__radio__list
                     div
                         input(type="radio" id="coldStore" name="store" value="냉장" required)
                         label(for="coldStore") 냉장 
@@ -29,9 +29,9 @@ block content
                     div
                         input(type="radio" id="roomStore" name="store" value="상온" required)
                         label(for="roomStore") 상온
-            div.ingredient__add__radio__container
-                h5.ingredient__add__radio__title 용량
-                div.ingredient__add__radio__list.ingredient__add__radio__list--amount
+            div.ingredient__add-edit__radio__container
+                h5.ingredient__add-edit__radio__title 용량
+                div.ingredient__add-edit__radio__list.ingredient__add-edit__radio__list--amount
                     div
                         input(type="number" placeholder="용량" name="amount" required).amount__input
                     div
@@ -43,12 +43,12 @@ block content
                     div
                         input(type="radio" id="countAmount" name="amountType" value="개" required)
                         label(for="countAmount") 개수
-            div.ingredient__add__radio__container.ingredient__add__radio__container--date
-                h5.ingredient__add__radio__title  구입날짜
-                div.ingredient__add__radio__list
+            div.ingredient__add-edit__radio__container.ingredient__add-edit__radio__container--date
+                h5.ingredient__add-edit__radio__title  구입날짜
+                div.ingredient__add-edit__radio__list
                         input(type="date" id="purchase" name="purchaseDate" required)
-            div.ingredient__add__radio__container.ingredient__add__radio__container--date
-                h5.ingredient__add__radio__title 유통기한
-                div.ingredient__add__radio__list   
+            div.ingredient__add-edit__radio__container.ingredient__add-edit__radio__container--date
+                h5.ingredient__add-edit__radio__title 유통기한
+                div.ingredient__add-edit__radio__list   
                         input(type="date" id="periodLife" name="periodLife" required)
-            input(type="submit" value="보관하기").ingredient__add__btn
+            input(type="submit" value="보관하기").ingredient__add-edit__btn
