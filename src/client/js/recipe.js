@@ -48,8 +48,7 @@ const textInput = (type, name, placeholder) => {
 
 const addIngBox = () => {
   const ingBox = document.createElement("div");
-  const title = document.createElement("h5");
-  title.innerText = `${ingContainer.childElementCount + 1}.필요재료`;
+  ingBox.className = "ing__box";
   const nameInput = textInput("text", "ingredient", "재료명");
   const amountInput = textInput("number", "ingredientAmount", "필요량");
   const gramRadio = radioInput("gram", "g");
@@ -63,7 +62,6 @@ const addIngBox = () => {
   const teaRadio = radioInput("tea", "ts");
   const teaLabel = radioLabel("tea", "ts");
   const deleteBtn = createDeleteBtn();
-  ingBox.appendChild(title);
   ingBox.appendChild(nameInput);
   ingBox.appendChild(amountInput);
   ingBox.appendChild(gramRadio);
@@ -94,6 +92,7 @@ const createTextarea = () => {
 
 const addOrderBox = () => {
   const orderBox = document.createElement("div");
+  orderBox.className = "recipe__order__box";
   const title = document.createElement("h5");
   title.innerText = `${orderContainer.childElementCount}번`;
   const textarea = createTextarea();

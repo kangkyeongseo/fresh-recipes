@@ -211,6 +211,7 @@ export const getUserLike = async (req, res) => {
       const recipe = await Recipe.findById(user.likes[i]);
       recipes.push(recipe);
     }
+    console.log(user.likes, recipes);
     return res.render("user/user-likes", { recipes });
   } catch (error) {
     req.flash("error", "허용되지 않는 경로입니다.");
