@@ -1,4 +1,4 @@
-const recipe = document.querySelector(".recipe");
+const recipe = document.querySelector(".recipe__detail");
 const emptyHeart = document.querySelector(".far.fa-heart");
 const fillHeart = document.querySelector(".fas.fa-heart");
 const likesCount = document.querySelector(".likes__count");

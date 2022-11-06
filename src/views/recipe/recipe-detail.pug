@@ -2,67 +2,79 @@ extends ../base
 include ../mixins/comment
 
 block content 
-    div(data-id=recipe.id).recipe 
-        if recipe.thumb !== ""
-            img(src="/"+recipe.thumb)
-        else 
-            div 
-                i.fas.fa-hamburger
-        h3=recipe.name
-        p=recipe.description
-        div
-            span 인원
-            span #{recipe.serving}인분
-        div 
-            span 조리시간
-            span #{recipe.time}분
-        div 
-            h5 필요 재료
-            ul 
-                each ingredient in recipe.ingredients 
-                    li 
-                        span=ingredient.ingredientName 
-                        span=ingredient.ingredientAmount
-                        span=ingredient.amountType
-        div 
-            h5 조리 방법
-            ul 
-                each order in  recipe.orders
-                    li 
-                        span=order.order 
-                        span=order.content
-        if recipe.owner._id.toString() === loggedInUser._id
-            a(href=`/recipe/${recipe._id}/edit`) 수정하기
-        div 
-            span 레시피가 마음에 드시나요?
-            if recipe.likes.filter(id => id === loggedInUser._id).length === 0
-                i.far.fa-heart
-                i.fas.fa-heart.hidden
-                span.likes__count=recipe.likes.length
-            else
-                i.far.fa-heart.hidden
-                i.fas.fa-heart
-                span.likes__count=recipe.likes.length
-        div 
-            h5 댓글
-            if loggedIn 
-                div     
-                    if loggedInUser.avater !== undefined
-                        img(src="/"+loggedInUser.avatar)
-                    else 
-                        div 
-                            i.fas.fa-user
-                    div 
-                        form.recipe__comment__form
-                            input(type="text", name="comment",placeholder="댓글 추가..." ).recipe__comment__form__input
-                            input(type="submit" value="댓글")
+    div(data-id=recipe.id).recipe__detail
+        div.recipe__detail__container
+            if recipe.thumb !== ""
+                img(src="/"+recipe.thumb).recipe__detail__image
             else 
-                span 댓글을 달기 위해서는 먼저 로그인을 해주세요.
-            ul.recipe__comment__list
-                if recipe.comments.length === 0
-                    li.recipe__comment__unexist 아직 댓글이 존재하지 않습니다.
-                each comment in recipe.comments 
-                    +comment(comment)
+                div.recipe__detail__no-image
+                    i.fas.fa-hamburger
+                    span 요리 이미지가 없습니다.
+            div.recipe__detail__title
+                h3=recipe.name
+                p=recipe.description
+            div.recipe__detail__info
+                div.recipe__detail__info__content.recipe__detail__info__serving
+                    i.fas.fa-users
+                    span #{recipe.serving}인분
+                div.recipe__detail__info__content.recipe__detail__info__time
+                    i.fas.fa-clock
+                    span #{recipe.time}분
+            div.recipe__detail__ing
+                div.recipe__detail__ing__title
+                    h5 필요 재료
+                    h6 ingredient
+                ul.recipe__detail__ing__list
+                    each ingredient in recipe.ingredients 
+                        li.recipe__detail__ing__list__content
+                            span=ingredient.ingredientName 
+                            div
+                                span=ingredient.ingredientAmount
+                                span=ingredient.amountType
+            div.recipe__detail__order
+                div.recipe__detail__order__title
+                    h5 조리 방법
+                    h6 step
+                ul.recipe__detail__order__list
+                    each order in  recipe.orders
+                        li.recipe__detail__order__list__content
+                            div.recipe__detail__order__list__content__number
+                                span=order.order 
+                            p=order.content
+            if recipe.owner._id.toString() === loggedInUser._id
+                div.recipe__detail__edit
+                    a(href=`/recipe/${recipe._id}/edit`) 수정하기
+            div.recipe__detail__like
+                h5 레시피가 마음에 드시나요?
+                div.recipe__detail__like__heart
+                    if recipe.likes.filter(id => id === loggedInUser._id).length === 0
+                        i.far.fa-heart
+                        i.fas.fa-heart.hidden
+                        span.likes__count=recipe.likes.length
+                    else
+                        i.far.fa-heart.hidden
+                        i.fas.fa-heart
+                        span.likes__count=recipe.likes.length
+            div.recipe__detail__review
+                h5.recipe__detail__review__title 댓글
+                if loggedIn 
+                    div.recipe__detail__review__chat
+                        if loggedInUser.avatar !== undefined
+                            img(src="/"+loggedInUser.avatar).recipe__detail__review__chat__avatar
+                        else 
+                            div.recipe__detail__review__chat__no-avatar
+                                i.fas.fa-user
+                        div.recipe__detail__review__chat__content
+                            form.recipe__comment__form
+                                input(type="text", name="comment",placeholder="댓글 추가..." ).recipe__comment__form__input
+                                input(type="submit" value="댓글")
+                else 
+                    span.recipe__detail__review__un-login 댓글을 달기 위해서는 먼저 로그인을 해주세요.
+                ul.recipe__comment__list
+                    if recipe.comments.length === 0
+                        li.recipe__comment__unexist 아직 댓글이 존재하지 않습니다.
+                    each comment in recipe.comments 
+                        +comment(comment)
     script(src="/assets/js/comment.js")
     script(src="/assets/js/like.js")
                 

@@ -1,4 +1,4 @@
-const recipe = document.querySelector(".recipe");
+const recipe = document.querySelector(".recipe__detail");
 const commentForm = document.querySelector(".recipe__comment__form");
 const commentInput = document.querySelector(".recipe__comment__form__input");
 const commentList = document.querySelector(".recipe__comment__list");
@@ -25,23 +25,33 @@ const handleCommentForm = async (event) => {
 const addComment = (content, id, avatar, name) => {
   const li = document.createElement("li");
   li.dataset.id = id;
-
+  li.className = "comment";
   let avatarContainer;
   if (avatar !== undefined) {
     avatarContainer = document.createElement("img");
     avatarContainer.src = "/" + avatar;
   } else {
     avatarContainer = document.createElement("div");
+    avatarContainer.className = "comment__no-avatar";
     const avatarIcon = document.createElement("i");
     avatarIcon.className = "fas fa-user";
     avatarContainer.appendChild(avatarIcon);
   }
+
+  const contentWrapper = document.createElement("div");
+  contentWrapper.className = "comment__text";
 
   const nickname = document.createElement("span");
   nickname.innerText = name;
 
   const span = document.createElement("span");
   span.innerText = content;
+
+  contentWrapper.appendChild(nickname);
+  contentWrapper.appendChild(span);
+
+  const btnWrapper = document.createElement("div");
+  btnWrapper.className = "comment__btn";
 
   const addDelete = document.createElement("button");
   addDelete.innerText = "Delete";
@@ -52,11 +62,12 @@ const addComment = (content, id, avatar, name) => {
   addEdit.innerText = "Edit";
   addEdit.className = "comment__edit";
 
+  btnWrapper.appendChild(addDelete);
+  btnWrapper.appendChild(addEdit);
+
   li.appendChild(avatarContainer);
-  li.appendChild(nickname);
-  li.appendChild(span);
-  li.appendChild(addDelete);
-  li.appendChild(addEdit);
+  li.appendChild(contentWrapper);
+  li.appendChild(btnWrapper);
   commentList.appendChild(li);
   if (unExistList) {
     unExistList.remove();

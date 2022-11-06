@@ -8,6 +8,7 @@
 @import "./components/footer.scss";
 @import "./components/ingredient.scss";
 @import "./components/recipe.scss";
+@import "./components/comment.scss";
 // Pages
 @import "./pages/home.scss";
 @import "./pages/user-ing.scss";
@@ -20,6 +21,7 @@
 @import "./pages/ing-detail.scss";
 @import "./pages/ing-edit.scss";
 @import "./pages/recipe-add.scss";
+@import "./pages/recipe-detail.scss";
 
 * {
   box-sizing: border-box;
