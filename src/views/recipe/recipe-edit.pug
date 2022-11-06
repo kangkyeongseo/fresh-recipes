@@ -1,45 +1,55 @@
 extends ../base 
 
 block content 
-    div 
-        form(method="post" enctype="multipart/form-data")
-            div
+    div.recipe__edit
+        h3.page__title 레시피 수정하기
+        div.recipe__edit__container
+            form(method="post" enctype="multipart/form-data").form
                 input(type="text" placeholder="요리명" name="name" value=recipe.name)
-            div     
-                textarea(name="description", cols="30", rows="2")=recipe.description 
-            div 
-                label(for="thumb") 음식 썸네일
-                input(type="file" name="thumb" accept="image/*" id="thumb")
-            div
-                input(type="number" placeholder="인원" name="serving" value=recipe.serving)             
-                span 인분
-            div
-                input(type="number" placeholder="소요시간" name="time" value=recipe.time)             
-                span 분
-            div.ing__container
-                each ingredient, index in recipe.ingredients
-                    div
-                        h5=index+1+"필요재료"
-                        input(type="text" placeholder="재료명" name="ingredient" value=ingredient.ingredientName)
-                        input(type="text" placeholder="필요량" name="ingredientAmount" value=ingredient.ingredientAmount)
-                        input(type="radio" id="gramAmount" name=`amountType${ingredient.id}` value="g" checked=(ingredient.amountType === "g" ? true : false))
-                        label(for="gramAmount") 그램(g) 
-                        input(type="radio" id="mlAmount" name=`amountType${ingredient.id}` value="ml" checked=(ingredient.amountType === "ml" ? true : false))
-                        label(for="mlAmount") 밀리(ml) 
-                        input(type="radio" id="countAmount" name=`amountType${ingredient.id}` value="개" checked=(ingredient.amountType === "개" ? true : false))
-                        label(for="countAmount") 개수
-                        input(type="radio" id="countAmount" name=`amountType${ingredient.id}` value="Ts" checked=(ingredient.amountType === "Ts" ? true : false))
-                        label(for="countAmount") Ts
-                        input(type="radio" id="countAmount" name=`amountType${ingredient.id}` value="ts" checked=(ingredient.amountType === "ts" ? true : false))
-                        label(for="countAmount") ts
-            button(type="button").ing__btn 재료추가하기                 
-            div.order__container
-                h3 조리순서
-                each order in recipe.orders
-                    div
-                        h5=order.order+"번"
-                        textarea(name="order", cols="30", rows="2")=order.content
-            button(type="button").order__btn 순서추가하기
-            input(type="submit" value="수정하기")
-            a(href=`/recipe/${recipe._id}/delete`) 삭제하기
+                div.recipe__thumb
+                    h5.recipe__add__subtitle 요리 이미지
+                    div.recipe__thumb__label
+                        label(for="thumb") 
+                            i.fas.fa-image
+                        input(type="file" name="thumb" accept="image/*" id="thumb").hidden
+                div.recipe__description
+                    h5.recipe__add__subtitle 레시피 설명     
+                    textarea(name="description", cols="30", rows="2")=recipe.description 
+                div.recipe__info
+                    h5.recipe__add__subtitle 레시피 정보
+                    div.recipe__info__wrap
+                        div.recipe__info__content.recipe__info__serving
+                            input(type="number" placeholder="인원" name="serving" value=recipe.serving)             
+                            span 인분
+                        div.recipe__info__content.recipe__info__time
+                            input(type="number" placeholder="소요시간" name="time" value=recipe.time)             
+                            span 분
+                div.ing__container.recipe__ing
+                    h5.recipe__add__subtitle 필요 재료
+                    div.ing__container
+                        each ingredient in recipe.ingredients
+                            div.ing__box
+                                input(type="text" placeholder="재료명" name="ingredient" value=ingredient.ingredientName)
+                                input(type="text" placeholder="필요량" name="ingredientAmount" value=ingredient.ingredientAmount)
+                                input(type="radio" id="gramAmount" name=`amountType${ingredient.id}` value="g" checked=(ingredient.amountType === "g" ? true : false))
+                                label(for="gramAmount") 그램(g) 
+                                input(type="radio" id="mlAmount" name=`amountType${ingredient.id}` value="ml" checked=(ingredient.amountType === "ml" ? true : false))
+                                label(for="mlAmount") 밀리(ml) 
+                                input(type="radio" id="countAmount" name=`amountType${ingredient.id}` value="개" checked=(ingredient.amountType === "개" ? true : false))
+                                label(for="countAmount") 개수
+                                input(type="radio" id="countAmount" name=`amountType${ingredient.id}` value="Ts" checked=(ingredient.amountType === "Ts" ? true : false))
+                                label(for="countAmount") Ts
+                                input(type="radio" id="countAmount" name=`amountType${ingredient.id}` value="ts" checked=(ingredient.amountType === "ts" ? true : false))
+                                label(for="countAmount") ts
+                    button(type="button").ing__btn.recipe__add__subtitle 재료추가하기                 
+                div.order__container.recipe__order
+                    div.order__container
+                        h5.recipe__add__subtitle 조리 순서
+                        each order in recipe.orders
+                            div.recipe__order__box
+                                h5=order.order+"번"
+                                textarea(name="order", cols="30", rows="2")=order.content
+                    button(type="button").order__btn.recipe__add__subtitle 순서추가하기
+                input(type="submit" value="수정하기").recipe__add__btn
+                a(href=`/recipe/${recipe._id}/delete`).recipe__edit__btn 삭제하기
     script(src="/assets/js/recipe.js")

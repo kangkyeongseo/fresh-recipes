@@ -29,6 +29,7 @@ const addComment = (content, id, avatar, name) => {
   let avatarContainer;
   if (avatar !== undefined) {
     avatarContainer = document.createElement("img");
+    avatarContainer.className = "comment__avatar";
     avatarContainer.src = "/" + avatar;
   } else {
     avatarContainer = document.createElement("div");
@@ -75,7 +76,7 @@ const addComment = (content, id, avatar, name) => {
 };
 
 const handleDeleteBtn = async (event) => {
-  const li = event.target.parentElement;
+  const li = event.target.parentElement.parentElement;
   const id = li.dataset.id;
   li.remove();
   await fetch(`/api/comment/${id}/delete`, {
@@ -102,9 +103,11 @@ const editComment = async (event) => {
 };
 
 const handleEditBtn = (event) => {
-  const li = event.target.parentElement;
-  const content = event.target.parentElement.children[2].textContent;
-  const btn = event.target.parentElement.children[4];
+  const li = event.target.parentElement.parentElement;
+  const content =
+    event.target.parentElement.parentElement.children[2].children[2]
+      .textContent;
+  const btn = event.target.parentElement.parentElement.children[4];
   const input = document.createElement("input");
   input.className = "comment__edit__input";
   input.value = content;

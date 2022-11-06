@@ -1,9 +1,11 @@
-.recipe__add {
+.recipe__add,
+.recipe__edit {
   .page__title {
     text-align: center;
     margin-bottom: 30px;
   }
-  .recipe__add__container {
+  .recipe__add__container,
+  .recipe__edit__container {
     background-color: #ffffff;
     max-width: 500px;
     padding: 50px;
