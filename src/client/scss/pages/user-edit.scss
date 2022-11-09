@@ -1,0 +1,53 @@
+.user__edit {
+  .page__title {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .user__edit__container {
+    max-width: 500px;
+    padding: 30px;
+    margin: 0 auto;
+    background-color: #ffffff;
+    .user__edit__avatar {
+      display: flex;
+      justify-content: center;
+      margin: 0 auto;
+      margin-bottom: 20px;
+      .user__edit__avatar__image {
+        max-width: 200px;
+        border-radius: 50%;
+        box-shadow: $shadow;
+      }
+    }
+    .form {
+      .user__edit__avatar__label {
+        align-self: center;
+        margin-bottom: 30px;
+        label {
+          background-color: $orange;
+          color: #ffffff;
+          padding: 5px 10px;
+          border-radius: 20px;
+          box-shadow: $shadow;
+          cursor: pointer;
+        }
+      }
+      .user__edit__btn {
+        background-color: rgba(0, 0, 0, 0.8);
+        color: #ffffff;
+        cursor: pointer;
+      }
+      .user__edit__password {
+        text-align: center;
+        color: #ffffff;
+        background-color: $orange;
+        padding: 20px 20px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 15px;
+        margin-bottom: 5px;
+        font-size: 18px;
+        box-shadow: rgb(0 0 0 / 10%) 0px 1px 5px;
+      }
+    }
+  }
+}

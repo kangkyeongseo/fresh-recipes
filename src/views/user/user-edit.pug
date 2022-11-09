@@ -1,17 +1,22 @@
 extends ../base
 
 block content
-    div 
+    div.user__edit 
         if messages.success
             span=messages.success
-        h3 회원정보 변경
-        form(method="post" enctype="multipart/form-data")
-            img(src="/"+user.avatar)
-            label(for="avatar") 프로필 변경하기
-            input(type="file" name="avatar" id="avatar" accept="image/*") 
-            input(type="text" placeholder="이름" name="name" value=user.name) 
-            input(type="submit" value="수정하기")
-    if loggedInUser._id === user._id.toString()
-        div 
-            a(href=`/user/${loggedInUser._id}/password`)  비밀번호 변경
-    
+        h3.page__title 회원정보 변경
+        div.user__edit__container
+            div.user__edit__avatar
+                if user.avatar !== undefined
+                    img(src="/"+user.avatar).user__edit__avatar__image
+                else 
+                    div.user__edit__avatar__no-image
+                        i.fas.fa-user
+            form(method="post" enctype="multipart/form-data").form
+                div.user__edit__avatar__label
+                    label(for="avatar") 프로필 변경하기
+                    input(type="file" name="avatar" id="avatar" accept="image/*").hidden
+                input(type="text" placeholder="이름" name="name" value=user.name) 
+                input(type="submit" value="수정하기").user__edit__btn 
+                a(href=`/user/${loggedInUser._id}/password`).user__edit__password  비밀번호 변경
+
