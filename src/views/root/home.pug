@@ -4,18 +4,19 @@ include ../mixins/ingredient
 block content 
     div
         if messages.error 
-            span=messages.error
+            span.message.message__error=messages.error
         if recipe.length !== 0
             a(href=`/recipe/${recipe[0]._id}`).home__banner
                 div.home__banner__container
+                    div.home__banner__hover
                     div(style=`background-image:linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),url("/${recipe[0].thumb}");`).home__banner__image
                         div.home__banner__contents
                             span.home__banner__recommend 오늘 요리, 이건 어떠세요?
                             span.home__banner__name=recipe[0].name
                             span.home__banner__description=recipe[0].description
-                            div.home__banner__info 
-                                span.home__banner__serving #{recipe[0].serving}인분
-                                span.home__banner__time #{recipe[0].time}분
+                            ul.home__banner__info 
+                                li.home__banner__serving #{recipe[0].serving}인분
+                                li.home__banner__time #{recipe[0].time}분
         if  loggedIn
             div.home__ing
                 if user.ingredients.length === 0
@@ -30,7 +31,7 @@ block content
                             ul.home__ing__list 
                                 each ingredient in periodLifeIngredients
                                     +ingredient(ingredient)
-                            span.home__ing__all 모두보기 &rarr;
+                            a(href=`/user/${loggedInUser._id}/ingredients`).home__ing__all 모두보기 &rarr;
             div.home__ing    
                 if purchaseIngredients.length === 0
                     span 아직 구입 목록에 추가된 재료들이 없습니다.
@@ -41,5 +42,14 @@ block content
                         ul.home__ing__list 
                             each ingredient in purchaseIngredients
                                     +ingredient(ingredient)
-                        span.home__ing__all  모두보기 &rarr;
-        
+                        a(href=`/user/${loggedInUser._id}/recipes`).home__ing__all  모두보기 &rarr;
+        else
+            div.home__unlogin
+                div.home__unlogin__container 
+                    h3 로그인 하시고 냉장고를 채워보세요.
+                    h5 냉장고 재료와 레시피를 한눈에!
+                    ul.home__unlogin__list
+                        li
+                            a(href="/login") 로그인
+                        li 
+                            a(href="/join") 회원가입

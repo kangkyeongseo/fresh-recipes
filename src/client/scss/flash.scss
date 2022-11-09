@@ -1,0 +1,34 @@
+.message {
+  @include button;
+  z-index: 2000;
+  position: fixed;
+  top: -50px;
+  left: 0;
+  right: 0;
+  max-width: 380px;
+  margin: 0 auto;
+  color: #ffffff;
+  animation: message 5s ease-in-out;
+}
+
+@keyframes message {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(70px);
+  }
+  90% {
+    opacity: 1;
+    transform: translateY(70px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(70px);
+  }
+}
+
+.message__error {
+  background-color: $red;
+}

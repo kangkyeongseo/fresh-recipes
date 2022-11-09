@@ -1,11 +1,44 @@
 mixin ingredient(ingredient)
-    a(href=`/ingredient/${ingredient._id}`).ingredient
-        div.ingredient__name
-            span=ingredient.name 
-        div.ingredient__info
-            span=ingredient.amount
-            span=ingredient.amountType
-        div.ingredient__period
-            span 남은기간
-            span #{Math.round((new Date(ingredient.periodLife) - new Date())/1000/3600/24)}일
+    if ingredient.store === "냉장"
+        a(href=`/ingredient/${ingredient._id}`).ingredient.ingredient--cold
+            div.ingredient__info
+                span.ingredient__name=ingredient.name 
+                div.ingredient__amount
+                    span=ingredient.amount
+                    span=ingredient.amountType
+            div.ingredient__period
+                span 남은기간
+                span #{Math.round((new Date(ingredient.periodLife) - new Date())/1000/3600/24)}일
+            div.ingredient__store
+                span 냉장
+                div.ingredient__store__icon
+                    i.fas.fa-thermometer-half
+    if ingredient.store === "냉동"
+        a(href=`/ingredient/${ingredient._id}`).ingredient.ingredient--frozen
+            div.ingredient__info
+                span.ingredient__name=ingredient.name 
+                div.ingredient__amount
+                    span=ingredient.amount
+                    span=ingredient.amountType
+            div.ingredient__period
+                span 남은기간
+                span #{Math.round((new Date(ingredient.periodLife) - new Date())/1000/3600/24)}일
+            div.ingredient__store
+                span 냉동
+                div.ingredient__store__icon
+                    i.fas.fa-thermometer-empty
+    if ingredient.store === "상온"
+        a(href=`/ingredient/${ingredient._id}`).ingredient.ingredient--room
+            div.ingredient__info
+                span.ingredient__name=ingredient.name 
+                div.ingredient__amount
+                    span=ingredient.amount
+                    span=ingredient.amountType
+            div.ingredient__period
+                span 남은기간
+                span #{Math.round((new Date(ingredient.periodLife) - new Date())/1000/3600/24)}일
+            div.ingredient__store
+                span 상온
+                div.ingredient__store__icon
+                    i.fas.fa-thermometer-three-quarters
         

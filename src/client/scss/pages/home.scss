@@ -1,54 +1,77 @@
 .home__banner {
-  cursor: pointer;
   display: block;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-  .home__banner__image {
-    max-width: 980px;
-    height: 400px;
-    background-position: center;
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-    .home__banner__contents {
-      color: #ffffff;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  &:hover {
+    .home__banner__container {
+      .home__banner__hover {
+        visibility: inherit;
+      }
+    }
+  }
+  .home__banner__container {
+    position: relative;
+    .home__banner__hover {
+      position: absolute;
+      visibility: hidden;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+    .home__banner__image {
+      max-width: 980px;
+      height: 400px;
+      background-position: center;
+      background-size: cover;
       display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      justify-content: center;
       align-items: center;
-      height: 35%;
-      font-weight: lighter;
-      .home__banner__recommend {
-        font-size: 28px;
-      }
-      .home__banner__name {
-        font-size: 36px;
-        font-weight: bold;
-      }
-      .home__banner__description {
-        font-size: 22px;
-      }
-      .home__banner__info {
-        margin-top: 10px;
-        font-weight: normal;
-        .home__banner__serving {
-          @include button;
-          margin-right: 10px;
+      .home__banner__contents {
+        z-index: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        color: #ffffff;
+        height: 35%;
+        font-weight: lighter;
+        .home__banner__recommend {
+          font-size: 28px;
         }
-        .home__banner__time {
-          @include button;
-          background-color: rgba(256, 256, 256, 0.7);
-          color: #000000;
+        .home__banner__name {
+          font-size: 36px;
+          font-weight: bold;
+        }
+        .home__banner__description {
+          font-size: 22px;
+        }
+        .home__banner__info {
+          display: flex;
+          margin-top: 10px;
+          font-weight: normal;
+          .home__banner__serving {
+            @include button;
+            margin-right: 10px;
+            background-color: $orange;
+          }
+          .home__banner__time {
+            @include button;
+            color: $black;
+            background-color: rgba(256, 256, 256, 0.7);
+          }
         }
       }
     }
   }
 }
 
-.home__ing {
+.home__ing,
+.home__unlogin {
   @include box;
-  .home__ing__container {
+  margin-top: 35px;
+  .home__ing__container,
+  .home__unlogin__container {
     display: flex;
     flex-direction: column;
     h3 {
@@ -64,6 +87,7 @@
     }
     .home__ing__list {
       display: flex;
+      flex-wrap: wrap;
       gap: 10px;
       margin-bottom: 20px;
     }
@@ -71,6 +95,29 @@
       align-self: flex-end;
       font-size: 15px;
       font-weight: lighter;
+    }
+  }
+  .home__unlogin__container {
+    display: flex;
+    align-items: center;
+    margin: 30px;
+    .home__unlogin__list {
+      display: flex;
+      li {
+        @include button;
+        padding: 0;
+        color: #ffffff;
+        background-color: $orange;
+        &:nth-child(2) {
+          background-color: $transparent-black;
+          margin-left: 20px;
+        }
+        a {
+          display: block;
+          width: 150px;
+          padding: 5px 15px;
+        }
+      }
     }
   }
 }
