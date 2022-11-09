@@ -1,0 +1,11 @@
+@mixin formButton {
+  display: block;
+  text-align: center;
+  padding: 20px 20px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  margin-bottom: 10px;
+  font-size: 18px;
+  box-shadow: $light-shadow;
+  cursor: pointer;
+}

@@ -1,33 +1,38 @@
 .login {
-  .page__title {
-    text-align: center;
-    margin-bottom: 50px;
-  }
-  .login__btn {
-    display: block;
-    text-align: center;
-    padding: 20px 20px;
-    color: #ffffff;
-    font-weight: bold;
-    background-color: $orange;
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    border-radius: 15px;
-    margin-bottom: 5px;
-    font-size: 18px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 5px;
-    cursor: pointer;
-  }
-  .login__list {
+  padding-top: 50px;
+  .login__header {
+    @include box;
     max-width: 400px;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    .github__login {
-      background-color: rgba(0, 0, 0, 0.8);
+    padding: 35px 0px 55px 0px;
+    color: #ffffff;
+    background-color: $orange;
+    .page__title {
     }
-    .join__btn {
-      color: #000;
-      background-color: rgba(0, 0, 0, 0.05);
+  }
+  .login__container {
+    @include box;
+    max-width: 400px;
+    margin: 0 auto;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    transform: translateY(-30px);
+    .login__btn {
+      @include formButton;
+      background-color: $transparent-black;
+      color: #ffffff;
+    }
+    .login__list {
+      display: flex;
+      flex-direction: column;
+      .github__login {
+        background-color: $orange;
+      }
+      .join__btn {
+        color: #000;
+        background-color: rgba(0, 0, 0, 0.05);
+        margin-bottom: 0px;
+      }
     }
   }
 }

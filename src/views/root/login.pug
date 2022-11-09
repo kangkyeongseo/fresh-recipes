@@ -2,18 +2,18 @@ extends ../base
 
 block content
     div.login 
-        h3.page__title 로그인
-        if messages.success 
-            span=messages.success
         if messages.error 
-            span=messages.error
-        form(method="post").form
-            input(type="text" placeholder="이메일" name="email") 
-            input(type="password" placeholder="비밀번호" name="password")
-            input(type="submit" value="로그인").login__btn
-        ul.login__list
-            li
-                a.login__btn.github__login Github으로 로그인
-            li
-                a.login__btn.join__btn(href="/join") 회원가입 하러가기
+            span.message.message__error=messages.error
+        div.login__header
+            h3.page__title 로그인
+        div.login__container
+            form(method="post").form
+                input(type="text" placeholder="이메일" name="email") 
+                input(type="password" placeholder="비밀번호" name="password")
+                input(type="submit" value="로그인").login__btn
+            ul.login__list
+                li
+                    a.login__btn.github__login Github으로 로그인
+                li
+                    a.login__btn.join__btn(href="/join") 회원가입 하러가기
             
