@@ -2,21 +2,11 @@
   padding-top: 50px;
   .login__header {
     @include box;
-    max-width: 400px;
-    margin: 0 auto;
-    padding: 35px 0px 55px 0px;
-    color: #ffffff;
-    background-color: $orange;
-    .page__title {
-    }
+    @include titleHeader;
   }
   .login__container {
     @include box;
-    max-width: 400px;
-    margin: 0 auto;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    transform: translateY(-30px);
+    @include titleBox;
     .login__btn {
       @include formButton;
       background-color: $transparent-black;

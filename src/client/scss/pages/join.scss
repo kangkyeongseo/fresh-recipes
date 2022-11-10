@@ -1,12 +1,16 @@
 .join {
-  .page__title {
-    text-align: center;
-    margin-bottom: 50px;
+  padding-top: 50px;
+  .join__header {
+    @include box;
+    @include titleHeader;
   }
-  .join__btn {
-    color: #ffffff;
-    font-weight: bold;
-    background-color: $orange;
-    cursor: pointer;
+  .join__container {
+    @include box;
+    @include titleBox;
+    input[type="submit"] {
+      color: #ffffff;
+      background-color: $transparent-black;
+      cursor: pointer;
+    }
   }
 }
