@@ -8,13 +8,13 @@ block content
         else 
             h3.page__title #{user.name}의 냉장고
         ul.user__ingredient__nav
-            li.select
+            li.ingredient__list--store.select
                 span 보관중인 재료 
-            li 
+            li.ingredient__list--period
                 span 유통기한 임박 재료
-            li 
+            li.ingredient__list--purchase
                 span 구입 목록 재료                                
-        div.user__ingredient__container
+        div.user__ingredient__container.user__ingredient__container--store
             div.user__ingredient__box
                 h5 냉장
                 ul.user__ingredient__list
@@ -30,16 +30,19 @@ block content
                 ul.user__ingredient__list
                     each ingredient in roomStore
                         +ingredient(ingredient)
-        div.user__ingredient__container.hidden
+        div.user__ingredient__container.hidden.user__ingredient__container--period
             div.user__ingredient__box
+                h5 유통기한 임박 재료
                 ul.user__ingredient__list
                     each ingredient in periodIng 
                         +ingredient(ingredient)
-        div.user__ingredient__container.hidden
+        div.user__ingredient__container.hidden.user__ingredient__container--purchase
             div.user__ingredient__box
+                h5 구입 목록 재료
                 ul.user__ingredient__list
                     each ingredient in purchaseIng 
                         +ingredient(ingredient)
     a(href="/ingredient/add").add__btn
         i(class="fas fa-plus")
+    script(src="/assets/js/ingredientList.js")
         

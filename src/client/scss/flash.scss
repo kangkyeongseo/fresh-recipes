@@ -29,6 +29,10 @@
   }
 }
 
+.message__success {
+  background-color: $green;
+}
+
 .message__error {
   background-color: $red;
 }

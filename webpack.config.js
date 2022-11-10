@@ -10,6 +10,7 @@ module.exports = {
     ingredient: BASE_URL + "ingredient.js",
     comment: BASE_URL + "comment.js",
     like: BASE_URL + "like.js",
+    ingredientList: BASE_URL + "ingredient-list.js",
   },
   plugins: [
     new MiniCssExtractPlugin({

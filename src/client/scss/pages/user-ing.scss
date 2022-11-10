@@ -1,40 +1,42 @@
 .user__ingredient {
   position: relative;
   will-change: contents;
-}
-
-.user__ingredient__nav {
-  display: flex;
-  margin-top: 30px;
-  li {
-    margin-right: 10px;
-    @include button;
-    font-size: 15px;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px 20px;
-    border-radius: 20px;
-    cursor: pointer;
-    &:hover {
+  .user__ingredient__nav {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    li {
+      @include button;
+      margin-right: 10px;
+      font-size: 15px;
+      &:hover {
+        color: #ffffff;
+        background-color: rgba(0, 0, 0, 0.5);
+      }
+    }
+    .select {
+      color: #ffffff;
       background-color: rgba(0, 0, 0, 0.7);
+      &:hover {
+        color: #ffffff;
+        background-color: rgba(0, 0, 0, 0.7);
+      }
     }
   }
-  .select {
-    background-color: rgba(0, 0, 0, 0.7);
-  }
-}
-
-.user__ingredient__container {
-  .user__ingredient__box {
-    @include box;
-    min-height: 200px;
-    h5 {
-      font-size: 20px;
-      font-weight: bold;
-    }
-    .user__ingredient__list {
-      display: flex;
-      gap: 10px;
-      margin-top: 20px;
+  .user__ingredient__container {
+    .user__ingredient__box {
+      @include box;
+      margin-top: 35px;
+      min-height: 200px;
+      h5 {
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .user__ingredient__list {
+        display: flex;
+        gap: 10px;
+        margin-top: 20px;
+      }
     }
   }
 }
