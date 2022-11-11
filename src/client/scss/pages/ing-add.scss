@@ -1,67 +1,77 @@
-.ingredient__add-edit {
-  .page__title {
-    text-align: center;
-    margin-bottom: 30px;
+.ingredient__layout {
+  padding-top: 50px;
+  .ingredient__layout__header {
+    @include box;
+    @include titleHeader;
   }
-  .form {
-    .ingredient__add-edit__radio__container {
-      margin-top: 10px;
+  .ingredient__layout__container {
+    @include box;
+    @include titleBox;
+  }
+  .ingredient__layout__radio__container {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    height: 40px;
+    margin-top: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    .ingredient__layout__radio__title {
       display: flex;
+      justify-content: center;
       align-items: center;
-      .ingredient__add-edit__radio__title {
-        width: 20%;
-        height: 35px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 20px;
-        letter-spacing: 3px;
+      border-radius: 10px 0px 0px 10px;
+      color: #ffffff;
+      background-color: $transparent-black;
+    }
+    .ingredient__layout__radio__list {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 5px;
+      padding: 0px 10px;
+      align-items: center;
+      label {
+        display: block;
+
+        padding: 5px;
+        text-align: center;
+        background-color: rgba(0, 0, 0, 0.05);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+      }
+      input[type="radio"] {
+        display: none;
+      }
+      input[type="radio"]:checked + label {
         color: #ffffff;
-        border-radius: 15px;
         background-color: $orange;
       }
-      .ingredient__add-edit__radio__list {
-        width: 80%;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        margin-left: 10px;
-        label {
-          font-size: 18px;
-        }
+      input[type="number"] {
+        padding-left: 10px;
       }
-      .ingredient__add-edit__radio__list--amount {
-        grid-template-columns: 1.5fr 1fr 1fr 1fr;
-        align-items: center;
-        .amount__input {
-          width: 100%;
-          padding: 5px 10px;
-          font-size: 14px;
-        }
-        label {
-          font-size: 14px;
-        }
+      input[type="number"],
+      input[type="date"] {
+        width: 100%;
+        font-size: 14px;
+        padding: 5px;
+        margin: 0;
+        border-radius: 5px;
       }
     }
-    .ingredient__add-edit__radio__container--date {
-      align-items: flex-start;
-      .ingredient__add-edit__radio__title {
-        font-size: 16px;
-        letter-spacing: 0px;
-      }
-      .ingredient__add-edit__radio__list {
-        display: flex;
-        flex-direction: column;
-        input {
-          padding: 5px 10px;
-          font-size: 14px;
-        }
+    .ingredient__layout__radio__list--amount {
+      grid-template-columns: 2fr 1.5fr 1.5fr 1.5fr;
+      label {
+        font-size: 11px;
       }
     }
-    .ingredient__add-edit__btn {
-      margin-top: 15px;
-      color: #ffffff;
-      font-size: 20px;
-      background-color: rgba(0, 0, 0, 0.8);
+  }
+  .ingredient__layout__radio__container--date {
+    .ingredient__layout__radio__list {
+      grid-template-columns: 1fr;
     }
+  }
+  .ingredient__layout__btn {
+    margin-top: 10px;
+    color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.8);
   }
 }

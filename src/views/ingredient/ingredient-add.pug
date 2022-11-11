@@ -1,54 +1,56 @@
 extends ../base 
 
 block content 
-    div.ingredient__add-edit
-        h3.page__title 재료 보관하기
-        form(method="post").form
-            input(type="text" placeholder="재료명" name="name" required)
-            div.ingredient__add-edit__radio__container
-                h5.ingredient__add-edit__radio__title 품목
-                div.ingredient__add-edit__radio__list
-                    div   
-                        input(type="radio" id="mainType" name="type" value="주재료" required)
-                        label(for="mainType") 주재료 
-                    div
-                        input(type="radio" id="subType" name="type" value="부재료" required)
-                        label(for="subType") 부재료 
-                    div
-                        input(type="radio" id="condimentType" name="type" value="조미료" required)
-                        label(for="condimentType") 조미료 
-            div.ingredient__add-edit__radio__container
-                h5.ingredient__add-edit__radio__title 보관
-                div.ingredient__add-edit__radio__list
-                    div
-                        input(type="radio" id="coldStore" name="store" value="냉장" required)
-                        label(for="coldStore") 냉장 
-                    div
-                        input(type="radio" id="frozenStore" name="store" value="냉동" required)
-                        label(for="frozemStore") 냉동 
-                    div
-                        input(type="radio" id="roomStore" name="store" value="상온" required)
-                        label(for="roomStore") 상온
-            div.ingredient__add-edit__radio__container
-                h5.ingredient__add-edit__radio__title 용량
-                div.ingredient__add-edit__radio__list.ingredient__add-edit__radio__list--amount
-                    div
-                        input(type="number" placeholder="용량" name="amount" required).amount__input
-                    div
-                        input(type="radio" id="gramAmount" name="amountType" value="g" required)
-                        label(for="gramAmount") 그램(g) 
-                    div
-                        input(type="radio" id="mlAmount" name="amountType" value="ml" required)
-                        label(for="mlAmount") 밀리(ml) 
-                    div
-                        input(type="radio" id="countAmount" name="amountType" value="개" required)
-                        label(for="countAmount") 개수
-            div.ingredient__add-edit__radio__container.ingredient__add-edit__radio__container--date
-                h5.ingredient__add-edit__radio__title  구입날짜
-                div.ingredient__add-edit__radio__list
-                        input(type="date" id="purchase" name="purchaseDate" required)
-            div.ingredient__add-edit__radio__container.ingredient__add-edit__radio__container--date
-                h5.ingredient__add-edit__radio__title 유통기한
-                div.ingredient__add-edit__radio__list   
-                        input(type="date" id="periodLife" name="periodLife" required)
-            input(type="submit" value="보관하기").ingredient__add-edit__btn
+    div.ingredient__layout
+        div.ingredient__layout__header
+            h3.page__title 재료 보관하기
+        div.ingredient__layout__container
+            form(method="post").form
+                input(type="text" placeholder="재료명" name="name" required)
+                div.ingredient__layout__radio__container
+                    h5.ingredient__layout__radio__title 품목
+                    div.ingredient__layout__radio__list
+                        div   
+                            input(type="radio" id="mainType" name="type" value="주재료" required)
+                            label(for="mainType") 주재료 
+                        div
+                            input(type="radio" id="subType" name="type" value="부재료" required)
+                            label(for="subType") 부재료 
+                        div
+                            input(type="radio" id="condimentType" name="type" value="조미료" required)
+                            label(for="condimentType") 조미료 
+                div.ingredient__layout__radio__container
+                    h5.ingredient__layout__radio__title 보관
+                    div.ingredient__layout__radio__list
+                        div
+                            input(type="radio" id="coldStore" name="store" value="냉장" required)
+                            label(for="coldStore") 냉장 
+                        div
+                            input(type="radio" id="frozenStore" name="store" value="냉동" required)
+                            label(for="frozenStore") 냉동 
+                        div
+                            input(type="radio" id="roomStore" name="store" value="상온" required)
+                            label(for="roomStore") 상온
+                div.ingredient__layout__radio__container
+                    h5.ingredient__layout__radio__title 용량
+                    div.ingredient__layout__radio__list.ingredient__layout__radio__list--amount
+                        div
+                            input(type="number" placeholder="용량" name="amount" required).amount__input
+                        div
+                            input(type="radio" id="gramAmount" name="amountType" value="g" required)
+                            label(for="gramAmount") 그램(g) 
+                        div
+                            input(type="radio" id="mlAmount" name="amountType" value="ml" required)
+                            label(for="mlAmount") 밀리(ml) 
+                        div
+                            input(type="radio" id="countAmount" name="amountType" value="개" required)
+                            label(for="countAmount") 개수
+                div.ingredient__layout__radio__container.ingredient__layout__radio__container--date
+                    h5.ingredient__layout__radio__title  구입날짜
+                    div.ingredient__layout__radio__list
+                            input(type="date" id="purchase" name="purchaseDate" required)
+                div.ingredient__layout__radio__container.ingredient__layout__radio__container--date
+                    h5.ingredient__layout__radio__title 유통기한
+                    div.ingredient__layout__radio__list   
+                            input(type="date" id="periodLife" name="periodLife" required)
+                input(type="submit" value="보관하기").ingredient__layout__btn
