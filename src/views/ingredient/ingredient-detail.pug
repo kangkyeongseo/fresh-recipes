@@ -2,45 +2,45 @@ extends ../base
 
 block content 
     div(data-id=ingredient._id).ingredient__detail
-        div.ingredient__detail__left
-            div.ingredient__detail__title
-                div.ingredient__detail__title__store
-                    if ingredient.store === "냉장" 
-                        span 냉장 보관 중
-                    else if ingredient.store === "냉동" 
-                        span 냉동 보관 중
-                    else if ingredient.store === "상온" 
-                        span 상온 보관 중
-                h3.ingredient__detail__title__name=ingredient.name
-            div.ingredient__detail__amount
-                div.ingredient__detail__amount__content
-                    span.ingredient__detail__amount__current=ingredient.amount
-                    if ingredient.amountType === "g" 
-                        span g 보관중
-                    else if ingredient.amountType === "ml" 
-                        span ml 보관중
-                    else if ingredient.amountType === "개" 
-                        span 개 보관중
+        div.ingredient__detail__title__store
+            if ingredient.store === "냉장" 
+                span.ingredient__detail__title__store__cold 냉장 보관 중
+            else if ingredient.store === "냉동" 
+                span.ingredient__detail__title__store__frozen 냉동 보관 중
+            else if ingredient.store === "상온" 
+                span.ingredient__detail__title__store__room 상온 보관 중
+        div.ingredient__detail__container
+            div.ingredient__detail__left    
+                h3.ingredient__detail__title=ingredient.name
+                div.ingredient__detail__amount
+                    div.ingredient__detail__amount__content
+                        span.ingredient__detail__amount__current=ingredient.amount
+                        if ingredient.amountType === "g" 
+                            span g 보관중
+                        else if ingredient.amountType === "ml" 
+                            span ml 보관중
+                        else if ingredient.amountType === "개" 
+                            span 개 보관중
+                    if ingredient.owner._id.toString() === loggedInUser._id
+                        form.ingredient__detail__amount__form
+                            div.ingredient__detail__amount__form__spend
+                                input(type="number" name="spend" required value=0).spend__input
+                                input(type="submit" value="소비").spend__btn
+                            div.ingredient__detail__amount__form__add
+                                input(type="checkbox" id="purchase" name="purchase" value="true" checked=(ingredient.purchase === true ? true : false)).purchase__check
+                                label(for="purchase") 구입 항목 추가
+            div.ingredient__detail__right
+                div.ingredient__detail__date
+                    div.ingredient__detail__date__content
+                        h5 구입 날짜
+                        span #{ingredient.purchaseDate.slice(0,4)}년 #{ingredient.purchaseDate.slice(5,7)}월 #{ingredient.purchaseDate.slice(8,10)}일
+                    div.ingredient__detail__date__content
+                        h5 유통 기한
+                        span #{ingredient.periodLife.slice(0,4)}년 #{ingredient.periodLife.slice(5,7)}월 #{ingredient.periodLife.slice(8,10)}일
+                    div.ingredient__detail__date__content
+                        h5 남은 기간
+                        span #{period}일
                 if ingredient.owner._id.toString() === loggedInUser._id
-                    form.ingredient__detail__amount__form
-                        div.ingredient__detail__amount__form__spend
-                            input(type="number" name="spend" required value=0).spend__input
-                            input(type="submit" value="소비").spend__btn
-                        div.ingredient__detail__amount__form__add
-                            input(type="checkbox" id="purchase" name="purchase" value="true" checked=(ingredient.purchase === true ? true : false)).purchase__check
-                            label(for="purchase") 구매 목록 추가
-        div.ingredient__detail__right
-            div.ingredient__detail__date
-                div.ingredient__detail__date__content
-                    h5 구입 날짜
-                    span #{ingredient.purchaseDate.slice(0,4)}년 #{ingredient.purchaseDate.slice(5,7)}월 #{ingredient.purchaseDate.slice(8,10)}일
-                div.ingredient__detail__date__content
-                    h5 유통 기한
-                    span #{ingredient.periodLife.slice(0,4)}년 #{ingredient.periodLife.slice(5,7)}월 #{ingredient.periodLife.slice(8,10)}일
-                div.ingredient__detail__date__content
-                    h5 남은 기간
-                    span #{period}일
-            if ingredient.owner._id.toString() === loggedInUser._id
-                a(href=`/ingredient/${ingredient._id}/edit`).ingredient__detail__edit 수정하기
+                    a(href=`/ingredient/${ingredient._id}/edit`).ingredient__detail__edit 수정하기
     script(src="/assets/js/ingredient.js")
 
