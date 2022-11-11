@@ -1,56 +1,58 @@
 extends ../base 
 
 block content 
-    div.ingredient__add-edit
-        h3.page__title 재료 수정하기
-        form(method="post").form
-            input(type="text" placeholder="재료" name="name" value=ingredient.name)
-            div.ingredient__add-edit__radio__container
-                h5.ingredient__add-edit__radio__title 품목   
-                div.ingredient__add-edit__radio__list
-                    div
-                        input(type="radio" id="mainType" name="type" value="주재료" checked=(ingredient.type === "주재료" ? true : false))
-                        label(for="mainType") 주재료 
-                    div
-                        input(type="radio" id="subType" name="type" value="부재료" checked=(ingredient.type === "부재료" ? true : false))
-                        label(for="subType") 부재료 
-                    div
-                        input(type="radio" id="condimentType" name="type" value="조미료" checked=(ingredient.type === "조미료" ? true : false))
-                        label(for="condimentType") 조미료 
-            div.ingredient__add-edit__radio__container
-                h5.ingredient__add-edit__radio__title 보관
-                div.ingredient__add-edit__radio__list
-                    div
-                        input(type="radio" id="coldStore" name="store" value="냉장" checked=(ingredient.store === "냉장" ? true : false))
-                        label(for="coldStore") 냉장 
-                    div
-                        input(type="radio" id="frozemStore" name="store" value="냉동" checked=(ingredient.store === "냉동" ? true : false))
-                        label(for="frozemStore") 냉동 
-                    div
-                        input(type="radio" id="roomStore" name="store" value="상온" checked=(ingredient.store === "상온" ? true : false))
-                        label(for="roomStore") 상온
-            div.ingredient__add-edit__radio__container
-                h5.ingredient__add-edit__radio__title 용량
-                div.ingredient__add-edit__radio__list.ingredient__add-edit__radio__list--amount
-                    div 
-                        input(type="text" placeholder="용량" name="amount" value=ingredient.amount).amount__input
-                    div
-                        input(type="radio" id="gramAmount" name="amountType" value="g" checked=(ingredient.amountType === "g" ? true : false))
-                        label(for="gramAmount") 그램(g) 
-                    div
-                        input(type="radio" id="mlAmount" name="amountType" value="ml" checked=(ingredient.amountType === "ml" ? true : false))
-                        label(for="mlAmount") 밀리(ml) 
-                    div
-                        input(type="radio" id="countAmount" name="amountType" value="개" checked=(ingredient.amountType === "개" ? true : false))
-                        label(for="countAmount") 개수
-            div.ingredient__add-edit__radio__container.ingredient__add-edit__radio__container--date 
-                h5.ingredient__add-edit__radio__title 구입 날짜 
-                div.ingredient__add-edit__radio__list
-                    input(type="date" id="purchase" name="purchaseDate" value=ingredient.purchaseDate)
-            div.ingredient__add-edit__radio__container.ingredient__add-edit__radio__container--date
-                h5.ingredient__add-edit__radio__title 유통기한
-                div.ingredient__add-edit__radio__list
-                    input(type="date" id="periodLife" name="periodLife" value=ingredient.periodLife)
-            input(type="submit" value="수정하기").ingredient__add-edit__btn
-        a(href=`/ingredient/${ingredient._id}/delete`).ingredient__edit__delete 삭제하기
+    div.ingredient__layout
+        div.ingredient__layout__header
+            h3.page__title 재료 수정하기
+        div.ingredient__layout__container
+            form(method="post").form
+                input(type="text" placeholder="재료" name="name" value=ingredient.name)
+                div.ingredient__layout__radio__container
+                    h5.ingredient__layout__radio__title 품목   
+                    div.ingredient__layout__radio__list
+                        div
+                            input(type="radio" id="mainType" name="type" value="주재료" checked=(ingredient.type === "주재료" ? true : false))
+                            label(for="mainType") 주재료 
+                        div
+                            input(type="radio" id="subType" name="type" value="부재료" checked=(ingredient.type === "부재료" ? true : false))
+                            label(for="subType") 부재료 
+                        div
+                            input(type="radio" id="condimentType" name="type" value="조미료" checked=(ingredient.type === "조미료" ? true : false))
+                            label(for="condimentType") 조미료 
+                div.ingredient__layout__radio__container
+                    h5.ingredient__layout__radio__title 보관
+                    div.ingredient__layout__radio__list
+                        div
+                            input(type="radio" id="coldStore" name="store" value="냉장" checked=(ingredient.store === "냉장" ? true : false))
+                            label(for="coldStore") 냉장 
+                        div
+                            input(type="radio" id="frozemStore" name="store" value="냉동" checked=(ingredient.store === "냉동" ? true : false))
+                            label(for="frozemStore") 냉동 
+                        div
+                            input(type="radio" id="roomStore" name="store" value="상온" checked=(ingredient.store === "상온" ? true : false))
+                            label(for="roomStore") 상온
+                div.ingredient__layout__radio__container
+                    h5.ingredient__layout__radio__title 용량
+                    div.ingredient__layout__radio__list.ingredient__layout__radio__list--amount
+                        div 
+                            input(type="number" placeholder="용량" name="amount" value=ingredient.amount).amount__input
+                        div
+                            input(type="radio" id="gramAmount" name="amountType" value="g" checked=(ingredient.amountType === "g" ? true : false))
+                            label(for="gramAmount") 그램(g) 
+                        div
+                            input(type="radio" id="mlAmount" name="amountType" value="ml" checked=(ingredient.amountType === "ml" ? true : false))
+                            label(for="mlAmount") 밀리(ml) 
+                        div
+                            input(type="radio" id="countAmount" name="amountType" value="개" checked=(ingredient.amountType === "개" ? true : false))
+                            label(for="countAmount") 개수
+                div.ingredient__layout__radio__container.ingredient__layout__radio__container--date 
+                    h5.ingredient__layout__radio__title 구입 날짜 
+                    div.ingredient__layout__radio__list
+                        input(type="date" id="purchase" name="purchaseDate" value=ingredient.purchaseDate)
+                div.ingredient__layout__radio__container.ingredient__layout__radio__container--date
+                    h5.ingredient__layout__radio__title 유통기한
+                    div.ingredient__layout__radio__list
+                        input(type="date" id="periodLife" name="periodLife" value=ingredient.periodLife)
+                input(type="submit" value="수정하기").ingredient__layout__btn
+            a(href=`/ingredient/${ingredient._id}/delete`).ingredient__edit__delete 삭제하기
     
