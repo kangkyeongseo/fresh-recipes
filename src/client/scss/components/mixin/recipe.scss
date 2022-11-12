@@ -1,26 +1,22 @@
 .recipe {
   @include box;
-  font-size: 15px;
-  transition: all 1s ease-in-out;
-  &:hover {
-    transform: scale(1.01);
-  }
+  font-size: 14px;
   .recipe__container {
     display: flex;
-    padding: 20px;
+    padding: 10px;
     .recipe__image {
       max-width: 150px;
       aspect-ratio: 1/1;
       object-fit: cover;
-      border-radius: 20px;
+      border-radius: 10px;
     }
     .recipe__content {
       margin-left: 20px;
-      margin-top: 20px;
+      margin-top: 25px;
       .recipe__name {
         font-size: 22px;
         font-weight: bold;
-        margin-bottom: 5px;
+        margin-bottom: 10px;
       }
       .recipe__description {
         font-weight: lighter;
@@ -28,27 +24,25 @@
       }
       .recipe__info {
         display: flex;
-        align-items: flex-end;
+        align-items: center;
+        gap: 10px;
         .recipe__heart {
           letter-spacing: 5px;
           padding-right: 10px;
-          margin-right: 10px;
           border-right: 1px solid;
           i {
-            color: rgb(255, 56, 56);
+            color: $red;
           }
         }
         .recipe__serving {
           padding-right: 10px;
-          margin-right: 10px;
           border-right: 1px solid;
           span {
-            background-color: $orange;
-            padding: 3px 10px;
-            border-radius: 10px;
-            letter-spacing: 2px;
+            @include button;
+            font-size: 15px;
             font-weight: bold;
             color: #fff;
+            background-color: $orange;
           }
         }
         .recipe__time {

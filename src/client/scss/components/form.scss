@@ -29,11 +29,10 @@
   }
   input {
     width: 30%;
-    max-width: 980px;
     padding: 15px 30px;
     border: none;
     border-radius: 30px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    box-shadow: $shadow;
     transition: all 0.3s ease-in-out;
     &:focus {
       width: 100%;
@@ -48,7 +47,6 @@
     font-size: 22px;
     top: 7px;
     right: 37%;
-    color: rgba(0, 0, 0, 0.7);
     transition: all 0.3s ease-in-out;
   }
 }
