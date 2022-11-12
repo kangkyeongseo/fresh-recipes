@@ -27,16 +27,23 @@ const addComment = (content, id, avatar, name) => {
   li.dataset.id = id;
   li.className = "comment";
   let avatarContainer;
+  let avatarContent;
   if (avatar !== undefined) {
-    avatarContainer = document.createElement("img");
-    avatarContainer.className = "comment__avatar";
-    avatarContainer.src = "/" + avatar;
+    avatarContainer = document.createElement("a");
+    avatarContent = document.createElement("img");
+    avatarContainer.className = "comment__anchor";
+    avatarContent.className = "comment__avatar";
+    avatarContent.src = "/" + avatar;
+    avatarContainer.appendChild(avatarContent);
   } else {
-    avatarContainer = document.createElement("div");
-    avatarContainer.className = "comment__no-avatar";
+    avatarContainer = document.createElement("a");
+    avatarContent = document.createElement("div");
+    avatarContainer.className = "comment__anchor";
+    avatarContent.className = "comment__no-avatar";
     const avatarIcon = document.createElement("i");
     avatarIcon.className = "fas fa-user";
-    avatarContainer.appendChild(avatarIcon);
+    avatarContent.appendChild(avatarIcon);
+    avatarContainer.appendChild(avatarContent);
   }
 
   const contentWrapper = document.createElement("div");
@@ -85,9 +92,10 @@ const handleDeleteBtn = async (event) => {
 };
 
 const editComment = async (event) => {
-  const li = event.target.parentNode;
+  const li = event.target.parentElement.parentElement;
   const { id } = li.dataset;
   const contentElement = li.querySelector(".comment__content");
+  const btn = li.children[2].children[1];
   const input = li.querySelector(".comment__edit__input");
   const response = await fetch(`/api/comment/${id}/edit`, {
     method: "POST",
@@ -100,14 +108,14 @@ const editComment = async (event) => {
     input.remove();
     contentElement.innerText = input.value;
   }
+  btn.addEventListener("click", handleEditBtn);
+  btn.removeEventListener("click", editComment);
 };
 
 const handleEditBtn = (event) => {
   const li = event.target.parentElement.parentElement;
-  const content =
-    event.target.parentElement.parentElement.children[2].children[2]
-      .textContent;
-  const btn = event.target.parentElement.parentElement.children[4];
+  const content = li.children[1].children[1].textContent;
+  const btn = li.children[2].children[1];
   const input = document.createElement("input");
   input.className = "comment__edit__input";
   input.value = content;

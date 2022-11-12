@@ -1,10 +1,11 @@
 mixin comment(comment)
     li(data-id=comment._id).comment
-        if comment.owner.avatar !== undefined
-            img(src="/" +comment.owner.avatar).comment__avatar
-        else 
-            div.comment__no-avatar
-                i.fas.fa-user
+        a(href=`/user/${comment.owner._id}`).comment__anchor
+            if comment.owner.avatar !== undefined
+                img(src="/" +comment.owner.avatar).comment__avatar
+            else 
+                div.comment__no-avatar
+                    i.fas.fa-user
         div.comment__text
             span=comment.owner.name
             span.comment__content=comment.content
