@@ -3,6 +3,8 @@ include ../mixins/comment
 
 block content 
     div(data-id=recipe.id).recipe__detail
+        if messages.error 
+            span.message.message__error=messages.error
         div.recipe__detail__container
             if recipe.thumb !== ""
                 img(src="/"+recipe.thumb).recipe__detail__image

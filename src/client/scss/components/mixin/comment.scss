@@ -48,11 +48,14 @@
   }
   .comment__edit__input {
     position: absolute;
-    top: 14px;
-    left: 42px;
-    font-size: 15px;
-    padding: 0px 5px;
+    top: 13px;
+    left: 38px;
+    font-size: 16px;
+    padding: 2px 5px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 20px;
+    &:focus {
+      outline: none;
+    }
   }
 }

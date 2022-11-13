@@ -84,7 +84,6 @@ export const recipeCommentEdit = async (req, res) => {
     params: { id },
     body: { content },
   } = req;
-
   try {
     const comment = await Comment.findById(id);
     comment.content = content;

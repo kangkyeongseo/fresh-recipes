@@ -9,6 +9,10 @@ const editBtn = document.querySelectorAll(".comment__edit");
 const handleCommentForm = async (event) => {
   event.preventDefault();
   const content = commentInput.value;
+  if (content === "") {
+    commentInput.placeholder = "댓글을 입력하셔야 합니다.";
+    return;
+  }
   const { id } = recipe.dataset;
   const response = await fetch(`/api/recipe/${id}/comment/add`, {
     method: "POST",
@@ -53,6 +57,7 @@ const addComment = (content, id, avatar, name) => {
   nickname.innerText = name;
 
   const span = document.createElement("span");
+  span.className = "comment__content";
   span.innerText = content;
 
   contentWrapper.appendChild(nickname);
@@ -69,6 +74,7 @@ const addComment = (content, id, avatar, name) => {
   const addEdit = document.createElement("button");
   addEdit.innerText = "Edit";
   addEdit.className = "comment__edit";
+  addEdit.addEventListener("click", handleEditBtn);
 
   btnWrapper.appendChild(addDelete);
   btnWrapper.appendChild(addEdit);
@@ -97,6 +103,11 @@ const editComment = async (event) => {
   const contentElement = li.querySelector(".comment__content");
   const btn = li.children[2].children[1];
   const input = li.querySelector(".comment__edit__input");
+  if (input.value === "") {
+    input.blur();
+    input.placeholder = "댓글을 입력하셔야 합니다.";
+    return;
+  }
   const response = await fetch(`/api/comment/${id}/edit`, {
     method: "POST",
     body: JSON.stringify({ content: input.value }),
@@ -122,6 +133,7 @@ const handleEditBtn = (event) => {
   li.appendChild(input);
   btn.removeEventListener("click", handleEditBtn);
   btn.addEventListener("click", editComment);
+  input.focus();
 };
 
 commentForm.addEventListener("submit", handleCommentForm);
