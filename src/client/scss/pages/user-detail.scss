@@ -1,13 +1,32 @@
 .user__detail {
-  .user__detail__box {
+  padding-top: 50px;
+  .user__detail__header {
     @include box;
+    @include titleHeader;
+  }
+  .user__detail__container {
+    @include box;
+    @include titleBox;
     display: flex;
     align-items: center;
     .user__detail__avatar--image {
-      width: 150px;
-      height: 150px;
+      width: 100px;
+      aspect-ratio: 1/1;
       object-fit: cover;
       border-radius: 50%;
+    }
+    .user__detail__avatar {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100px;
+      aspect-ratio: 1/1;
+      background-color: $transparent-black;
+      border-radius: 50%;
+      i {
+        font-size: 32px;
+        color: #ffffff;
+      }
     }
     .user__detail__info {
       display: flex;
@@ -15,39 +34,29 @@
       margin-left: 20px;
       font-weight: lighter;
       .user__detail__name {
-        font-size: 24px;
+        font-size: 28px;
         font-weight: bold;
         margin-bottom: 5px;
       }
       .user__detail__edit {
         margin-bottom: 3px;
       }
-      .user__detail__logout {
-      }
     }
   }
   .user__detail__list__container {
     @include box;
-    padding-bottom: 35px;
-    .user__detail__list__title {
-      font-size: 20px;
-      font-weight: bold;
-      margin-bottom: 15px;
-    }
+    @include titleBox;
+    max-width: 400px;
+    margin: 0 auto;
     .user__detail__list {
       display: flex;
       justify-content: space-around;
       gap: 20px;
-      border-top: 1px solid rgba(0, 0, 0, 0.1);
-      padding-top: 30px;
       li {
-        background-color: $orange;
-        color: #ffffff;
-        width: 100%;
-        max-width: 150px;
+        background-color: rgba(0, 0, 0, 0.1);
+        width: 100px;
         aspect-ratio: 1/1;
         border-radius: 50%;
-        box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
         a {
           position: relative;
           width: 100%;
@@ -56,9 +65,9 @@
           justify-content: center;
           align-items: center;
           flex-direction: column;
-          font-size: 15px;
+          font-size: 14px;
           i {
-            font-size: 32px;
+            font-size: 30px;
             margin-bottom: 15px;
           }
           .user__detail__count {
@@ -68,10 +77,10 @@
             position: absolute;
             top: 0;
             right: 0;
-            font-size: 18px;
-            font-weight: bold;
-            background: #2e2e2e;
-            width: 30%;
+            width: 30px;
+            font-size: 15px;
+            color: #ffffff;
+            background: $transparent-black;
             aspect-ratio: 1/1;
             border-radius: 50%;
             box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
