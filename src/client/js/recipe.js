@@ -2,6 +2,10 @@ const ingContainer = document.querySelector(".ing__container");
 const ingBtn = document.querySelector(".ing__btn");
 const orderContainer = document.querySelector(".order__container");
 const orderBtn = document.querySelector(".order__btn");
+const ingDeleteBtn = document.querySelectorAll(".ing__box .delete__btn");
+const orderDeleteBtn = document.querySelectorAll(
+  ".recipe__order__box .delete__btn"
+);
 
 const handleDeleteBtn = (event) => {
   const parentElement = event.target.parentElement;
@@ -126,3 +130,13 @@ const handleOrderBtn = () => {
 
 ingBtn.addEventListener("click", handleIngBtn);
 orderBtn.addEventListener("click", handleOrderBtn);
+
+if (ingDeleteBtn) {
+  ingDeleteBtn.forEach((btn) => btn.addEventListener("click", handleDeleteBtn));
+}
+
+if (orderDeleteBtn) {
+  orderDeleteBtn.forEach((btn) =>
+    btn.addEventListener("click", handleDeleteBtn)
+  );
+}
