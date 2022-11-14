@@ -1,22 +1,23 @@
 extends ../base 
 
 block content 
-    div.recipe__add
-        h3.page__title 레시피 추가하기
-        div.recipe__add__container
+    div.recipe__layout
+        div.recipe__layout__header
+            h3.page__title 레시피 추가하기
+        div.recipe__layout__container
             form(method="post" enctype="multipart/form-data").form
                 input(type="text" placeholder="요리명" name="name" required)
                 div.recipe__thumb
-                    h5.recipe__add__subtitle 요리 이미지
+                    h5.recipe__layout__subtitle 요리 이미지
                     div.recipe__thumb__label
                         label(for="thumb") 
                             i.fas.fa-image
                         input(type="file" name="thumb" accept="image/*" id="thumb").hidden
                 div.recipe__description
-                    h5.recipe__add__subtitle 레시피 설명
+                    h5.recipe__layout__subtitle 레시피 설명
                     textarea(name="description", cols="30", rows="2") 
                 div.recipe__info
-                    h5.recipe__add__subtitle 레시피 정보
+                    h5.recipe__layout__subtitle 레시피 정보
                     div.recipe__info__wrap
                         div.recipe__info__content.recipe__info__serving
                             input(type="number" placeholder="인원" name="serving" required)             
@@ -25,28 +26,33 @@ block content
                             input(type="number" placeholder="소요시간" name="time" required)             
                             span 분
                 div.recipe__ing
-                    h5.recipe__add__subtitle 필요 재료
+                    h5.recipe__layout__subtitle 필요 재료
                     div.ing__container
                         div.ing__box
                             input(type="text" placeholder="재료명" name="ingredient" required)
                             input(type="number" placeholder="필요량" name="ingredientAmount" required)
-                            input(type="radio" id="gramAmount" name="amountType1" value="g" required)
-                            label(for="gramAmount") 그램(g) 
-                            input(type="radio" id="mlAmount" name="amountType1" value="ml" required)
-                            label(for="mlAmount") 밀리(ml) 
-                            input(type="radio" id="countAmount" name="amountType1" value="개" required)
-                            label(for="countAmount") 개수
-                            input(type="radio" id="tableAmount" name="amountType1" value="Ts" required)
-                            label(for="tableAmount") Ts
-                            input(type="radio" id="teaAmount" name="amountType1" value="ts" required)
-                            label(for="teaAmount") ts
-                    button(type="button").ing__btn.recipe__add__subtitle 재료추가하기               
+                            div.ing__box__content
+                                input(type="radio" id="gramAmount" name="amountType1" value="g" required)
+                                label(for="gramAmount") 그램(g) 
+                            div.ing__box__content
+                                input(type="radio" id="mlAmount" name="amountType1" value="ml" required)
+                                label(for="mlAmount") 밀리(ml) 
+                            div.ing__box__content
+                                input(type="radio" id="countAmount" name="amountType1" value="개" required)
+                                label(for="countAmount") 개수
+                            div.ing__box__content
+                                input(type="radio" id="tableAmount" name="amountType1" value="Ts" required)
+                                label(for="tableAmount") Ts
+                            div.ing__box__content
+                                input(type="radio" id="teaAmount" name="amountType1" value="ts" required)
+                                label(for="teaAmount") ts
+                    button(type="button").add__content__btn.recipe__layout__subtitle.ing__btn 재료추가하기               
                 div.recipe__order
                     div.order__container
-                        h5.recipe__add__subtitle 조리 순서
+                        h5.recipe__layout__subtitle 조리 순서
                         div.recipe__order__box
                             h5 1번
                             textarea(name="order", cols="30", rows="2") 
-                    button(type="button").order__btn.recipe__add__subtitle 순서추가하기 
+                    button(type="button").add__content__btn.recipe__layout__subtitle.order__btn 순서추가하기 
                 input(type="submit" value="요리완성").recipe__add__btn
     script(src="/assets/js/recipe.js")
