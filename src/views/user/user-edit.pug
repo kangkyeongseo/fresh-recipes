@@ -4,13 +4,14 @@ block content
     div.user__edit 
         if messages.success
             span=messages.success
-        h3.page__title 회원정보 변경
+        div.user__edit__header
+            h3.page__title 회원정보 변경
         div.user__edit__container
             div.user__edit__avatar
                 if user.avatar !== undefined
                     img(src="/"+user.avatar).user__edit__avatar__image
                 else 
-                    div.user__edit__avatar__no-image
+                    div.user__edit__avatar__no--image
                         i.fas.fa-user
             form(method="post" enctype="multipart/form-data").form
                 div.user__edit__avatar__label
@@ -18,5 +19,5 @@ block content
                     input(type="file" name="avatar" id="avatar" accept="image/*").hidden
                 input(type="text" placeholder="이름" name="name" value=user.name) 
                 input(type="submit" value="수정하기").user__edit__btn 
-                a(href=`/user/${loggedInUser._id}/password`).user__edit__password  비밀번호 변경
+                a(href=`/user/${loggedInUser._id}/password`).user__edit__btn.user__edit__btn--change--password 비밀번호 변경
 

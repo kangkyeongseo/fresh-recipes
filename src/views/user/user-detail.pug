@@ -8,22 +8,17 @@ block content
             else 
                 h3.page__title #{user.name}의 정보 
         div.user__detail__container
-            if user.avatar !== undefined
-                img(src="/"+user.avatar).user__detail__avatar--image
-            else 
-                div.user__detail__avatar
-                    i.fas.fa-user
-            div.user__detail__info
-                h5.user__detail__name #{user.name}
-                if loggedInUser._id === user._id.toString()
-                    a(href=`/user/${loggedInUser._id}/edit`).user__detail__edit 프로필 수정
-                    a(href="/logout").user__detail__logout 로그아웃
-        div.user__detail__header
-            if loggedInUser._id === user._id.toString()
-                h3.page__title 나의 냉장고
-            else 
-                h3.page__title #{user.name}의 냉장고
-        div.user__detail__list__container
+            div.user__detail__container__head
+                if user.avatar !== undefined
+                    img(src="/"+user.avatar).user__detail__avatar--image
+                else 
+                    div.user__detail__avatar
+                        i.fas.fa-user
+                div.user__detail__info
+                    h5.user__detail__name #{user.name}
+                    if loggedInUser._id === user._id.toString()
+                        a(href=`/user/${loggedInUser._id}/edit`).user__detail__edit 프로필 수정
+                        a(href="/logout").user__detail__logout 로그아웃
             ul.user__detail__list 
                 li.user__detail__ing
                     a(href=`/user/${user._id}/ingredients`) 
