@@ -11,6 +11,7 @@ module.exports = {
     comment: BASE_URL + "comment.js",
     like: BASE_URL + "like.js",
     ingredientList: BASE_URL + "ingredient-list.js",
+    user: BASE_URL + "user.js",
   },
   plugins: [
     new MiniCssExtractPlugin({

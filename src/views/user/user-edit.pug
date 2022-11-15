@@ -13,11 +13,11 @@ block content
                 else 
                     div.user__edit__avatar__no--image
                         i.fas.fa-user
-            form(method="post" enctype="multipart/form-data").form
+            form(method="post" enctype="multipart/form-data").user__file.form
                 div.user__edit__avatar__label
                     label(for="avatar") 프로필 변경하기
                     input(type="file" name="avatar" id="avatar" accept="image/*").hidden
                 input(type="text" placeholder="이름" name="name" value=user.name) 
                 input(type="submit" value="수정하기").user__edit__btn 
                 a(href=`/user/${loggedInUser._id}/password`).user__edit__btn.user__edit__btn--change--password 비밀번호 변경
-
+    script(src="/assets/js/user.js")
