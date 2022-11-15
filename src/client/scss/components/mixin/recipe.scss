@@ -4,8 +4,20 @@
   .recipe__container {
     display: flex;
     padding: 10px;
+    .recipe__no-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 150px;
+      aspect-ratio: 1/1;
+      border-radius: 10px;
+      i {
+        font-size: 72px;
+        color: $orange;
+      }
+    }
     .recipe__image {
-      max-width: 150px;
+      width: 150px;
       aspect-ratio: 1/1;
       object-fit: cover;
       border-radius: 10px;

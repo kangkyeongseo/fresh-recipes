@@ -6,6 +6,10 @@ const ingDeleteBtn = document.querySelectorAll(".ing__box .delete__btn");
 const orderDeleteBtn = document.querySelectorAll(
   ".recipe__order__box .delete__btn"
 );
+const fileInput = document.querySelector(".recipe__file");
+const thumbLabel = document.querySelector(".recipe__thumb__label label");
+const thumbImage = thumbLabel.querySelector("img");
+const thumbIcon = thumbLabel.querySelector("i");
 
 const handleDeleteBtn = (event) => {
   const parentElement = event.target.parentElement;
@@ -140,3 +144,18 @@ if (orderDeleteBtn) {
     btn.addEventListener("click", handleDeleteBtn)
   );
 }
+
+const handelFileInput = (event) => {
+  const file = event.target.files[0];
+  const fileUrl = URL.createObjectURL(file);
+  if (thumbImage) {
+    thumbImage.src = fileUrl;
+  } else {
+    thumbIcon.remove();
+    const createThumbImage = document.createElement("img");
+    createThumbImage.src = fileUrl;
+    thumbLabel.appendChild(createThumbImage);
+  }
+};
+
+fileInput.addEventListener("change", handelFileInput);

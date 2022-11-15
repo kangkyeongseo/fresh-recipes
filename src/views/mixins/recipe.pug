@@ -1,7 +1,11 @@
 mixin recipe(recipe)
     li.recipe
         a(href=`/recipe/${recipe._id}`).recipe__container
-            img(src="/"+recipe.thumb).recipe__image
+            if recipe.thumb === ""
+                div.recipe__no-image
+                    i.fas.fa-hamburger
+            else
+                img(src="/"+recipe.thumb).recipe__image
             div.recipe__content
                 h3.recipe__name=recipe.name 
                 p.recipe__description=recipe.description

@@ -11,7 +11,7 @@ block content
             if recipes.length === 0 
                 span 레시피가 존재하지 않습니다.
             else
-                ul.square__list
+                ul.square__container  
                     each recipe in recipes
                         +recipe(recipe)
    

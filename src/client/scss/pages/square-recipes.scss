@@ -1,5 +1,10 @@
 .square {
   .square__container {
     margin-top: 30px;
+    .square__container {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
   }
 }

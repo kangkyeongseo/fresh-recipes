@@ -24,6 +24,17 @@
         color: $orange;
         font-size: 42px;
         border: 1px dashed $orange;
+        label {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          cursor: pointer;
+          img {
+            width: 70%;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+          }
+        }
       }
     }
     .recipe__description {
