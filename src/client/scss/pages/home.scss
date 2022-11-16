@@ -65,7 +65,14 @@
     }
   }
 }
-
+.home__recommed--recipe {
+  margin-top: 35px;
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
 .home__ing,
 .home__unlogin {
   @include box;

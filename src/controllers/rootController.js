@@ -17,6 +17,15 @@ export const getHome = async (req, res) => {
     try {
       // Get Logged User
       const user = await User.findById(_id).populate("ingredients");
+      // Get RecommedRecipe
+      const ingredients = user.ingredients.map((ing) => ing.name);
+      let recommendRecipes = [];
+      for (const ingrediet of ingredients) {
+        const recipes = await Recipe.find({
+          ingredients: { $elemMatch: { ingredientName: ingrediet } },
+        });
+        recipes.forEach((recipe) => recommendRecipes.push(recipe));
+      }
       // Get Ingredients near expirt date
       const periodLifeIngredients = user.ingredients.filter((ingredient) => {
         const periodLife = new Date(ingredient.periodLife);
@@ -30,6 +39,7 @@ export const getHome = async (req, res) => {
       );
       return res.status(200).render("root/home", {
         recipe,
+        recommendRecipes,
         user,
         periodLifeIngredients,
         purchaseIngredients,
