@@ -20,12 +20,13 @@ export const getHome = async (req, res) => {
       // Get RecommedRecipe
       const ingredients = user.ingredients.map((ing) => ing.name);
       let recommendRecipes = [];
-      for (const ingrediet of ingredients) {
+      for (const ingredient of ingredients) {
         const recipes = await Recipe.find({
-          ingredients: { $elemMatch: { ingredientName: ingrediet } },
+          ingredients: { $elemMatch: { ingredientName: ingredient } },
         });
         recipes.forEach((recipe) => recommendRecipes.push(recipe));
       }
+      recommendRecipes.splice(4);
       // Get Ingredients near expirt date
       const periodLifeIngredients = user.ingredients.filter((ingredient) => {
         const periodLife = new Date(ingredient.periodLife);
