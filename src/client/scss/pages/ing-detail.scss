@@ -139,4 +139,41 @@
       }
     }
   }
+  .ingredient__detail__popup {
+    @include box;
+    width: 450px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 30px;
+    margin-top: 20px;
+    .ingredient__detail__popup__text {
+      margin-bottom: 20px;
+    }
+    .ingredient__detail__popup__btn__container {
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+      .ingredient__detail__popup__btn {
+        @include button;
+        width: 120px;
+        border: none;
+        font-size: 14px;
+        color: #ffffff;
+      }
+      .ingredient__detail__popup__btn--add {
+        background-color: $orange;
+        &:hover {
+          background-color: $dark-orange;
+        }
+      }
+      .ingredient__detail__popup__btn--delete {
+        background-color: $red;
+        &:hover {
+          background-color: #dd5341;
+        }
+      }
+    }
+  }
 }

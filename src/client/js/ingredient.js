@@ -85,18 +85,31 @@ const handleSpendBtn = async (evnet) => {
     });
   } else if (caculateAmount <= 0) {
     const popupBox = document.createElement("div");
+    popupBox.className = "ingredient__detail__popup";
     const popupText = document.createElement("span");
+    popupText.className = "ingredient__detail__popup__text";
     popupText.innerText = "재료를 모든 소진하였습니다. 구매 목록에 추가할까요?";
+    const btnContainer = document.createElement("div");
+    btnContainer.className = "ingredient__detail__popup__btn__container";
     const popupYes = document.createElement("button");
+    popupYes.classList.add(
+      "ingredient__detail__popup__btn",
+      "ingredient__detail__popup__btn--add"
+    );
     popupYes.innerText = "추가하기";
     popupYes.addEventListener("click", handelPopupYes);
     const popupNo = document.createElement("button");
+    popupNo.classList.add(
+      "ingredient__detail__popup__btn",
+      "ingredient__detail__popup__btn--delete"
+    );
     popupNo.innerText = "추가하지 않기";
     popupNo.addEventListener("click", handelPopupNo);
     popupBox.appendChild(popupText);
-    popupBox.appendChild(popupYes);
-    popupBox.appendChild(popupNo);
-    ingredient.prepend(popupBox);
+    btnContainer.appendChild(popupYes);
+    btnContainer.appendChild(popupNo);
+    popupBox.appendChild(btnContainer);
+    ingredient.append(popupBox);
   }
 };
 
