@@ -8,6 +8,7 @@ export const purchaseAdd = async (req, res) => {
   const ingredient = await Ingredient.findById(id);
   ingredient.purchase = true;
   await ingredient.save();
+  res.sendStatus(200);
 };
 
 export const purchaseRemove = async (req, res) => {
@@ -15,6 +16,7 @@ export const purchaseRemove = async (req, res) => {
   const ingredient = await Ingredient.findById(id);
   ingredient.purchase = false;
   await ingredient.save();
+  res.sendStatus(200);
 };
 
 export const ingredientSpend = async (req, res) => {

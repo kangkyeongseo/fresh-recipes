@@ -12,13 +12,25 @@ const handleCheck = async (evnet) => {
   const checked = evnet.target.checked;
   const { id } = ingredient.dataset;
   if (checked) {
-    await fetch(`/api/purchase/${id}/add`, {
+    const response = await fetch(`/api/purchase/${id}/add`, {
       method: "POST",
     });
+    if (response.status === 200) {
+      const message = document.createElement("span");
+      message.classList.add("message", "message__success");
+      message.innerText = "구입항목에 추가되었습니다.";
+      ingredient.appendChild(message);
+    }
   } else {
-    await fetch(`/api/purchase/${id}/remove`, {
+    const response = await fetch(`/api/purchase/${id}/remove`, {
       method: "POST",
     });
+    if (response.status === 200) {
+      const message = document.createElement("span");
+      message.classList.add("message", "message__success");
+      message.innerText = "구입항목에서 삭제하였습니다.";
+      ingredient.appendChild(message);
+    }
   }
 };
 
