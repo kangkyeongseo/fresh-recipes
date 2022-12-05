@@ -8,6 +8,8 @@ import {
   getUserPasswordEdit,
   getUserRecipe,
   getUserRecipeSearch,
+  githubFinish,
+  githubLogin,
   postUserEdit,
   postUserPasswordEdit,
 } from "../controllers/userController";
@@ -34,5 +36,8 @@ userRouter.get("/:id/ingredients", getUserIng);
 userRouter.route("/:id/recipes").get(getUserRecipe);
 // User Likes Recipes
 userRouter.get("/:id/likes", getUserLike);
+
+userRouter.get("/github/login", githubLogin);
+userRouter.get("/github/finish", githubFinish);
 
 export default userRouter;

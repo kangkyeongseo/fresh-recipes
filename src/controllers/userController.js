@@ -1,6 +1,7 @@
 import User from "../model/User";
 import bcrypt from "bcrypt";
 import Recipe from "../model/Recipe";
+import fetch from "node-fetch";
 
 // Get User Detail
 export const getUserDetail = async (req, res) => {
@@ -216,5 +217,75 @@ export const getUserLike = async (req, res) => {
   } catch (error) {
     req.flash("error", "허용되지 않는 경로입니다.");
     return res.status(404).render("404");
+  }
+};
+// Githup Login
+export const githubLogin = (req, res) => {
+  const BASE_URL = "https://github.com/login/oauth/authorize";
+  const config = {
+    client_id: process.env.CLIENT_ID,
+    scope: "read:user user:email",
+    allow_signup: false,
+  };
+  const params = new URLSearchParams(config).toString();
+  const finalUrl = `${BASE_URL}?${params}`;
+  return res.redirect(finalUrl);
+};
+// Githup Login Request
+export const githubFinish = async (req, res) => {
+  const BASE_URL = "https://github.com/login/oauth/access_token";
+  const config = {
+    client_id: process.env.CLIENT_ID,
+    client_secret: process.env.CLIENT_SECRET,
+    code: req.query.code,
+  };
+  const params = new URLSearchParams(config).toString();
+  const finalUrl = `${BASE_URL}?${params}`;
+  const token = await (
+    await fetch(finalUrl, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+      },
+    })
+  ).json();
+  if ("access_token" in token) {
+    const { access_token } = token;
+    const BASE_URL = "https://api.github.com";
+    const userData = await (
+      await fetch(`${BASE_URL}/user`, {
+        headers: {
+          Authorization: `Bearer ${access_token} `,
+        },
+      })
+    ).json();
+    const emailData = await (
+      await fetch(`${BASE_URL}/user/emails`, {
+        headers: {
+          Authorization: `Bearer ${access_token} `,
+        },
+      })
+    ).json();
+    const emailObj = emailData.find(
+      (email) => email.primary === true && email.verified === true
+    );
+    if (!emailObj) {
+      return res.redirect("/login");
+    }
+    const existUser = await User.findOne({ emil: emailObj.email });
+    if (!existUser) {
+      const user = await User.create({
+        name: userData.name,
+        email: emailObj.email,
+      });
+      req.session.loggedIn = true;
+      req.session.user = user;
+    } else {
+      req.session.loggedIn = true;
+      req.session.user = existUser;
+    }
+    return res.redirect("/");
+  } else {
+    return res.redirect("/login");
   }
 };
