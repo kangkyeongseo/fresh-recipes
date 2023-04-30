@@ -1,4 +1,8 @@
 nav {
+  @media screen and (max-width: 767px) {
+    font-size: 12px;
+    margin-top: 60px;
+  }
   z-index: 1000;
   position: fixed;
   width: 100%;
@@ -7,6 +11,7 @@ nav {
   display: flex;
   align-items: center;
   margin-top: 80px;
+  font-size: 14px;
   background-color: #e8e8e8;
   box-shadow: rgba(0, 0, 0, 0.05) 0px 1px 2px 0px;
   ul {
@@ -16,7 +21,6 @@ nav {
     margin: 0 auto;
     padding: 0 20px;
     color: rgba(0, 0, 0, 0.6);
-    font-size: 14px;
     li {
       margin-right: 30px;
       &:hover {
