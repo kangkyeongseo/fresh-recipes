@@ -1,5 +1,10 @@
 .ingredient {
   @include box;
+  @media screen and (max-width: 767px) {
+    width: 100px;
+    height: 100px;
+    padding: 12px;
+  }
   position: relative;
   display: flex;
   flex-direction: column;
@@ -19,9 +24,16 @@
     }
   }
   .ingredient__info {
+    @media screen and (max-width: 767px) {
+      margin-bottom: 5px;
+      font-size: 12px;
+    }
     margin-bottom: 10px;
     font-size: 15px;
     .ingredient__name {
+      @media screen and (max-width: 767px) {
+        font-size: 15px;
+      }
       font-size: 18px;
       font-weight: bold;
     }
@@ -35,6 +47,9 @@
     }
   }
   .ingredient__store {
+    @media screen and (max-width: 767px) {
+      padding: 1px 2px 1px 8px;
+    }
     position: absolute;
     bottom: 10px;
     right: 10px;
@@ -47,6 +62,9 @@
     background-color: #ffffff;
     border-radius: 20px;
     .ingredient__store__icon {
+      @media screen and (max-width: 767px) {
+        width: 20px;
+      }
       display: flex;
       justify-content: center;
       align-items: center;

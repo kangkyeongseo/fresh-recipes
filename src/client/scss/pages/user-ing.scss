@@ -2,11 +2,17 @@
   position: relative;
   will-change: contents;
   .user__ingredient__nav {
+    @media screen and (max-width: 767px) {
+      margin-top: 15px;
+    }
     display: flex;
     justify-content: center;
     margin-top: 30px;
     li {
       @include button;
+      @media screen and (max-width: 767px) {
+        font-size: 12px;
+      }
       margin-right: 10px;
       font-size: 15px;
       &:hover {
@@ -26,9 +32,17 @@
   .user__ingredient__container {
     .user__ingredient__box {
       @include box;
+      @media screen and (max-width: 767px) {
+        margin-top: 20px;
+        padding: 20px;
+        min-height: 150px;
+      }
       margin-top: 35px;
       min-height: 200px;
       h5 {
+        @media screen and (max-width: 767px) {
+          font-size: 18px;
+        }
         font-size: 20px;
         font-weight: bold;
       }

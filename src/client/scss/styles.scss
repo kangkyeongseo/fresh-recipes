@@ -70,6 +70,9 @@ main {
 }
 
 .add__btn {
+  @media screen and (max-width: 767px) {
+    right: 10%;
+  }
   display: flex;
   width: 60px;
   height: 60px;
