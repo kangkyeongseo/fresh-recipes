@@ -59,6 +59,9 @@
         .recipe__info__content {
           font-size: 13px;
           input {
+            @media screen and (max-width: 767px) {
+              width: 100px;
+            }
             padding: 3px 5px;
             margin-right: 3px;
             font-size: 13px;
@@ -185,6 +188,9 @@
       background-color: rgba(0, 0, 0, 0.1);
     }
     .recipe__add__btn {
+      @media screen and (max-width: 767px) {
+        font-size: 15px;
+      }
       color: #ffffff;
       background-color: $transparent-black;
     }

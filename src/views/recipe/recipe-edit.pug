@@ -37,10 +37,10 @@ block content
                                 input(type="text" placeholder="필요량" name="ingredientAmount" value=ingredient.ingredientAmount)
                                 div.ing__box__content
                                     input(type="radio" id="gramAmount" name=`amountType${index+1}` value="g" checked=(ingredient.amountType === "g" ? true : false))
-                                    label(for="gramAmount") 그램(g) 
+                                    label(for="gramAmount") g 
                                 div.ing__box__content
                                     input(type="radio" id="mlAmount" name=`amountType${index+1}` value="ml" checked=(ingredient.amountType === "ml" ? true : false))
-                                    label(for="mlAmount") 밀리(ml) 
+                                    label(for="mlAmount") ml 
                                 div.ing__box__content
                                     input(type="radio" id="countAmount" name=`amountType${index+1}` value="개" checked=(ingredient.amountType === "개" ? true : false))
                                     label(for="countAmount") 개수
