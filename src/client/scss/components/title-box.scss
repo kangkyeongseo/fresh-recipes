@@ -1,4 +1,7 @@
 @mixin titleBox {
+  @media screen and (max-width: 767px) {
+    max-width: 300px;
+  }
   max-width: 400px;
   margin: 0 auto;
   border-top-left-radius: 20px;

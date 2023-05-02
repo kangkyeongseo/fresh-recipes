@@ -63,6 +63,9 @@ main {
 }
 
 .page__title {
+  @media screen and (max-width: 767px) {
+    font-size: 18px;
+  }
   text-align: center;
   font-size: 26px;
   font-weight: bold;
