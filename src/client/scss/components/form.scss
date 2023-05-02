@@ -28,6 +28,9 @@
     }
   }
   input {
+    @media screen and (max-width: 767px) {
+      width: 50%;
+    }
     width: 30%;
     padding: 15px 30px;
     border: none;

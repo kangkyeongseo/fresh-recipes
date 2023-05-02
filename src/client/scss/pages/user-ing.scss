@@ -11,7 +11,7 @@
     li {
       @include button;
       @media screen and (max-width: 767px) {
-        font-size: 12px;
+        font-size: 11px;
       }
       margin-right: 10px;
       font-size: 15px;

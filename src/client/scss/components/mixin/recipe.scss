@@ -1,10 +1,16 @@
 .recipe {
   @include box;
+  @media screen and (max-width: 767px) {
+    padding: 0px;
+  }
   font-size: 14px;
   .recipe__container {
     display: flex;
     padding: 10px;
     .recipe__no-image {
+      @media screen and (max-width: 767px) {
+        width: 100px;
+      }
       display: flex;
       justify-content: center;
       align-items: center;
@@ -17,28 +23,48 @@
       }
     }
     .recipe__image {
+      @media screen and (max-width: 767px) {
+        width: 100px;
+      }
       width: 150px;
       aspect-ratio: 1/1;
       object-fit: cover;
       border-radius: 10px;
     }
     .recipe__content {
+      @media screen and (max-width: 767px) {
+        font-size: 12px;
+        margin-top: 20px;
+      }
       margin-left: 20px;
       margin-top: 25px;
       .recipe__name {
+        @media screen and (max-width: 767px) {
+          font-size: 18px;
+          margin-bottom: 5px;
+        }
         font-size: 22px;
         font-weight: bold;
         margin-bottom: 10px;
       }
       .recipe__description {
+        @media screen and (max-width: 767px) {
+          margin-bottom: 10px;
+        }
         font-weight: lighter;
         margin-bottom: 15px;
       }
       .recipe__info {
+        @media screen and (max-width: 767px) {
+          gap: 5px;
+        }
         display: flex;
         align-items: center;
         gap: 10px;
         .recipe__heart {
+          @media screen and (max-width: 767px) {
+            padding-right: 5px;
+          }
           letter-spacing: 5px;
           padding-right: 10px;
           border-right: 1px solid;
@@ -47,10 +73,18 @@
           }
         }
         .recipe__serving {
+          @media screen and (max-width: 767px) {
+            padding-right: 5px;
+          }
           padding-right: 10px;
           border-right: 1px solid;
           span {
             @include button;
+            @media screen and (max-width: 767px) {
+              padding: 5px 5px;
+              font-size: 12px;
+              font-weight: 500;
+            }
             font-size: 15px;
             font-weight: bold;
             color: #fff;
