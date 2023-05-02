@@ -1,4 +1,7 @@
 .ingredient__layout {
+  @media screen and (max-width: 767px) {
+    padding-top: 20px;
+  }
   padding-top: 50px;
   .ingredient__layout__header {
     @include box;
@@ -9,9 +12,12 @@
     @include titleBox;
   }
   .ingredient__layout__radio__container {
+    @media screen and (max-width: 767px) {
+      font-size: 12px;
+      grid-template-columns: 60px 1fr;
+    }
     display: grid;
     grid-template-columns: 70px 1fr;
-    height: 40px;
     margin-top: 10px;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: 10px;
@@ -58,9 +64,6 @@
     }
     .ingredient__layout__radio__list--amount {
       grid-template-columns: 2fr 1.5fr 1.5fr 1.5fr;
-      label {
-        font-size: 11px;
-      }
     }
   }
   .ingredient__layout__radio__container--date {
@@ -69,6 +72,9 @@
     }
   }
   .ingredient__layout__btn {
+    @media screen and (max-width: 767px) {
+      font-size: 15px;
+    }
     margin-top: 10px;
     color: #ffffff;
     background-color: rgba(0, 0, 0, 0.8);

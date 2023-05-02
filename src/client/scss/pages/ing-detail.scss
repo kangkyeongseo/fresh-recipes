@@ -1,4 +1,7 @@
 .ingredient__detail {
+  @media screen and (max-width: 767px) {
+    padding-top: 50px;
+  }
   padding-top: 15vh;
   .ingredient__detail__title__store {
     text-align: center;
@@ -22,16 +25,27 @@
   }
   .ingredient__detail__container {
     @include box;
+    @media screen and (max-width: 767px) {
+      width: 300px;
+      padding: 15px;
+    }
     display: flex;
     align-items: center;
     width: 450px;
     margin: 0 auto;
     .ingredient__detail__left {
+      @media screen and (max-width: 767px) {
+        margin-right: 10px;
+        padding-right: 10px;
+      }
       width: 50%;
       margin-right: 30px;
       padding-right: 30px;
       border-right: 1px solid rgba(0, 0, 0, 0.3);
       .ingredient__detail__title {
+        @media screen and (max-width: 767px) {
+          font-size: 22px;
+        }
         text-align: center;
         font-size: 32px;
         font-weight: bold;
@@ -43,14 +57,27 @@
         flex-direction: column;
         align-items: center;
         .ingredient__detail__amount__content {
+          @media screen and (max-width: 767px) {
+            font-size: 16px;
+          }
           font-size: 24px;
           font-weight: lighter;
         }
         .ingredient__detail__amount__form {
+          @media screen and (max-width: 767px) {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+          }
           margin-top: 5px;
           .ingredient__detail__amount__form__spend {
             border-radius: 10px;
             .spend__input {
+              @media screen and (max-width: 767px) {
+                font-size: 12px;
+                width: 70px;
+                padding: 3px 5px;
+              }
               width: 90px;
               padding: 5px 10px;
               border: 1px solid rgba(0, 0, 0, 0.8);
@@ -60,6 +87,10 @@
               }
             }
             .spend__btn {
+              @media screen and (max-width: 767px) {
+                font-size: 12px;
+                padding: 3px 5px;
+              }
               padding: 5px 10px;
               color: #ffffff;
               background-color: rgba(0, 0, 0, 0.8);
@@ -74,6 +105,11 @@
             align-items: center;
             margin-top: 5px;
             input[type="checkbox"] {
+              @media screen and (max-width: 767px) {
+                width: 15px;
+                height: 15px;
+                margin-right: 3px;
+              }
               appearance: none;
               width: 20px;
               height: 20px;
@@ -86,6 +122,9 @@
               border: 7px solid $orange;
             }
             label {
+              @media screen and (max-width: 767px) {
+                font-size: 12px;
+              }
               font-size: 16px;
             }
           }
@@ -99,6 +138,9 @@
       margin-top: 15px;
       .ingredient__detail__date {
         .ingredient__detail__date__content {
+          @media screen and (max-width: 767px) {
+            font-size: 10px;
+          }
           margin-bottom: 10px;
           display: grid;
           grid-template-columns: 2.5fr 5fr;
@@ -115,6 +157,9 @@
             border-radius: 15px 0px 0px 15px;
           }
           span {
+            @media screen and (max-width: 767px) {
+              padding-left: 5px;
+            }
             display: flex;
             align-items: center;
             height: 25px;
