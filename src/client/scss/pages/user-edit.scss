@@ -13,11 +13,17 @@
       margin: 0 auto;
       margin-bottom: 20px;
       .user__edit__avatar__image {
+        @media screen and (max-width: 767px) {
+          width: 120px;
+        }
         width: 150px;
         aspect-ratio: 1/1;
         border-radius: 50%;
       }
       .user__edit__avatar__no--image {
+        @media screen and (max-width: 767px) {
+          width: 120px;
+        }
         display: flex;
         justify-content: center;
         align-items: center;
