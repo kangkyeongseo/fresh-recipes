@@ -1,7 +1,14 @@
 .square {
   .square__container {
     margin-top: 30px;
-    .square__container {
+    .square__container__empty {
+      height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+    }
+    .square__container__list {
       display: flex;
       flex-direction: column;
       gap: 20px;

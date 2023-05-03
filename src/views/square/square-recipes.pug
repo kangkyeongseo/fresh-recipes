@@ -9,9 +9,10 @@ block content
                 i.fas.fa-search    
         div.square__container  
             if recipes.length === 0 
-                span 레시피가 존재하지 않습니다.
+                div.square__container__empty
+                    span 레시피가 존재하지 않습니다.
             else
-                ul.square__container  
+                ul.square__container__list
                     each recipe in recipes
                         +recipe(recipe)
    

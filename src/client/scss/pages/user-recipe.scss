@@ -1,6 +1,13 @@
 .user__recipe {
   .user__recipe__container {
     margin-top: 30px;
+    .user__recipe__empty {
+      height: 300px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 24px;
+    }
     .user__recipe__list {
       display: flex;
       flex-direction: column;

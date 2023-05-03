@@ -1,6 +1,6 @@
-import express from "express";
 import "dotenv/config";
 import "./db";
+import express from "express";
 import ingredientsRouter from "./router/IngredientsRouter";
 import recipesRouter from "./router/recipesRouter";
 import rootRouter from "./router/rootRouter";
