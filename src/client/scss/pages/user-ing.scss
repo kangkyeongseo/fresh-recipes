@@ -48,7 +48,9 @@
       }
       .user__ingredient__list {
         display: flex;
+        flex-wrap: wrap;
         gap: 10px;
+        margin: 0 auto;
         margin-top: 20px;
       }
     }
