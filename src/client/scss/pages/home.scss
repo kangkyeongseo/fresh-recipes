@@ -68,18 +68,29 @@
     }
   }
 }
-.home__recommed--recipe {
-  @media screen and (max-width: 767px) {
-    margin-top: 20px;
+.home__recommed__recipe {
+  margin-top: 20px;
+  .home__recommed__recipe__title {
+    @media screen and (max-width: 767px) {
+      font-size: 16px;
+      margin: 0px 0px 15px 10px;
+    }
+    color: $black;
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0px 0px 15px 20px;
   }
-  margin-top: 35px;
   ul {
-    display: flex;
+    @media screen and (max-width: 960px) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 20px;
+    gap: 15px;
     li {
-      width: 470px;
+      @media screen and (max-width: 767px) {
+      }
     }
   }
 }

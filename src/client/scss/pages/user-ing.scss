@@ -47,6 +47,9 @@
         font-weight: bold;
       }
       .user__ingredient__list {
+        @media screen and (max-width: 767px) {
+          width: 300px;
+        }
         display: flex;
         flex-wrap: wrap;
         gap: 10px;

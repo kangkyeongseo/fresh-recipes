@@ -19,7 +19,9 @@ block content
                                 li.home__banner__serving #{recipe[0].serving}인분
                                 li.home__banner__time #{recipe[0].time}분
         if  loggedIn
-            div.home__recommed--recipe
+            div.home__recommed__recipe
+                if recommendRecipes.length !== 0
+                    h3.home__recommed__recipe__title 추천 레시피
                 ul
                     each recipe in recommendRecipes
                         +recipe(recipe)
@@ -37,7 +39,7 @@ block content
                                 each ingredient in periodLifeIngredients
                                     +ingredient(ingredient)
                             a(href=`/user/${loggedInUser._id}/ingredients`).home__ing__all 모두보기 &rarr;
-            div.home__ing    
+            div.home__ing       
                 if purchaseIngredients.length === 0
                     span 아직 구입 목록에 추가된 재료들이 없습니다.
                 else    
