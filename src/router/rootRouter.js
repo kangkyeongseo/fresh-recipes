@@ -1,5 +1,5 @@
 import express from "express";
-import { PublicOnlyMiddleware, UserOnlyMiddleware } from "../../middleware";
+import { PublicOnlyMiddleware, UserOnlyMiddleware } from "../middleware";
 import {
   getHome,
   getJoin,

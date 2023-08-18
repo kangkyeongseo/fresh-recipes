@@ -1,5 +1,5 @@
 import express from "express";
-import { UserOnlyMiddleware } from "../../middleware";
+import { UserOnlyMiddleware } from "../middleware";
 import {
   ingredientSpend,
   likeAdd,

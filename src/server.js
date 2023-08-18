@@ -5,7 +5,7 @@ import session from "express-session";
 import flash from "express-flash";
 import MongoStore from "connect-mongo";
 import morgan from "morgan";
-import { sessionMiddleware } from "../middleware";
+import { sessionMiddleware } from "./middleware";
 import ingredientsRouter from "./router/IngredientsRouter";
 import recipesRouter from "./router/recipesRouter";
 import rootRouter from "./router/rootRouter";

@@ -1,5 +1,5 @@
 import express from "express";
-import { avatarUpload, UserOnlyMiddleware } from "../../middleware";
+import { avatarUpload, UserOnlyMiddleware } from "../middleware";
 import {
   getUserDetail,
   getUserEdit,

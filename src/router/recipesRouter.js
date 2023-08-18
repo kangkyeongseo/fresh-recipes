@@ -1,5 +1,5 @@
 import express from "express";
-import { thumbUpload, UserOnlyMiddleware } from "../../middleware";
+import { thumbUpload, UserOnlyMiddleware } from "../middleware";
 import {
   getRecipeAdd,
   getRecipeDetail,
