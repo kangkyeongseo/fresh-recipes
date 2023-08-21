@@ -3,12 +3,12 @@ import bcrypt from "bcrypt";
 import Recipe from "../model/Recipe";
 import fetch from "node-fetch";
 
-// Get User Detail
+// getUserDetail Controller
 export const getUserDetail = async (req, res) => {
   const {
     params: { id },
   } = req;
-  // Get User Detail Page
+  // param의 id값을 이용하여 User 데이터를 불러옵니다
   try {
     const user = await User.findById(id);
     return res.status(200).render("user/user-detail", { user });
@@ -18,7 +18,7 @@ export const getUserDetail = async (req, res) => {
   }
 };
 
-// Get User Edit
+// getUserEdit Controller
 export const getUserEdit = async (req, res) => {
   const {
     params: { id },
@@ -28,12 +28,12 @@ export const getUserEdit = async (req, res) => {
       user: { _id },
     },
   } = req;
-  // User confrim
+  // Param의 User id와 session의 User _id를 비교합니다.
   if (id !== _id) {
     req.flash("error", "허용되지 않는 경로입니다.");
     return res.status(403).redirect("/");
   }
-  // Get User Edit Page
+  // param의 id값을 이용하여 User 데이터를 불러옵니다
   try {
     const user = await User.findById(id);
     return res.status(200).render("user/user-edit", { user });
@@ -43,16 +43,17 @@ export const getUserEdit = async (req, res) => {
   }
 };
 
-// Post User Edit
+// postUserEdit Controller
 export const postUserEdit = async (req, res) => {
   const {
     params: { id },
   } = req;
+  // Multer를 사용하여 req.file을 통해 이미지 데이터를 전달받습니다.
   const {
     body: { name },
     file,
   } = req;
-  // User Update
+  // User 데이터를 update합니다.
   try {
     const user = await User.findById(id);
     await User.findByIdAndUpdate(id, {
@@ -67,7 +68,7 @@ export const postUserEdit = async (req, res) => {
   return res.status(200).redirect(`/user/${id}`);
 };
 
-// Get Password Edit
+// getUserPasswordEdit Controller
 export const getUserPasswordEdit = (req, res) => {
   const {
     params: { id },
@@ -77,16 +78,15 @@ export const getUserPasswordEdit = (req, res) => {
       user: { _id },
     },
   } = req;
-  // User confrim
+  // Param의 User id와 session의 User _id를 비교합니다.
   if (id !== _id) {
     req.flash("error", "허용되지 않는 경로입니다.");
     return res.status(403).redirect("/");
   }
-  // Get Password Edit Page
   return res.status(200).render("user/user-password-change");
 };
 
-// Post Password Edit
+// postUserPasswordEdit Controller
 export const postUserPasswordEdit = async (req, res) => {
   const {
     params: { id },
@@ -94,19 +94,22 @@ export const postUserPasswordEdit = async (req, res) => {
   const {
     body: { oldPassword, newPassword, newPasswordConfirm },
   } = req;
-  // Find User
+  // param의 id값을 이용하여 User 데이터를 불러옵니다
   try {
     const user = await User.findById(id);
-    // Password Confrim
+    // User의 password와 body.oldPassword를 비교합니다.
     const passwordConfirm = await bcrypt.compare(oldPassword, user.password);
+    // passwordConfirmr가 일치하지 않을 경우
     if (!passwordConfirm) {
       req.flash("error", "현재 비밀번호가 일치하지 않습니다.");
       return res.status(403).redirect(`/user/${id}/password`);
     }
+    // body.newPassword와 body.newPasswordConfirm가 일치하지 않을 경우
     if (newPassword !== newPasswordConfirm) {
       req.flash("error", "비밀번호 확인이 일치하지 않습니다.");
       return res.status(403).redirect(`/user/${id}/password`);
     }
+    // User의 password 변경
     req.flash("success", "비밀번호 변경되었습니다.");
     return res.status(200).redirect(`/user/${id}/edit`);
   } catch (error) {
@@ -115,21 +118,21 @@ export const postUserPasswordEdit = async (req, res) => {
   }
 };
 
-// Get User Ingredients
+// getUserIng Controller
 export const getUserIng = async (req, res) => {
   const {
     params: { id },
   } = req;
-  // Public User Confirm
+  // 비로그인 유저를 확인합니다.
   if (id === "undefined") {
     req.flash("error", "로그인 후 사용이 가능합니다.");
     return res.status(403).redirect("/");
   }
-  // Get User Ingredients Page
+  // Param의 id를 이용하여 User 데이터를 불러옵니다.
   try {
-    // Get Ingredients Using Populate
+    // populate를 사용하여 Ingredient 데이터를 불러옵니다.
     const user = await User.findById(id).populate("ingredients");
-    // Seperate Ingredients
+    // Ingredient 데이터들을 store속성에 따라 구분합니다.
     const coldStore = user.ingredients.filter(
       (ingredient) => ingredient.store === "냉장"
     );
@@ -139,14 +142,14 @@ export const getUserIng = async (req, res) => {
     const roomStore = user.ingredients.filter(
       (ingredient) => ingredient.store === "상온"
     );
-    // Get Ingredients near expirt date
+    // Ingredient 데이터 중 유통기한이 3일 미만의 데이터만 반환합니다.
     const periodIng = user.ingredients.filter((ingredient) => {
       const periodLife = new Date(ingredient.periodLife);
       const today = new Date();
       const period = Math.round((periodLife - today) / 1000 / 3600 / 24);
       return period < 3;
     });
-    // Get Ingredients to Buy
+    // Ingredient 데이터 중 purchase 속성이 true이 값만 반환합니다.
     const purchaseIng = user.ingredients.filter(
       (ingredient) => ingredient.purchase
     );
@@ -164,20 +167,21 @@ export const getUserIng = async (req, res) => {
   }
 };
 
-// Get User Recipes
+// getUserRecipe Controller
 export const getUserRecipe = async (req, res) => {
   const {
     query: { keyword },
     params: { id },
   } = req;
-  // Public User Confirm
+  // 비로그인 유저를 확인합니다.
   if (id === "undefined") {
     req.flash("error", "로그인 후 사용이 가능합니다.");
     return res.status(403).redirect("/");
   }
-  // Get Recipes Using Populate
+  // query의 keyword가 없는 경우
   if (!keyword) {
     try {
+      // User의 Recipe 데이터를 불러옵니다.
       const user = await User.findById(id).populate({ path: "recipes" });
       return res
         .status(200)
@@ -187,9 +191,10 @@ export const getUserRecipe = async (req, res) => {
       return res.status(404).render("404");
     }
   }
-  // Get Search Recipes
+  // query의 keyword가 있는 경우
   else {
     try {
+      // keyword 이름을 가지고 param의 id와 owner의 id가 같은 Recipe 데이터를 불러옵니다.
       const recipes = await Recipe.find({ name: keyword, owner: id });
       return res.status(200).render("user/user-recipes", { id, recipes });
     } catch (error) {
@@ -198,13 +203,12 @@ export const getUserRecipe = async (req, res) => {
     }
   }
 };
-
-// Get User Likes Recipes
+// getUserLike Controller
 export const getUserLike = async (req, res) => {
   const {
     params: { id },
   } = req;
-  // Get User Likes Recipes
+  // User의 likes 속성의 id를 가진 Recipe 데이터를 배열로 만듭니다.
   try {
     const user = await User.findById(id);
     let recipes = [];
@@ -212,7 +216,6 @@ export const getUserLike = async (req, res) => {
       const recipe = await Recipe.findById(user.likes[i]);
       recipes.push(recipe);
     }
-    console.log(user.likes, recipes);
     return res.render("user/user-likes", { recipes });
   } catch (error) {
     req.flash("error", "허용되지 않는 경로입니다.");
