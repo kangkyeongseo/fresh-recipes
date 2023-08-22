@@ -3,29 +3,34 @@ import Ingredient from "../model/Ingredient";
 import Recipe from "../model/Recipe";
 import User from "../model/User";
 
+// purchaseAdd Controller
 export const purchaseAdd = async (req, res) => {
   const { id } = req.params;
+  // params의 id를 이용하여 Ingredient 데이터를 불러옵니다.
   const ingredient = await Ingredient.findById(id);
   ingredient.purchase = true;
   await ingredient.save();
   res.sendStatus(200);
 };
-
+// purchaseRemove Controller
 export const purchaseRemove = async (req, res) => {
   const { id } = req.params;
+  // params의 id를 이용하여 Ingredient 데이터를 불러옵니다.
   const ingredient = await Ingredient.findById(id);
   ingredient.purchase = false;
   await ingredient.save();
   res.sendStatus(200);
 };
-
+// ingredientSpend Controller
 export const ingredientSpend = async (req, res) => {
   const {
     params: { id },
     body: { caculateAmount, purchase },
   } = req;
+  // params의 id를 이용하여 Ingredient 데이터를 불러옵니다.
   const ingredient = await Ingredient.findById(id);
   ingredient.amount = caculateAmount;
+  // caculateAmount와 purchase의 상태에 따른 조건문입니다.
   if (caculateAmount === 0 && purchase) {
     ingredient.purchase = true;
     await ingredient.save();
@@ -37,7 +42,7 @@ export const ingredientSpend = async (req, res) => {
   }
   await ingredient.save();
 };
-
+// recipeCommentAdd Controller
 export const recipeCommentAdd = async (req, res) => {
   const {
     body: { content },
@@ -48,13 +53,16 @@ export const recipeCommentAdd = async (req, res) => {
   } = req;
   const user = await User.findById(_id);
   const recipe = await Recipe.findById(id);
+  // Comment 데이터를 생성합니다.
   const comment = await Comment.create({
     content,
     recipe,
     owner: user,
   });
+  // User의 comments 속성에 Comment의 _id를 추가합니다.
   user.comments.push(comment._id);
   await user.save();
+  // Receip의 comments 속성에 Comment의 _id를 추가합니다.
   recipe.comments.push(comment._id);
   await recipe.save();
   return res.status(200).json({
@@ -63,12 +71,12 @@ export const recipeCommentAdd = async (req, res) => {
     name: user.name,
   });
 };
-
+// recipeCommentDelete Controller
 export const recipeCommentDelete = async (req, res) => {
   const {
     params: { id },
   } = req;
-
+  // Recipe와 User 데이터의 comments 속성의 Comment id를 삭제하기위해 populate를 이용해서 Comment 데이터를 불러옵니다.
   const comment = await Comment.findById(id)
     .populate("recipe")
     .populate("owner");
@@ -80,12 +88,13 @@ export const recipeCommentDelete = async (req, res) => {
 
   res.sendStatus(200);
 };
-
+// recipeCommentEdit Controller
 export const recipeCommentEdit = async (req, res) => {
   const {
     params: { id },
     body: { content },
   } = req;
+  // params의 id를 이용하여 Commnet 데이터를 불러옵니다.
   try {
     const comment = await Comment.findById(id);
     comment.content = content;
