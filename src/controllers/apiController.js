@@ -104,7 +104,7 @@ export const recipeCommentEdit = async (req, res) => {
     res.sendStatus(400);
   }
 };
-
+// likeAdd Controller
 export const likeAdd = async (req, res) => {
   const {
     params: { id },
@@ -112,7 +112,7 @@ export const likeAdd = async (req, res) => {
       user: { _id },
     },
   } = req;
-
+  // Recipe와 User 데이터를 불러옵니다.
   try {
     const recipe = await Recipe.findById(id);
     const user = await User.findById(_id);
@@ -125,7 +125,7 @@ export const likeAdd = async (req, res) => {
     res.sendStatus(400);
   }
 };
-
+// likeDelete Controller
 export const likeDelete = async (req, res) => {
   const {
     params: { id },
@@ -133,7 +133,7 @@ export const likeDelete = async (req, res) => {
       user: { _id },
     },
   } = req;
-
+  // Recipe와 User 데이터를 불러옵니다.
   try {
     const recipe = await Recipe.findById(id);
     const user = await User.findById(_id);
