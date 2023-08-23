@@ -10,7 +10,7 @@ const periodContainer = document.querySelector(
 const purchaseContainer = document.querySelector(
   ".user__ingredient__container--purchase"
 );
-
+// StoreList를 표시합니다.
 const handleStoreList = () => {
   storeList.classList.add("select");
   periodList.classList.remove("select");
@@ -19,7 +19,7 @@ const handleStoreList = () => {
   periodContainer.classList.add("hidden");
   purchaseContainer.classList.add("hidden");
 };
-
+// PeriodList를 표시합니다.
 const handlePeriodList = () => {
   storeList.classList.remove("select");
   periodList.classList.add("select");
@@ -28,7 +28,7 @@ const handlePeriodList = () => {
   periodContainer.classList.remove("hidden");
   purchaseContainer.classList.add("hidden");
 };
-
+// PurchaseList를 표시합니다.
 const handlePurchaseList = () => {
   storeList.classList.remove("select");
   periodList.classList.remove("select");
