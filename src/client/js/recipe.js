@@ -10,12 +10,12 @@ const fileInput = document.querySelector(".recipe__file");
 const thumbLabel = document.querySelector(".recipe__thumb__label label");
 const thumbImage = thumbLabel.querySelector("img");
 const thumbIcon = thumbLabel.querySelector("i");
-
+// target을 제거하는 함수입니다.
 const handleDeleteBtn = (event) => {
   const parentElement = event.target.parentElement;
   parentElement.remove();
 };
-
+// 삭제 버튼을 반환합니다.
 const createDeleteBtn = () => {
   const btn = document.createElement("button");
   btn.innerText = "X";
@@ -23,7 +23,7 @@ const createDeleteBtn = () => {
   btn.addEventListener("click", handleDeleteBtn);
   return btn;
 };
-
+// radio type의 input을 반환합니다.
 const radioInput = (
   name,
   value,
@@ -37,14 +37,14 @@ const radioInput = (
   input.required = true;
   return input;
 };
-
+// parameter로 받은 정보로 label을 반환합니다.
 const radioLabel = (name, text, order = ingContainer.childElementCount + 1) => {
   const label = document.createElement("label");
   label.htmlFor = `${name}Amount${order}`;
   label.innerText = text;
   return label;
 };
-
+// parameter로 받은 정보로 text type의 input을 반환합니다.
 const textInput = (type, name, placeholder) => {
   const input = document.createElement("input");
   input.type = type;
@@ -53,7 +53,7 @@ const textInput = (type, name, placeholder) => {
   input.required = true;
   return input;
 };
-
+// Ingredient Container를 생성합니다.
 const addIngBox = () => {
   const ingBox = document.createElement("div");
   ingBox.className = "ing__box";
@@ -101,11 +101,11 @@ const addIngBox = () => {
   ingBox.appendChild(deleteBtn);
   ingContainer.appendChild(ingBox);
 };
-
+// addIngBox함수를 실행합니다.
 const handleIngBtn = () => {
   addIngBox();
 };
-
+// textarea를 반환합니다.
 const createTextarea = () => {
   const textarea = document.createElement("textarea");
   textarea.name = "order";
@@ -113,7 +113,7 @@ const createTextarea = () => {
   textarea.rows = "2";
   return textarea;
 };
-
+// Order Container를 생성합니다.
 const addOrderBox = () => {
   const orderBox = document.createElement("div");
   orderBox.className = "recipe__order__box";
@@ -127,26 +127,27 @@ const addOrderBox = () => {
   orderBox.appendChild(deleteBtn);
   orderContainer.appendChild(orderBox);
 };
-
+// addOrderBox함수를 실행합니다.
 const handleOrderBtn = () => {
   addOrderBox();
 };
 
 ingBtn.addEventListener("click", handleIngBtn);
 orderBtn.addEventListener("click", handleOrderBtn);
-
+// ingDeleteBtn이 있을시 각각의 ingDeleteBtn에 addEventListener를 설정합니다.
 if (ingDeleteBtn) {
   ingDeleteBtn.forEach((btn) => btn.addEventListener("click", handleDeleteBtn));
 }
-
+// orderDeleteBtn이 있을시 각각의 orderDeleteBtn에 addEventListener를 설정합니다.
 if (orderDeleteBtn) {
   orderDeleteBtn.forEach((btn) =>
     btn.addEventListener("click", handleDeleteBtn)
   );
 }
-
+// fileInput이 change할 시 실행합니다.
 const handelFileInput = (event) => {
   const file = event.target.files[0];
+  // createObjectURL 메서드를 사용하여 file을 DOMString으로 반환합니다.
   const fileUrl = URL.createObjectURL(file);
   if (thumbImage) {
     thumbImage.src = fileUrl;
