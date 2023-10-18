@@ -1,66 +1,92 @@
 # Fresh Recipes
 
----
+## 프로젝트 정보
 
-## Project
+>**1인 프로젝트**
+<br/>**냉장고 재료 관리 및 레시피 공유 웹서비스** 
 
----
+#### Note
 
-> 1.냉장고 재료 관리
+## 프로젝트 소개
+**냉장고의 재료들을 관리하고 레시피를 공유하자, Fresh Recipes**
+</br>
+</br>
+냉장고 재료 추가 및 소진이 가능하고 남은 용량 및 남은 기간을 확인할 수 있습니다.
+</br>
+레시피 등록을 통해 다른 유저들과 레시피를 공유할 수 있습니다.
 
-- 재료의 이름,종류,보관 장소 및 구입 시기를 지정
-- 유통기한이 임박한 재료 알림
-- 재료 전부 소진 시 구입 목록 추가 기능
-- 재료의 소모, 추가 및 삭제
+## 시작 가이드
 
-> 2.조리법 추가
+### Requirements
 
-- 조리법 추가, 수정 및 삭제
+For building and running the application you need:
 
-> 3.조리법 추천
+- [Node.js](https://nodejs.org/ko/download)
+- [npm](https://www.npmjs.com/package/package)
 
-- 보관중인 재료에 맞게 조리법 추천
+### Installation
 
-> 4.조리법 공유
+``` bash
+$ git clone https://github.com//kangkyeongseo/fresh-recipes
+$ cd fresh-recipes
+$ npm ci
+$ npm run dev
+```
 
-- 모든 유저의 조리법 목록
-- 조리법 추천 및 코멘트
+### ID / PASSWORD
+id: test@test.com</br>
+password: test
 
-## Pages
+## 기술 스택
 
----
+### Environment
 
-> Root(/)
+![Visual Studio Code](https://img.shields.io/badge/Visual%20Studio%20Code-007ACC?style=for-the-badge&logo=Visual%20Studio%20Code&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=Git&logoColor=white)
+![Github](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=GitHub&logoColor=white)
 
-- 홈(/)
-- 로그인(/login)
-- 로그아웃(/logout)
-- 회원가입(/join)
+### Config
 
-> User(/user)
+![npm](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white) 
 
-- 유저 상세정보(/:id)
-- 유저 상세정보 수정(/:id/edit)
-- 현재 보관중인 재료(/:id/ingredients)
-- 조리법 목록(/:id/recipes)
+### Development
 
-> Ingredient(/ingredient)
+![Javascript](https://img.shields.io/badge/javascript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=white)
+![Pug](https://img.shields.io/badge/pug-A86454?style=for-the-badge&logo=pug&logoColor=61DAFB)
+![Sass](https://img.shields.io/badge/sass-CC6699?style=for-the-badge&logo=sass&logoColor=white)
+![Express](https://img.shields.io/badge/express-000000.svg?&style=for-the-badge&logo=express&logoColor=white)
+![Mongodb](https://img.shields.io/badge/mongodb-47A248.svg?&style=for-the-badge&logo=mongodb&logoColor=white)
+![Prettier](https://img.shields.io/badge/prettier-DF0067.svg?&style=for-the-badge&logo=prettier&logoColor=white)
 
-- 재료 추가(/add)
-- 재료 검색(/search)
-- 재료 상세 정보(/:id)
-- 재료 수정(/:id/edit)
-- 재료 삭제(/:id/delete)
+## 주요 기능
 
-> Recipe(/recipe)
+### Login
+- 회원 인증을 통한 로그인이 가능합니다.
+- 잘못된 ID 혹은 password 입력시 오류메세지를 브라우저에 나타냅니다.
+- Open Authorization를 통해 Github 로그인이 가능합니다.
 
-- 조리법 추가(/add)
-- 조리법 검색(/seach)
-- 조리법 상세정보(/:id)
-- 조리법 수정 (/:id/edit)
-- 조리법 삭제 (/:id/delete)
+### Home
+- 레시피 슬라이더가 존재합니다.
+- 사용기한이 임박한 재료들이 표시됩니다.
+- 구입 목록에 추가된 재료들이 표시됩니다.
 
-> Sqare(/square)
+### Ingredient
+- 보관 장소별 재료들의 갯수와 남은기간이 표시됩니다.
+- 유통기한 임박 재료 및 구입 목록 재료들을 확인할 수 있습니다.
+- 재료 추가 페이지에서 재료의 추가가 가능합니다.
+- 재료 상세 페이지에서 재료의 소비 및 구입 항목에 추가 그리고 수정이 가능합니다.
 
-- 모든 유저의 조리법 목록(/)
-- 조리법 검색(/search)
+### Recipe
+- 등록한 레시피들이 표시됩니다.
+- 레시피 추가 페이지에서 레시피의 추가가 가능합니다.
+- 레시피 상세 페이지에서 마음에 드는 레시피 추가 및 댓글 추가가 가능합니다.
+  
+### Recipe Square
+- 다른 유저들의 레시피들이 표시됩니다..
+
+### My Page
+- 프로필 수정 및 로그아웃이 가능합니다.
+- 냉장고 재료 및 레시피 페이지로 이동이 가능하여 다른 유저들의 보관중인 재료 및 레시피가 확인 가능합니다.
+- 마음에 드는 레시피를 보관하는 페이지로 이동이 가능합니다.
+
+## 구현 화면
