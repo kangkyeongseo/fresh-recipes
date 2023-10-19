@@ -32,11 +32,6 @@ $ cd fresh-recipes
 $ npm ci
 $ npm run dev
 ```
-
-### ID / PASSWORD
-id: test@test.com</br>
-password: test
-
 ## 기술 스택
 
 ### Environment
@@ -82,7 +77,7 @@ password: test
 - 레시피 상세 페이지에서 마음에 드는 레시피 추가 및 댓글 추가가 가능합니다.
   
 ### Recipe Square
-- 다른 유저들의 레시피들이 표시됩니다..
+- 다른 유저들의 레시피들이 표시됩니다.
 
 ### My Page
 - 프로필 수정 및 로그아웃이 가능합니다.
