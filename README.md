@@ -90,3 +90,13 @@ password: test
 - 마음에 드는 레시피를 보관하는 페이지로 이동이 가능합니다.
 
 ## 구현 화면
+### Login
+![Login](https://user-images.githubusercontent.com/45960361/276534302-1b3d862a-b95a-4d40-a09f-d357dccce634.gif)
+### Ingredients
+![Ingredients](https://user-images.githubusercontent.com/45960361/276534932-c9e80051-24e7-4291-abc7-353e67a3d145.gif)
+### Purchase 
+![Purchase](https://user-images.githubusercontent.com/45960361/276535023-4d80517f-a0e5-4ef8-b39f-5d464d368f29.gif)
+### Recipe
+![Recipe](https://user-images.githubusercontent.com/45960361/276535084-20676e87-b08b-4221-8c42-a966e40beb0a.gif)
+### Review
+![Review](https://user-images.githubusercontent.com/45960361/276535332-1aec8de1-0aa1-4ded-8501-9c522b99839e.gif)
